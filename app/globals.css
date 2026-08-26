@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+
+/* Nueva sintaxis requerida para Tailwind v4 */
+@import "tailwindcss";
+
+/* Tu fuente de acento personalizada desde la carpeta public/fonts */
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/PPEditorialNew-Italic.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --font-manrope: 'Manrope', sans-serif;
+    --font-figtree: 'Figtree', sans-serif;
+    --font-editorial: 'PP Editorial New', serif;
+  }
+
+  /* Párrafos y texto general */
+  body, p {
+    font-family: var(--font-manrope);
+    font-weight: 400;
+    color: #141821;
+    background-color: #EFF8FD;
+    @apply text-[14px] leading-[22px];
+  }
+
+  /* Títulos globales en Figtree REGULAR (font-normal) por defecto */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-figtree);
+    font-weight: 400; /* Forzamos regular globalmente */
+    letter-spacing: -0.05em;
+    color: #141821;
+  }
+
+  /* Tamaños responsive (Mobile -> Desktop) con font-normal */
+ h1 {
+    @apply text-[24px] leading-[32px] md:text-[64px] md:leading-[72px];
+    letter-spacing: -0.05em;
+  }
+  
+  h2 {
+    @apply text-[22px] leading-[30px] md:text-[48px] md:leading-[56px];
+  }
+
+  h3 {
+    @apply text-[18px] leading-[26px] md:text-[24px] md:leading-[32px];
+  }
+
+  h4 {
+    @apply text-[14px] leading-[20px] md:text-[20px] md:leading-[28px];
+  }
+
+  /* Botones y enlaces con fondo se mantienen semibold */
+  button, a[class*="bg-"] {
+    font-weight: 600;
+  }
+}
+
+/* Clase de utilidad para la fuente de acento en regular */
+.font-accent {
+  font-family: var(--font-editorial);
+  font-weight: 400; /* Asegura que no agarre negrita */
+}

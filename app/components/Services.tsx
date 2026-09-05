@@ -81,7 +81,7 @@ export default function Services() {
                   <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
                     <Image src="/services/web-design/bithon-1.png" alt="Bithon" fill className="object-cover" />
                   </div>
-                  <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
+                  <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative"> 
                     <Image src="/services/web-design/2-en-1.png" alt="2 en 1" fill className="object-cover" />
                   </div>
                   <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
@@ -96,91 +96,7 @@ export default function Services() {
             </div>
           </div>
 
-          {/* COLUMNA DERECHA */}
-            <div className="grid grid-rows-2 gap-[20px] h-full">
-
-           {/* TARJETA 2 — Performance Ads */}
-           <div className="bg-[#1B3F7D] rounded-[16px] pt-[30px] px-[30px] text-white relative overflow-hidden flex flex-col justify-between h-full">
-              
-              <div className="pr-[0px]">
-                <h3 className="text-[24px] leading-[28px] font-normal text-white mb-[16px] relative z-10">
-                  Performance <span className="font-accent italic font-light">Ads</span>
-                </h3>
-
-                <p className="text-[16px] font-manrope font-normal text-[#AEC4E6] w-full leading-[20px] mb-[16px] relative z-10 bg-transparent">
-                  Gestionamos campañas publicitarias digitales en{' '}
-                  <strong className="text-white font-normal">Google Ads y Meta Ads</strong>{' '}
-                  orientadas exclusivamente a resultados, maximizando tu retorno de inversión (ROI) y captación de clientes.
-                </p>
-                
-                <a href="#" className={performanceButtonClass}>
-                  Ver resultados
-                  <ArrowIcon />
-                </a>
-              </div>
-
-              {/* CONTENEDOR DE IMÁGENES: inset-x-0 ocupa todo el ancho y flex justify-center las centra exactamente en el medio */}
-              <div className="absolute bottom-0 inset-x-0 flex items-end justify-center gap-[10px] -translate-x-[15px] pointer-events-none">
-                
-                {/* Stats */}
-                <div className="w-[300px] h-[215px] relative shrink-0 ml-[20px]">
-                  <Image 
-                    src="/services/performance-ads/performance-ads-stats.webp" 
-                    alt="Stats Performance Ads" 
-                    fill 
-                    quality={95}
-                    sizes="300px"
-                    className="object-contain object-bottom" 
-                  />
-                </div>
-
-                {/* Chart */}
-                <div className="w-[300px] h-[205px] relative shrink-0">
-                  <Image 
-                    src="/services/performance-ads/performance-ads-chart.png" 
-                    alt="Chart Performance Ads" 
-                    fill 
-                    quality={95}
-                    sizes="300px"
-                    className="object-contain object-bottom" 
-                  />
-                </div>
-
-              </div>
-
-            </div>
-
-            {/* TARJETAS 3 y 4 (Diseño UX y Branding) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[20px] h-full">
-
-              {/* Diseño UX */}
-              <div className="bg-[#1A3840] rounded-[16px] pt-[24px] px-[24px] pb-[24px] text-white flex flex-col justify-between relative overflow-hidden h-full">
-                <div className="relative z-10 flex flex-col">
-                  {/* Título UX: Peso normal */}
-                  <h4 className="text-[24px] leading-[28px] font-normal text-white mb-[16px]">
-                    Diseño <span className="font-accent italic font-light">UX</span>
-                  </h4>
-                  <p className="text-[16px] font-manrope font-normal text-[#9FBFC2] w-full leading-[20px] mb-[16px] bg-transparent">
-                    Investigamos y creamos experiencias digitales para apps y webs de empresas.
-                  </p>
-                  <div>
-                    <a
-                      href="#"
-                      style={{ borderColor: '#477087' }}
-                      className={secondaryButtonClass + " border"}
-                    >
-                      Ver proyectos
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.05317 5.80864L16.6169 14.568L16.7007 7.14383L17.6984 7.09145L17.5946 16.2833L8.40276 16.1794L8.47766 15.1832L15.9018 15.267L7.33812 6.50772L8.05317 5.80864Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-
-                {/* Ilustración de Figma */}
-                <div className="absolute bottom-0 right-[-10px] w-[220px] h-[200px] pointer-events-none">
-                  <Image
-                    src="/services/ux-design/diseno-ux-ui.webp"
+          {/diseno-ux-ui.webp"
                     alt="Diseño UX ilustración"
                     fill
                     quality={95}
@@ -213,7 +129,7 @@ export default function Services() {
                 </div>
 
                 {/* Ilustración de Figma */}
-                <div className="absolute bottom-0 right-[-10px] w-[220px] h-[200px] pointer-events-none">
+                <div className="absolute -bottom-[15px] left-1/2 -translate-x-1/2 w-[270px] h-[235px] pointer-events-none">
                   <Image
                     src="/services/branding/branding-design.webp"
                     alt="Branding ilustración"

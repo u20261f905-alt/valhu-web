@@ -97,10 +97,10 @@ export default function Services() {
           </div>
 
           {/* COLUMNA DERECHA */}
-          <div className="flex flex-col gap-[20px] justify-between">
+            <div className="grid grid-rows-2 gap-[20px] h-full">
 
            {/* TARJETA 2 — Performance Ads */}
-           <div className="bg-[#1B3F7D] rounded-[16px] pt-[30px] px-[30px] text-white relative overflow-hidden h-[425px] flex flex-col justify-between shrink-0">
+           <div className="bg-[#1B3F7D] rounded-[16px] pt-[30px] px-[30px] text-white relative overflow-hidden flex flex-col justify-between h-full">
               
               <div className="pr-[0px]">
                 <h3 className="text-[24px] leading-[28px] font-normal text-white mb-[16px] relative z-10">
@@ -120,24 +120,28 @@ export default function Services() {
               </div>
 
               {/* CONTENEDOR DE IMÁGENES: inset-x-0 ocupa todo el ancho y flex justify-center las centra exactamente en el medio */}
-              <div className="absolute bottom-0 inset-x-0 flex items-end justify-center gap-[10px] pointer-events-none">
+              <div className="absolute bottom-0 inset-x-0 flex items-end justify-center gap-[10px] -translate-x-[15px] pointer-events-none">
                 
                 {/* Stats */}
-                <div className="w-[260px] h-[190px] relative shrink-0">
+                <div className="w-[300px] h-[215px] relative shrink-0 ml-[20px]">
                   <Image 
-                    src="/services/performance-ads/performance-ads-stats.png" 
+                    src="/services/performance-ads/performance-ads-stats.webp" 
                     alt="Stats Performance Ads" 
                     fill 
+                    quality={95}
+                    sizes="300px"
                     className="object-contain object-bottom" 
                   />
                 </div>
 
                 {/* Chart */}
-                <div className="w-[280px] h-[190px] relative shrink-0">
+                <div className="w-[300px] h-[205px] relative shrink-0">
                   <Image 
                     src="/services/performance-ads/performance-ads-chart.png" 
                     alt="Chart Performance Ads" 
                     fill 
+                    quality={95}
+                    sizes="300px"
                     className="object-contain object-bottom" 
                   />
                 </div>
@@ -147,7 +151,7 @@ export default function Services() {
             </div>
 
             {/* TARJETAS 3 y 4 (Diseño UX y Branding) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[20px] flex-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[20px] h-full">
 
               {/* Diseño UX */}
               <div className="bg-[#1A3840] rounded-[16px] pt-[24px] px-[24px] pb-[24px] text-white flex flex-col justify-between relative overflow-hidden h-full">
@@ -157,7 +161,7 @@ export default function Services() {
                     Diseño <span className="font-accent italic font-light">UX</span>
                   </h4>
                   <p className="text-[16px] font-manrope font-normal text-[#9FBFC2] w-full leading-[20px] mb-[16px] bg-transparent">
-                    Investigamos y creamos experiencias digitales para Saas, apps y webs de startups/empresas.
+                    Investigamos y creamos experiencias digitales para apps y webs de empresas.
                   </p>
                   <div>
                     <a
@@ -173,7 +177,17 @@ export default function Services() {
                   </div>
                 </div>
 
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-[100px] bg-[#12272D] rounded-t-[20px] pointer-events-none" />
+                {/* Ilustración de Figma */}
+                <div className="absolute bottom-0 right-[-10px] w-[220px] h-[200px] pointer-events-none">
+                  <Image
+                    src="/services/ux-design/diseno-ux-ui.webp"
+                    alt="Diseño UX ilustración"
+                    fill
+                    quality={95}
+                    sizes="220px"
+                    className="object-contain object-bottom"
+                  />
+                </div>
               </div>
 
               {/* Branding */}
@@ -198,7 +212,17 @@ export default function Services() {
                   </div>
                 </div>
 
-                <div className="absolute bottom-0 right-0 w-[80%] h-[110px] bg-[#2E240F] rounded-tl-[32px] pointer-events-none" />
+                {/* Ilustración de Figma */}
+                <div className="absolute bottom-0 right-[-10px] w-[220px] h-[200px] pointer-events-none">
+                  <Image
+                    src="/services/branding/branding-design.webp"
+                    alt="Branding ilustración"
+                    fill
+                    quality={95}
+                    sizes="220px"
+                    className="object-contain object-bottom"
+                  />
+                </div>
               </div>
 
             </div>

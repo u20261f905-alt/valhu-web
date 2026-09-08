@@ -154,7 +154,7 @@ export default function Services() {
                   </div>
                 </div>
 
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[200px] h-[160px] pointer-events-none">
+                <div className="absolute bottom-0 left-1/2 -translate-x-[47%] -translate-y-[-12%] w-[350px] h-[220px] pointer-events-none">
                   <Image
                     src="/services/ux-design/diseno-ux-ui.webp"
                     alt="Diseño UX ilustración"
@@ -186,7 +186,7 @@ export default function Services() {
                   </div>
                 </div>
 
-                <div className="absolute bottom-0 left-1/2 -translate-x-[40%] w-[320px] h-[190px] pointer-events-none">
+                <div className="absolute bottom-0 left-1/2 -translate-x-[47%] w-[350px] h-[220px] pointer-events-none">
                   <Image
                     src="/services/branding/branding-design.webp"
                     alt="Branding ilustración"

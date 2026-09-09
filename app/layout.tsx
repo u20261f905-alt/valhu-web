@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer"; 
 
 export const metadata: Metadata = {
   title: "Valhu Group | Agencia de Innovación & UX Design",
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body className="antialiased bg-[#EFF8FD] text-[#141821]">
         <Navbar />
         {children}
+        <Footer /> {/* Agregamos el Footer al final */}
       </body>
     </html>
   );

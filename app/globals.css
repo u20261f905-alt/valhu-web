@@ -7,7 +7,7 @@
 @font-face {
   font-family: 'PP Editorial New';
   src: url('/fonts/PPEditorialNew-Italic.otf') format('opentype');
-  font-weight: normal;
+  font-weight: 300;
   font-style: italic;
   font-display: swap;
 }
@@ -25,7 +25,7 @@
     font-weight: 400;
     color: #141821;
     background-color: #EFF8FD;
-    @apply text-[14px] leading-[22px];
+    @apply text-[16px] leading-[20px];
   }
 
   /* Títulos globales en Figtree REGULAR (font-normal) por defecto */
@@ -63,5 +63,5 @@
 /* Clase de utilidad para la fuente de acento en regular */
 .font-accent {
   font-family: var(--font-editorial);
-  font-weight: 400; /* Asegura que no agarre negrita */
+  font-weight: 300; /* Asegura que no agarre negrita */
 }

@@ -1,15 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Efecto para disparar la animación de entrada al montar el componente
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
-    <header className="w-full bg-[#EFF8FD] sticky top-0 z-50">
+    <header 
+      className={`w-full sticky top-0 z-50 transition-all duration-700 ease-out relative
+        bg-[#EFF8FD]/60 backdrop-blur
+        ${mounted ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
+    >
       <div className="max-w-[1220px] mx-auto px-4 md:px-8 py-[20px] flex items-center justify-between">
         
         {/* LOGO */}
@@ -62,7 +72,7 @@ export default function Navbar() {
 
             {/* PANEL DROPDOWN DESKTOP */}
             {isServicesOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 w-[240px] bg-white rounded-xl shadow-lg border border-gray-100 p-2 transition-all z-50">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 w-[240px] bg-white/80 backdrop-blur rounded-xl shadow-lg border border-gray-100/30 p-2 transition-all z-50">
                 <Link
                   href="#web-design"
                   className="block px-4 py-2.5 rounded-lg hover:bg-[#EFF8FD] text-[#141821] text-[14px] leading-[22px] font-normal transition-all hover:font-semibold"
@@ -122,7 +132,7 @@ export default function Navbar() {
 
       {/* DESPLEGABLE MOBILE */}
       {isOpen && (
-        <nav className="md:hidden bg-[#EFF8FD] px-6 pb-6 pt-2 flex flex-col space-y-4 border-b border-gray-200/40">
+        <nav className="md:hidden bg-[#EFF8FD]/80 backdrop-blur px-6 pb-6 pt-2 flex flex-col space-y-4 shadow-lg">
           <Link 
             href="#inicio" 
             onClick={() => setIsOpen(false)} 
@@ -198,13 +208,16 @@ export default function Navbar() {
           </Link>
           <Link 
             href="#agenda" 
-            onClick={() => setIsOpen(false)}
+            onClick={() => setIsOpena(false)}
             className="bg-[#141821] text-white rounded-[8px] p-[16px] text-[16px] leading-[22px] font-medium text-center transition-all hover:bg-opacity-90"
           >
             Agenda una reunión
           </Link>
         </nav>
       )}
+
+      {/* LÍNEA INFERIOR BLANCA CON TRANSPARENCIA 70% */}
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#EFF8FD]/50 pointer-events-none" />
     </header>
   );
 }

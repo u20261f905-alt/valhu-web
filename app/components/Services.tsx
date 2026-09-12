@@ -67,6 +67,188 @@ export default function Services() {
           },
         }
       );
+
+      // TARJETAS DE SERVICIOS
+      // Cada tarjeta entra desde una dirección distinta al llegar al viewport.
+
+      // 1. DISEÑO Y DESARROLLO WEB — entra desde la IZQUIERDA (suave y lenta)
+      gsap.fromTo(
+        '.card-web',
+        { autoAlpha: 0, x: -80 },
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 1.4,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.card-web',
+            start: 'top 65%',
+            once: true,
+          },
+        }
+      );
+
+      // 2. PERFORMANCE / META ADS — entra desde la DERECHA (mismo ritmo)
+      gsap.fromTo(
+        '.card-ads',
+        { autoAlpha: 0, x: 80 },
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 1.4,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.card-ads',
+            start: 'top 65%',
+            once: true,
+          },
+        }
+      );
+
+      // 3 y 4. DISEÑO UX y BRANDING — ambas suben desde ABAJO, pero en secuencia:
+      // el stagger de 0.25s hace que primero entre UX y justo después Branding.
+      // El ScrollTrigger se ancla a la fila completa para que el orden sea
+      // siempre el mismo, sin importar cuál toque primero el borde del viewport.
+      gsap.fromTo(
+        ['.card-ux', '.card-branding'],
+        { autoAlpha: 0, y: 70 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1.2,
+          stagger: 0.25,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.services-bottom-row',
+            start: 'top 85%',
+            once: true,
+          },
+        }
+      );
+      // 5. SHOWCASE INTERIOR de la tarjeta Web (tags + grilla de proyectos).
+      // Entra desde la DERECHA, con su propio trigger más abajo (top 60%),
+      // así aparece recién cuando el usuario sigue scrolleando después
+      // de que ya entraron las tarjetas.
+      gsap.fromTo(
+        '.card-web-showcase',
+        { autoAlpha: 0, x: 120 },
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 1.4,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.card-web-showcase',
+            start: 'top 90%',
+            once: true,
+            invalidateOnRefresh: true,
+            // markers: true, // <-- descomenta para ver el punto de disparo
+          },
+        }
+      );
+
+      // 6. IMÁGENES INTERIORES de la tarjeta Performance Ads.
+      // Stats y chart suben JUNTOS desde abajo. El ScrollTrigger se ancla
+      // a '.card-web-showcase' (y no a '.card-ads') para que ambas entren
+      // exactamente al mismo tiempo que el showcase de Diseño y desarrollo Web.
+      // Los valores de x (-15 y -20) reemplazan a las clases
+      // -translate-x-[15px] / -translate-x-[20px] de Tailwind, porque
+      // GSAP escribe su propio transform y las sobreescribiría.
+      gsap.fromTo(
+        '.ads-stats',
+        { autoAlpha: 0, x: -15, y: 120 },
+        {
+          autoAlpha: 1,
+          x: -15,
+          y: 0,
+          duration: 1.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.card-web-showcase',
+            start: 'top 90%',
+            once: true,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        '.ads-chart',
+        { autoAlpha: 0, x: -20, y: 120 },
+        {
+          autoAlpha: 1,
+          x: -20,
+          y: 0,
+          duration: 1.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.card-web-showcase',
+            start: 'top 90%',
+            once: true,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+
+      // 7. ILUSTRACIONES de Diseño UX y Branding.
+      // Entran DESPUÉS de sus tarjetas padre, en un scroll posterior.
+      // Movimiento sutil y breve (solo 26px y 0.7s).
+      // Los xPercent/yPercent finales reemplazan a -translate-x-[47%] y
+      // -translate-y-[-12%] de Tailwind, porque GSAP pisa el transform.
+      // El `y: 4` final las baja los 4px pedidos.
+      gsap.fromTo(
+        '.ux-illustration',
+        { autoAlpha: 0, xPercent: -47, yPercent: 12, y: 30 },
+        {
+          autoAlpha: 1,
+          xPercent: -47,
+          yPercent: 12,
+          y: 4,
+          duration: 0.7,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.services-bottom-row',
+            start: 'top 42%',
+            once: true,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        '.branding-illustration',
+        { autoAlpha: 0, xPercent: -47, y: 30 },
+        {
+          autoAlpha: 1,
+          xPercent: -47,
+          y: 4,
+          duration: 0.7,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.services-bottom-row',
+            start: 'top 42%',
+            once: true,
+            invalidateOnRefresh: true,
+          },
+          delay: 0.15,
+        }
+      );
+
+      // Las imágenes de next/image cargan DESPUÉS del montaje y empujan el
+      // layout, dejando los puntos de disparo calculados sobre alturas viejas.
+      // Este refresh los recalcula una vez que todo terminó de cargar.
+      const handleLoad = () => ScrollTrigger.refresh();
+      window.addEventListener('load', handleLoad);
+
+      // Respaldo: si la página ya estaba cargada al montar el componente,
+      // el evento 'load' no vuelve a dispararse.
+      if (document.readyState === 'complete') {
+        ScrollTrigger.refresh();
+      }
+
+      return () => {
+        window.removeEventListener('load', handleLoad);
+      };
     },
     { scope: containerRef }
   );
@@ -78,15 +260,16 @@ export default function Services() {
     <section
       ref={containerRef}
       id="servicios"
-      className="w-full py-[60px] bg-[#EFF8FD]"
+      className="w-full py-[24px] md:py-[40px] bg-[#EFF8FD]"
     >
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
 
         {/* ENCABEZADO */}
-        <div className="text-center mb-[36px]">
+        <div className="text-center mb-[16px] md:mb-[36px]">
 
-          {/* TÍTULO */}
-          <h2 className="text-[40px] md:text-[48px] font-medium text-[#141821] mb-[20px]">
+          {/* TÍTULO: sin tamaño hardcodeado, hereda el de globals.css
+              (22px/30px en mobile, 48px/56px desde md) */}
+          <h2 className="font-medium text-[#141821] mb-[16px]">
             {'Nuestros Servicios'.split(' ').map((word, index) => (
               <span
                 key={`title-${index}`}
@@ -99,7 +282,7 @@ export default function Services() {
           </h2>
 
           {/* PÁRRAFO */}
-          <p className="text-[16px] text-[#525866] max-w-[600px] mx-auto leading-[20px] flex flex-wrap justify-center gap-x-[6px]">
+          <p className="text-[14px] md:text-[16px] text-[#525866] max-w-[600px] mx-auto leading-[20px] flex flex-wrap justify-center gap-x-[4px]">
             {servicesParagraph.split(' ').map((word, index) => (
               <span
                 key={`paragraph-${index}`}
@@ -115,13 +298,13 @@ export default function Services() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[20px]">
 
           {/* TARJETA 1 — Diseño y desarrollo web */}
-          <div className="relative overflow-hidden bg-[#E1EDF4] rounded-[16px] pt-[30px] pl-[30px] flex flex-col justify-between">
+          <div className="card-web invisible relative overflow-hidden bg-[#E1EDF4] rounded-[16px] pt-[30px] pl-[30px] flex flex-col justify-between">
             <div className="shrink-0 pr-[30px]">
               <h3 className="text-[24px] leading-[28px] font-normal text-[#141821]">
                 Diseño y desarrollo <span className="font-accent italic font-light">Web</span>
               </h3>
 
-              <p className="mt-4 text-[16px] leading-[20px] text-[#525866] w-full bg-transparent">
+              <p className="mt-4 text-[14px] md:text-[16px] leading-[20px] text-[#525866] w-full bg-transparent">
                 Diseñamos y desarrollamos sitios web a medida, rápidos y seguros.
                 Enfocados en la experiencia de usuario, la escalabilidad y funcionalidad impecable.
               </p>
@@ -147,7 +330,7 @@ export default function Services() {
               </div>
             </div>
 
-            <div className="mt-[40px] mb-[30px] w-full bg-[#BBD0E0] rounded-l-[16px] p-[16px] lg:p-[30px] lg:pb-[40px] overflow-hidden relative flex">
+            <div className="card-web-showcase invisible mt-[40px] mb-[30px] w-full bg-[#BBD0E0] rounded-l-[16px] p-[16px] lg:p-[30px] lg:pb-[40px] overflow-hidden relative flex">
               <div className="w-full flex flex-col items-start">
 
                 <div className="flex flex-wrap justify-start gap-2 lg:gap-3 mb-[24px]">
@@ -208,7 +391,7 @@ export default function Services() {
           <div className="flex flex-col gap-[20px] h-full">
 
             {/* TARJETA 2 — Performance Ads */}
-            <div className="bg-[#1B3F7D] rounded-[16px] pt-[30px] px-[30px] text-white relative overflow-hidden h-[calc(50%-10px)] flex flex-col justify-between shrink-0">
+            <div className="card-ads invisible bg-[#1B3F7D] rounded-[16px] pt-[30px] px-[30px] text-white relative overflow-hidden h-[calc(50%-10px)] flex flex-col justify-between shrink-0">
 
               <div className="pr-[0px]">
 
@@ -216,7 +399,7 @@ export default function Services() {
                   Performance <span className="font-accent italic font-light">Ads</span>
                 </h3>
 
-                <p className="text-[16px] font-manrope font-normal text-[#AEC4E6] w-full leading-[20px] mb-[16px] relative z-10 bg-transparent">
+                <p className="text-[14px] md:text-[16px] font-manrope font-normal text-[#AEC4E6] w-full leading-[20px] mb-[16px] relative z-10 bg-transparent">
                   Gestionamos campañas publicitarias digitales en{' '}
                   <strong className="text-white font-normal">
                     Google Ads y Meta Ads
@@ -233,7 +416,7 @@ export default function Services() {
 
               <div className="absolute bottom-0 inset-x-0 flex items-end justify-center gap-[0px] pointer-events-none">
 
-                <div className="w-[260px] h-[190px] relative shrink-0 -translate-x-[15px]">
+                <div className="ads-stats invisible w-[260px] h-[190px] relative shrink-0">
                   <Image
                     src="/services/performance-ads/performance-ads-stats.webp"
                     alt="Stats Performance Ads"
@@ -242,7 +425,7 @@ export default function Services() {
                   />
                 </div>
 
-                <div className="w-[280px] h-[190px] relative shrink-0 -translate-x-[20px]">
+                <div className="ads-chart invisible w-[280px] h-[190px] relative shrink-0">
                   <Image
                     src="/services/performance-ads/performance-ads-chart.png"
                     alt="Chart Performance Ads"
@@ -255,10 +438,10 @@ export default function Services() {
             </div>
 
             {/* TARJETAS 3 y 4 */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[20px] h-[calc(50%-10px)]">
+            <div className="services-bottom-row grid grid-cols-1 sm:grid-cols-2 gap-[20px] h-[calc(50%-10px)]">
 
               {/* Diseño UX */}
-              <div className="bg-[#1A3840] rounded-[16px] pt-[24px] px-[24px] pb-[24px] text-white flex flex-col justify-between relative overflow-hidden h-full">
+              <div className="card-ux invisible bg-[#1A3840] rounded-[16px] pt-[24px] px-[24px] pb-[24px] text-white flex flex-col justify-between relative overflow-hidden h-full">
 
                 <div className="relative z-10 flex flex-col">
 
@@ -266,7 +449,7 @@ export default function Services() {
                     Diseño <span className="font-accent italic font-light">UX</span>
                   </h4>
 
-                  <p className="text-[16px] font-manrope font-normal text-[#9FBFC2] w-full leading-[20px] mb-[16px] bg-transparent">
+                  <p className="text-[14px] md:text-[16px] font-manrope font-normal text-[#9FBFC2] w-full leading-[20px] mb-[16px] bg-transparent">
                     Investigamos y creamos experiencias digitales para Saas, apps y webs de startups/empresas.
                   </p>
 
@@ -298,7 +481,7 @@ export default function Services() {
 
                 </div>
 
-                <div className="absolute bottom-0 left-1/2 -translate-x-[47%] -translate-y-[-12%] w-[350px] h-[220px] pointer-events-none">
+                <div className="ux-illustration invisible absolute bottom-0 left-1/2 w-[350px] h-[220px] pointer-events-none">
                   <Image
                     src="/services/ux-design/diseno-ux-ui.webp"
                     alt="Diseño UX ilustración"
@@ -311,7 +494,7 @@ export default function Services() {
               </div>
 
               {/* Branding */}
-              <div className="bg-[#423517] rounded-[16px] pt-[24px] px-[24px] pb-[24px] text-white flex flex-col justify-between relative overflow-hidden h-full">
+              <div className="card-branding invisible bg-[#423517] rounded-[16px] pt-[24px] px-[24px] pb-[24px] text-white flex flex-col justify-between relative overflow-hidden h-full">
 
                 <div className="relative z-10 flex flex-col">
 
@@ -319,7 +502,7 @@ export default function Services() {
                     Branding
                   </h4>
 
-                  <p className="text-[16px] font-manrope font-normal text-[#C2B799] w-full leading-[20px] mb-[16px] bg-transparent">
+                  <p className="text-[14px] md:text-[16px] font-manrope font-normal text-[#C2B799] w-full leading-[20px] mb-[16px] bg-transparent">
                     Desarrollamos la identidad visual, el tono de voz y la personalidad de tu marca
                   </p>
 
@@ -351,7 +534,7 @@ export default function Services() {
 
                 </div>
 
-                <div className="absolute bottom-0 left-1/2 -translate-x-[47%] w-[350px] h-[220px] pointer-events-none">
+                <div className="branding-illustration invisible absolute bottom-0 left-1/2 w-[350px] h-[220px] pointer-events-none">
                   <Image
                     src="/services/branding/branding-design.webp"
                     alt="Branding ilustración"

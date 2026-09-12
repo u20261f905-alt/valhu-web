@@ -19,13 +19,13 @@
     --font-editorial: 'PP Editorial New', serif;
   }
 
-  /* Párrafos y texto general */
+  /* Párrafos y texto general: 14px/20px en mobile, 16px/20px desde md */
   body, p {
     font-family: var(--font-manrope);
     font-weight: 400;
     color: #141821;
     background-color: #EFF8FD;
-    @apply text-[16px] leading-[20px];
+    @apply text-[14px] leading-[20px] md:text-[16px];
   }
 
   /* Títulos globales en Figtree REGULAR (font-normal) por defecto */
@@ -37,13 +37,13 @@
   }
 
   /* Tamaños responsive (Mobile -> Desktop) con font-normal */
- h1 {
-    @apply text-[24px] leading-[32px] md:text-[64px] md:leading-[72px];
+  h1 {
+    @apply text-[36px] leading-[40px] md:text-[64px] md:leading-[72px];
     letter-spacing: -0.05em;
   }
   
   h2 {
-    @apply text-[22px] leading-[30px] md:text-[48px] md:leading-[56px];
+    @apply text-[28px] leading-[32px] md:text-[48px] md:leading-[56px];
   }
 
   h3 {
@@ -64,4 +64,64 @@
 .font-accent {
   font-family: var(--font-editorial);
   font-weight: 300; /* Asegura que no agarre negrita */
+}
+
+.bottom-page-blur {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 55px;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+
+/* Blur suave */
+.blur-layer-1 {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 100%
+  );
+}
+
+
+/* Integración final con el fondo */
+.blur-layer-2 {
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgb(239, 248, 253) 0%,
+    rgba(255, 255, 255, 0.1) 40%,
+    rgba(255, 255, 255, 0.35) 75%,
+    #EFF8FD 100%
+  );
+
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 55%,
+    black 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 55%,
+    black 100%
+  );
 }

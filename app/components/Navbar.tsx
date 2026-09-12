@@ -1,223 +1,384 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import Link from 'next/link';
+
+const SERVICIOS = [
+  { href: '#web-design', label: 'Diseño y desarrollo web' },
+  { href: '#meta-ads', label: 'Meta Ads' },
+  { href: '#ux-design', label: 'Diseño UX' },
+  { href: '#branding', label: 'Branding' },
+];
+
+// Separación visual entre el navbar y el panel del dropdown.
+// El "puente" invisible ocupa exactamente este espacio.
+const DROPDOWN_GAP = 40;
+const DROPDOWN_WIDTH = 300;
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  // Posición calculada a partir del botón "Servicios".
+  // triggerBottom = borde inferior del botón (donde arranca el puente)
+  // left = centro horizontal del botón (botón, puente y dropdown comparten este centro)
+  const [pos, setPos] = useState({ triggerBottom: 0, left: 0 });
+
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Efecto para disparar la animación de entrada al montar el componente
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Calcula dónde debe aparecer el dropdown, centrado bajo el botón "Servicios"
+  const updatePosition = useCallback(() => {
+    const el = triggerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    setPos({
+      triggerBottom: rect.bottom,
+      left: rect.left + rect.width / 2, // centro del botón
+    });
+  }, []);
+
+  // Abre el dropdown cancelando cualquier cierre pendiente
+  const openServices = useCallback(() => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    updatePosition();
+    setIsServicesOpen(true);
+  }, [updatePosition]);
+
+  // Cierra con un pequeño retardo, para poder mover el mouse
+  // desde el botón hasta el panel sin que se cierre en el camino
+  const scheduleClose = useCallback(() => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setIsServicesOpen(false), 120);
+  }, []);
+
+  // Mientras esté abierto, seguimos la posición en scroll y resize
+  useEffect(() => {
+    if (!isServicesOpen) return;
+
+    const handle = () => updatePosition();
+    window.addEventListener('scroll', handle, { passive: true });
+    window.addEventListener('resize', handle);
+
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsServicesOpen(false);
+    };
+    window.addEventListener('keydown', handleKey);
+
+    return () => {
+      window.removeEventListener('scroll', handle);
+      window.removeEventListener('resize', handle);
+      window.removeEventListener('keydown', handleKey);
+    };
+  }, [isServicesOpen, updatePosition]);
+
+  // Limpieza del timer al desmontar
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
+  }, []);
+
+  // ---- DROPDOWN + PUENTE (se montan en el body, NO dentro del header) ----
+  // El puente es un div invisible que cubre exactamente el espacio (DROPDOWN_GAP)
+  // entre el botón y el panel. Al tener onMouseEnter/onMouseLeave igual que el
+  // botón y el panel, el hover queda "conectado" sin huecos: el mouse nunca pasa
+  // por una zona sin listener mientras baja del botón al dropdown.
+  const dropdown =
+    mounted && isServicesOpen
+      ? createPortal(
+          <>
+            {/* Puente invisible: mismo ancho/centro que el panel */}
+            <div
+              onMouseEnter={openServices}
+              onMouseLeave={scheduleClose}
+              style={{
+                position: 'fixed',
+                top: pos.triggerBottom,
+                left: pos.left,
+                width: DROPDOWN_WIDTH,
+                height: DROPDOWN_GAP,
+                transform: 'translateX(-50%)',
+              }}
+              className="z-[100]"
+            />
+
+            {/* Panel del dropdown, separado del navbar por DROPDOWN_GAP */}
+            <div
+              role="menu"
+              onMouseEnter={openServices}
+              onMouseLeave={scheduleClose}
+              style={{
+                position: 'fixed',
+                top: pos.triggerBottom + DROPDOWN_GAP,
+                left: pos.left,
+                width: DROPDOWN_WIDTH,
+                transform: 'translateX(-50%)',
+              }}
+              className="
+                z-[100]
+                p-2
+                rounded-[14px]
+                bg-white/40
+                backdrop-blur-xl
+                backdrop-saturate-150
+                border border-white/60
+                shadow-[0_12px_35px_rgba(20,24,33,0.12)]
+              "
+            >
+              {SERVICIOS.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsServicesOpen(false)}
+                  className="
+                    block
+                    px-4
+                    py-2.5
+                    rounded-lg
+                    text-[#141821]
+                    text-[14px]
+                    leading-[22px]
+                    font-normal
+                    transition-all
+                    hover:bg-white/40
+                    hover:font-semibold
+                  "
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </>,
+          document.body
+        )
+      : null;
+
   return (
-    <header 
-      className={`w-full sticky top-0 z-50 transition-all duration-700 ease-out relative
-        bg-[#EFF8FD]/60 backdrop-blur
-        ${mounted ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
-    >
-      <div className="max-w-[1220px] mx-auto px-4 md:px-8 py-[20px] flex items-center justify-between">
-        
-        {/* LOGO */}
-        <Link href="/" className="flex items-center">
-          <Image 
-            src="/logo.svg" 
-            alt="Valhu Logo" 
-            width={120} 
-            height={30} 
-            priority
-            className="w-[120px] h-[30px] object-contain"
-          />
-        </Link>
+    <>
+      <header
+        className={`w-full sticky top-0 z-50 transition-all duration-700 ease-out
+          bg-[#EFF8FD]/60 backdrop-blur
+          ${mounted ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
+      >
+        <div className="max-w-[1220px] mx-auto px-4 md:px-8 py-[20px] flex items-center justify-between">
 
-        {/* NAVEGACIÓN DESKTOP */}
-        <nav className="hidden md:flex items-center gap-[40px]">
-          <Link 
-            href="#inicio" 
-            className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
-          >
-            Inicio
-          </Link>
-          <Link 
-            href="#nosotros" 
-            className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
-          >
-            Nosotros
+          {/* LOGO */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.svg"
+              alt="Valhu Logo"
+              width={120}
+              height={30}
+              priority
+              className="w-[120px] h-[30px] object-contain"
+            />
           </Link>
 
-          {/* SERVICIOS CON DESPLEGABLE DESKTOP */}
-          <div 
-            className="relative py-2"
-            onMouseEnter={() => setIsServicesOpen(true)}
-            onMouseLeave={() => setIsServicesOpen(false)}
-          >
-            <button 
-              className="flex items-center gap-1.5 text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold focus:outline-none"
-              onClick={() => setIsServicesOpen(!isServicesOpen)}
+          {/* NAVEGACIÓN DESKTOP */}
+          <nav className="hidden md:flex items-center gap-[40px]">
+
+            {/* INICIO */}
+            <Link
+              href="#inicio"
+              className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
             >
-              Servicios
-              <svg 
-                className={`w-3.5 h-3.5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
+              Inicio
+            </Link>
 
-            {/* PANEL DROPDOWN DESKTOP */}
-            {isServicesOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 w-[240px] bg-white/80 backdrop-blur rounded-xl shadow-lg border border-gray-100/30 p-2 transition-all z-50">
-                <Link
-                  href="#web-design"
-                  className="block px-4 py-2.5 rounded-lg hover:bg-[#EFF8FD] text-[#141821] text-[14px] leading-[22px] font-normal transition-all hover:font-semibold"
-                >
-                  Diseño y desarrollo web
-                </Link>
-                <Link
-                  href="#meta-ads"
-                  className="block px-4 py-2.5 rounded-lg hover:bg-[#EFF8FD] text-[#141821] text-[14px] leading-[22px] font-normal transition-all hover:font-semibold"
-                >
-                  Meta Ads
-                </Link>
-                <Link
-                  href="#ux-design"
-                  className="block px-4 py-2.5 rounded-lg hover:bg-[#EFF8FD] text-[#141821] text-[14px] leading-[22px] font-normal transition-all hover:font-semibold"
-                >
-                  Diseño UX
-                </Link>
-                <Link
-                  href="#branding"
-                  className="block px-4 py-2.5 rounded-lg hover:bg-[#EFF8FD] text-[#141821] text-[14px] leading-[22px] font-normal transition-all hover:font-semibold"
-                >
-                  Branding
-                </Link>
-              </div>
-            )}
-          </div>
-
-          <Link 
-            href="#blog" 
-            className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
-          >
-            Blog
-          </Link>
-
-          {/* BOTÓN CTA */}
-          <Link 
-            href="#agenda" 
-            className="bg-[#141821] text-white rounded-[8px] p-[16px] text-[16px] leading-[22px] font-medium hover:bg-opacity-90 transition-all text-center inline-block"
-          >
-            Agenda una reunión
-          </Link>
-        </nav>
-
-        {/* BOTÓN MENÚ HAMBURGUESA (MOBILE) */}
-        <button 
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none"
-          aria-label="Abrir Menú"
-        >
-          <span className={`block w-6 h-[2px] bg-[#141821] transition-transform duration-300 ${isOpen ? 'rotate-45 translate-y-[8px]' : ''}`}></span>
-          <span className={`block w-6 h-[2px] bg-[#141821] transition-opacity duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
-          <span className={`block w-6 h-[2px] bg-[#141821] transition-transform duration-300 ${isOpen ? '-rotate-45 -translate-y-[8px]' : ''}`}></span>
-        </button>
-
-      </div>
-
-      {/* DESPLEGABLE MOBILE */}
-      {isOpen && (
-        <nav className="md:hidden bg-[#EFF8FD]/80 backdrop-blur px-6 pb-6 pt-2 flex flex-col space-y-4 shadow-lg">
-          <Link 
-            href="#inicio" 
-            onClick={() => setIsOpen(false)} 
-            className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
-          >
-            Inicio
-          </Link>
-          <Link 
-            href="#nosotros" 
-            onClick={() => setIsOpen(false)} 
-            className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
-          >
-            Nosotros
-          </Link>
-
-          {/* ACORDEÓN DE SERVICIOS MOBILE */}
-          <div className="flex flex-col">
-            <button
-              onClick={() => setIsServicesOpen(!isServicesOpen)}
-              className="flex items-center justify-between text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold w-full text-left"
+            {/* NOSOTROS */}
+            <Link
+              href="#nosotros"
+              className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
             >
-              Servicios
-              <svg 
-                className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
+              Nosotros
+            </Link>
+
+            {/* SERVICIOS */}
+            <div
+              ref={triggerRef}
+              className="relative py-2"
+              onMouseEnter={openServices}
+              onMouseLeave={scheduleClose}
+            >
+              <button
+                type="button"
+                aria-haspopup="true"
+                aria-expanded={isServicesOpen}
+                className="flex items-center gap-1.5 text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold focus:outline-none"
+                onClick={() =>
+                  isServicesOpen ? setIsServicesOpen(false) : openServices()
+                }
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
+                Servicios
 
-            {isServicesOpen && (
-              <div className="pl-4 pt-2 flex flex-col space-y-2">
-                <Link
-                  href="#web-design"
-                  onClick={() => setIsOpen(false)}
-                  className="text-[14px] leading-[22px] text-[#141821]/80 font-normal transition-all hover:font-semibold"
+                <svg
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    isServicesOpen ? 'rotate-180' : ''
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  Diseño y desarrollo web
-                </Link>
-                <Link
-                  href="#meta-ads"
-                  onClick={() => setIsOpen(false)}
-                  className="text-[14px] leading-[22px] text-[#141821]/80 font-normal transition-all hover:font-semibold"
-                >
-                  Meta Ads
-                </Link>
-                <Link
-                  href="#ux-design"
-                  onClick={() => setIsOpen(false)}
-                  className="text-[14px] leading-[22px] text-[#141821]/80 font-normal transition-all hover:font-semibold"
-                >
-                  Diseño UX
-                </Link>
-                <Link
-                  href="#branding"
-                  onClick={() => setIsOpen(false)}
-                  className="text-[14px] leading-[22px] text-[#141821]/80 font-normal transition-all hover:font-semibold"
-                >
-                  Branding
-                </Link>
-              </div>
-            )}
-          </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+            </div>
 
-          <Link 
-            href="#blog" 
-            onClick={() => setIsOpen(false)} 
-            className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
+            {/* BLOG */}
+            <Link
+              href="#blog"
+              className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
+            >
+              Blog
+            </Link>
+
+            {/* CTA */}
+            <Link
+              href="#agenda"
+              className="bg-[#141821] text-white rounded-[8px] p-[16px] text-[16px] leading-[22px] font-medium hover:bg-opacity-90 transition-all text-center inline-block"
+            >
+              Agenda una reunión
+            </Link>
+          </nav>
+
+          {/* BOTÓN MENÚ HAMBURGUESA MOBILE */}
+          <button
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none"
+            aria-label="Abrir Menú"
           >
-            Blog
-          </Link>
-          <Link 
-            href="#agenda" 
-            onClick={() => setIsOpena(false)}
-            className="bg-[#141821] text-white rounded-[8px] p-[16px] text-[16px] leading-[22px] font-medium text-center transition-all hover:bg-opacity-90"
-          >
-            Agenda una reunión
-          </Link>
-        </nav>
-      )}
+            <span
+              className={`block w-6 h-[2px] bg-[#141821] transition-transform duration-300 ${
+                isOpen ? 'rotate-45 translate-y-[8px]' : ''
+              }`}
+            />
 
-      {/* LÍNEA INFERIOR BLANCA CON TRANSPARENCIA 70% */}
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#EFF8FD]/50 pointer-events-none" />
-    </header>
+            <span
+              className={`block w-6 h-[2px] bg-[#141821] transition-opacity duration-300 ${
+                isOpen ? 'opacity-0' : ''
+              }`}
+            />
+
+            <span
+              className={`block w-6 h-[2px] bg-[#141821] transition-transform duration-300 ${
+                isOpen ? '-rotate-45 -translate-y-[8px]' : ''
+              }`}
+            />
+          </button>
+        </div>
+
+        {/* MENÚ MOBILE */}
+        {isOpen && (
+          <nav className="md:hidden bg-[#EFF8FD]/80 backdrop-blur px-6 pb-6 pt-2 flex flex-col space-y-4 shadow-lg">
+
+            {/* INICIO */}
+            <Link
+              href="#inicio"
+              onClick={() => setIsOpen(false)}
+              className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
+            >
+              Inicio
+            </Link>
+
+            {/* NOSOTROS */}
+            <Link
+              href="#nosotros"
+              onClick={() => setIsOpen(false)}
+              className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
+            >
+              Nosotros
+            </Link>
+
+            {/* SERVICIOS MOBILE */}
+            <div className="flex flex-col">
+
+              <button
+                type="button"
+                onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                className="flex items-center justify-between text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold w-full text-left"
+              >
+                Servicios
+
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    isMobileServicesOpen ? 'rotate-180' : ''
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+
+              {isMobileServicesOpen && (
+                <div className="pl-4 pt-2 flex flex-col space-y-2">
+                  {SERVICIOS.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-[14px] leading-[22px] text-[#141821]/80 font-normal transition-all hover:font-semibold"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* BLOG */}
+            <Link
+              href="#blog"
+              onClick={() => setIsOpen(false)}
+              className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
+            >
+              Blog
+            </Link>
+
+            {/* CTA MOBILE */}
+            <Link
+              href="#agenda"
+              onClick={() => setIsOpen(false)}
+              className="bg-[#141821] text-white rounded-[8px] p-[16px] text-[16px] leading-[22px] font-medium text-center transition-all hover:bg-opacity-90"
+            >
+              Agenda una reunión
+            </Link>
+
+          </nav>
+        )}
+
+        {/* LÍNEA INFERIOR */}
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#EFF8FD]/50 pointer-events-none" />
+
+      </header>
+
+      {/* El dropdown vive fuera del header, en el body */}
+      {dropdown}
+    </>
   );
 }

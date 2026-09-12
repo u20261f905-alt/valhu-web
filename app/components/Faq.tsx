@@ -2,7 +2,12 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface FaqItemData {
   question: string;
@@ -67,7 +72,7 @@ function FaqItem({
   }, [isOpen]);
 
   return (
-    <div className="bg-transparent overflow-hidden">
+    <div className="faq-item bg-transparent overflow-hidden">
       {/* Cabecera de la pregunta */}
       <button
         onClick={onClick}
@@ -99,7 +104,7 @@ function FaqItem({
       {/* Contenedor de la respuesta animado por GSAP */}
       <div ref={contentRef} className="h-0 opacity-0 overflow-hidden">
         <div className="px-[24px] pb-[24px] bg-transparent">
-          <p className="text-[16px] font-normal leading-[20px] text-[#485157]">
+          <p className="text-[14px] md:text-[16px] font-normal leading-[20px] text-[#485157]">
             {item.answer}
           </p>
         </div>
@@ -110,19 +115,87 @@ function FaqItem({
 
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0); // El primero empieza abierto
+  const containerRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      // 1. TÍTULO: mismo blur palabra por palabra que las demás secciones.
+      gsap.fromTo(
+        '.faq-blur-word',
+        { autoAlpha: 0, filter: 'blur(10px)', y: 10 },
+        {
+          autoAlpha: 1,
+          filter: 'blur(0px)',
+          y: 0,
+          duration: 0.4,
+          stagger: 0.015,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 75%',
+            once: true,
+          },
+        }
+      );
+
+      // 2. BOTÓN: misma animación que el botón del Hero.
+      gsap.fromTo(
+        '.faq-btn',
+        { autoAlpha: 0, y: 60 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1.8,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 70%',
+            once: true,
+          },
+        }
+      );
+
+      // 3. PREGUNTAS: cada una arranca desenfocada y se va enfocando
+      // MIENTRAS se hace scroll. El scrub ata el desenfoque a la posición
+      // del scroll en lugar de reproducir la animación de golpe.
+      gsap.utils.toArray<HTMLElement>('.faq-item').forEach((el) => {
+        gsap.fromTo(
+          el,
+          { autoAlpha: 0.15, filter: 'blur(8px)', y: 24 },
+          {
+            autoAlpha: 1,
+            filter: 'blur(0px)',
+            y: 0,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 92%',
+              end: 'top 60%',
+              scrub: 0.5,
+              invalidateOnRefresh: true,
+            },
+          }
+        );
+      });
+    },
+    { scope: containerRef }
+  );
 
   return (
-    <section id="faq" className="w-full py-[48px] bg-[#EFF8FD]">
+    <section ref={containerRef} id="faq" className="w-full py-[48px] bg-[#EFF8FD]">
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-start">
-          
+
           {/* COLUMNA IZQUIERDA: Título + Botón */}
           <div className="lg:col-span-5 flex flex-col items-start">
-            <h2 className="text-[36px] md:text-[48px] leading-[44px] md:leading-[56px] font-medium text-[#141821]">
-              ¿Tienes <span className="font-accent italic font-light">preguntas?</span>
+            <h2 className="text-[36px] md:text-[48px] leading-[44px] md:leading-[56px] font-medium text-[#141821] flex flex-wrap gap-x-[10px]">
+              <span className="faq-blur-word invisible inline-block">¿Tienes</span>
+              <span className="faq-blur-word invisible inline-block font-accent italic font-light">
+                preguntas?
+              </span>
             </h2>
 
-            <div className="mt-[24px]">
+            <div className="faq-btn invisible mt-[24px]">
               <Link
                 href="#contacto"
                 className="inline-flex items-center justify-between gap-3 px-[20px] py-[16px] rounded-[8px] border border-[#D0D5DD] bg-[#EFF8FD] text-[#141821] text-[16px] hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141821] transition-colors"

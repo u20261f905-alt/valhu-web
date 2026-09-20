@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const SERVICIOS = [
-  { href: '#web-design', label: 'Diseño y desarrollo web' },
+  { href: '/servicios/diseno-desarrollo-web', label: 'Diseño y desarrollo web' },
   { href: '#meta-ads', label: 'Meta Ads' },
   { href: '#ux-design', label: 'Diseño UX' },
   { href: '#branding', label: 'Branding' },
@@ -192,7 +192,7 @@ export default function Navbar() {
 
             {/* INICIO */}
             <Link
-              href="#inicio"
+              href="/"
               className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
             >
               Inicio
@@ -292,7 +292,7 @@ export default function Navbar() {
 
             {/* INICIO */}
             <Link
-              href="#inicio"
+              href="/"
               onClick={() => setIsOpen(false)}
               className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
             >

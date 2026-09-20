@@ -348,7 +348,7 @@ export default function Services() {
 
                   <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
                     <Image
-                      src="/services/web-design/bithon-1.png"
+                      src="/home/web-design/bithon-1.png"
                       alt="Bithon"
                       fill
                       className="object-cover"
@@ -357,7 +357,7 @@ export default function Services() {
 
                   <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
                     <Image
-                      src="/services/web-design/2-en-1.png"
+                      src="/home/web-design/2-en-1.png"
                       alt="2 en 1"
                       fill
                       className="object-cover"
@@ -366,7 +366,7 @@ export default function Services() {
 
                   <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
                     <Image
-                      src="/services/web-design/indie-uy.png"
+                      src="/home/web-design/indie-uy.png"
                       alt="Indie Uy"
                       fill
                       className="object-cover"
@@ -375,7 +375,7 @@ export default function Services() {
 
                   <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
                     <Image
-                      src="/services/web-design/yo-busco.png"
+                      src="/home/web-design/yo-busco.png"
                       alt="Yo Busco"
                       fill
                       className="object-cover"
@@ -418,7 +418,7 @@ export default function Services() {
 
                 <div className="ads-stats invisible w-[260px] h-[190px] relative shrink-0">
                   <Image
-                    src="/services/performance-ads/performance-ads-stats.webp"
+                    src="/home/performance-ads/performance-ads-stats.webp"
                     alt="Stats Performance Ads"
                     fill
                     className="object-contain object-bottom"
@@ -427,7 +427,7 @@ export default function Services() {
 
                 <div className="ads-chart invisible w-[280px] h-[190px] relative shrink-0">
                   <Image
-                    src="/services/performance-ads/performance-ads-chart.png"
+                    src="/home/performance-ads/performance-ads-chart.png"
                     alt="Chart Performance Ads"
                     fill
                     className="object-contain object-bottom"
@@ -483,7 +483,7 @@ export default function Services() {
 
                 <div className="ux-illustration invisible absolute bottom-0 left-1/2 w-[350px] h-[220px] pointer-events-none">
                   <Image
-                    src="/services/ux-design/diseno-ux-ui.webp"
+                    src="/home/ux-design/diseno-ux-ui.webp"
                     alt="Diseño UX ilustración"
                     fill
                     sizes="200px"
@@ -536,7 +536,7 @@ export default function Services() {
 
                 <div className="branding-illustration invisible absolute bottom-0 left-1/2 w-[350px] h-[220px] pointer-events-none">
                   <Image
-                    src="/services/branding/branding-design.webp"
+                    src="/home/branding/branding-design.webp"
                     alt="Branding ilustración"
                     fill
                     sizes="320px"

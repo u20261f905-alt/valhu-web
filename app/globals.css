@@ -24,8 +24,11 @@
     font-family: var(--font-manrope);
     font-weight: 400;
     color: #141821;
-    background-color: #EFF8FD;
     @apply text-[14px] leading-[20px] md:text-[16px];
+  }
+
+  body {
+    background-color: #EFF8FD;
   }
 
   /* Títulos globales en Figtree REGULAR (font-normal) por defecto */

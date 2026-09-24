@@ -310,7 +310,7 @@ export default function Services() {
               </p>
 
               <div className="mt-4">
-                <Link href="#" className={heroButtonClass}>
+                <Link href="/servicios/diseno-desarrollo-web" className={heroButtonClass}>
                   Ver proyectos
 
                   <svg
@@ -407,10 +407,10 @@ export default function Services() {
                   orientadas exclusivamente a resultados, maximizando tu retorno de inversión (ROI) y captación de clientes.
                 </p>
 
-                <a href="#" className={performanceButtonClass}>
+                <Link href="/servicios/meta-ads" className={performanceButtonClass}>
                   Ver resultados
                   <ArrowIcon />
-                </a>
+                </Link>
 
               </div>
 
@@ -441,7 +441,7 @@ export default function Services() {
             <div className="services-bottom-row grid grid-cols-1 sm:grid-cols-2 gap-[20px] h-[calc(50%-10px)]">
 
               {/* Diseño UX */}
-              <div className="card-ux invisible bg-[#1A3840] rounded-[16px] pt-[24px] px-[24px] pb-[24px] text-white flex flex-col justify-between relative overflow-hidden h-full">
+              <div id="ux-design" className="card-ux invisible bg-[#1A3840] rounded-[16px] pt-[24px] px-[24px] pb-[24px] text-white flex flex-col justify-between relative overflow-hidden h-full">
 
                 <div className="relative z-10 flex flex-col">
 
@@ -454,8 +454,8 @@ export default function Services() {
                   </p>
 
                   <div>
-                    <a
-                      href="#"
+                    <Link
+                      href="#contacto"
                       style={{ borderColor: '#477087' }}
                       className={secondaryButtonClass + ' border'}
                     >
@@ -476,7 +476,7 @@ export default function Services() {
                           strokeLinejoin="round"
                         />
                       </svg>
-                    </a>
+                    </Link>
                   </div>
 
                 </div>
@@ -494,7 +494,7 @@ export default function Services() {
               </div>
 
               {/* Branding */}
-              <div className="card-branding invisible bg-[#423517] rounded-[16px] pt-[24px] px-[24px] pb-[24px] text-white flex flex-col justify-between relative overflow-hidden h-full">
+              <div id="branding" className="card-branding invisible bg-[#423517] rounded-[16px] pt-[24px] px-[24px] pb-[24px] text-white flex flex-col justify-between relative overflow-hidden h-full">
 
                 <div className="relative z-10 flex flex-col">
 
@@ -507,8 +507,8 @@ export default function Services() {
                   </p>
 
                   <div>
-                    <a
-                      href="#"
+                    <Link
+                      href="#contacto"
                       style={{ borderColor: '#6F5910' }}
                       className={secondaryButtonClass + ' border'}
                     >
@@ -529,7 +529,7 @@ export default function Services() {
                           strokeLinejoin="round"
                         />
                       </svg>
-                    </a>
+                    </Link>
                   </div>
 
                 </div>

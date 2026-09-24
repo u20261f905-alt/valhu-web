@@ -93,7 +93,7 @@ export default function Cta({
   );
 
   return (
-    <section ref={containerRef} className="w-full bg-[#EFF8FD] pb-[48px]">
+    <section ref={containerRef} id="contacto" className="w-full bg-[#EFF8FD] pb-[48px]">
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
         <div className="relative w-full h-[375px] bg-[#141821] rounded-[16px] overflow-hidden flex flex-col items-center justify-center text-center px-4">
 

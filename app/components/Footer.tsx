@@ -76,20 +76,19 @@ export default function Footer() {
 
           {/* COLUMNA 2: Servicios */}
           <div className="lg:col-span-3 flex flex-col gap-[24px]">
-            <Link href="#" className="hover:text-[#141821] transition-colors">Servicios</Link>
-            <Link href="#" className="hover:text-[#141821] transition-colors">Diseño y desarrollo web</Link>
-            <Link href="#" className="hover:text-[#141821] transition-colors">Performance digital</Link>
-            <Link href="#" className="hover:text-[#141821] transition-colors">Diseño UX</Link>
-            <Link href="#" className="hover:text-[#141821] transition-colors">Branding</Link>
-            <Link href="#" className="hover:text-[#141821] transition-colors">Nosotros</Link>
-            <Link href="#" className="hover:text-[#141821] transition-colors">Blog</Link>
+            <Link href="/#servicios" className="hover:text-[#141821] transition-colors">Servicios</Link>
+            <Link href="/servicios/diseno-desarrollo-web" className="hover:text-[#141821] transition-colors">Diseño y desarrollo web</Link>
+            <Link href="/servicios/meta-ads" className="hover:text-[#141821] transition-colors">Performance digital</Link>
+            <Link href="/servicios/diseno-ux-ui" className="hover:text-[#141821] transition-colors">Diseño UX</Link>
+            <Link href="/servicios/branding" className="hover:text-[#141821] transition-colors">Branding</Link>
+            <Link href="/#nosotros" className="hover:text-[#141821] transition-colors">Nosotros</Link>
           </div>
 
           {/* COLUMNA 3: Legales */}
           <div className="lg:col-span-3 flex flex-col gap-[24px]">
-            <Link href="#" className="hover:text-[#141821] transition-colors">Políticas de privacidad</Link>
-            <Link href="#" className="hover:text-[#141821] transition-colors">Política de cookies</Link>
-            <Link href="#" className="hover:text-[#141821] transition-colors">Términos y condiciones</Link>
+            <span>Políticas de privacidad — próximamente</span>
+            <span>Política de cookies — próximamente</span>
+            <span>Términos y condiciones — próximamente</span>
           </div>
 
           {/* COLUMNA 4: Contacto */}

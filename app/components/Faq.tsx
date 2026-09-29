@@ -7,35 +7,15 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
+import AnimatedRichText from './AnimatedRichText';
+import {
+  FAQ_POR_DEFECTO,
+  FAQS_POR_DEFECTO,
+  type Faq as FaqItemData,
+  type FaqContent,
+} from '@/lib/home-defaults';
+
 gsap.registerPlugin(ScrollTrigger);
-
-interface FaqItemData {
-  question: string;
-  answer: string;
-}
-
-const faqData: FaqItemData[] = [
-  {
-    question: '¿Cuál es la diferencia entre Valhu Design y Valhu Media?',
-    answer:
-      'Valhu Design se enfoca en la estrategia, branding y la experiencia de usuario (UX/UI). Valhu Media se encarga de materializar esa estrategia mediante el desarrollo tecnológico y la ejecución de campañas de marketing para hacer crecer y generar ventas a tu negocio.',
-  },
-  {
-    question: '¿Puedo contratar a ambas agencias para un mismo proyecto?',
-    answer:
-      '¡Totalmente! De hecho, es lo que recomendamos. Al integrar el diseño estratégico con la tecnología de alto impacto, aseguramos una transición fluida desde la conceptualización de tu producto hasta su escalabilidad comercial.',
-  },
-  {
-    question: '¿Cómo miden el éxito de sus servicios de Performance Digital?',
-    answer:
-      'Nuestra gestión se basa en datos. Utilizamos analítica avanzada para monitorear cada campaña (Google Ads, Meta Ads) con el objetivo principal de maximizar tu retorno de inversión (ROI) y aumentar la captación de clientes de manera eficiente.',
-  },
-  {
-    question: '¿Trabajan con startups desde cero?',
-    answer:
-      'Sí, tenemos experiencia ayudando a startups a definir su MVP (Producto Mínimo Viable), validar conceptos y construir su presencia digital desde la etapa inicial, asegurando que tengan bases sólidas para crecer.',
-  },
-];
 
 // Subcomponente para manejar la animación de GSAP por cada ítem individual
 function FaqItem({
@@ -113,7 +93,13 @@ function FaqItem({
   );
 }
 
-export default function Faq() {
+export default function Faq({
+  content = FAQ_POR_DEFECTO,
+  items = FAQS_POR_DEFECTO,
+}: {
+  content?: FaqContent;
+  items?: FaqItemData[];
+}) {
   const [openIndex, setOpenIndex] = useState<number | null>(0); // El primero empieza abierto
   const containerRef = useRef<HTMLElement>(null);
 
@@ -178,7 +164,7 @@ export default function Faq() {
         );
       });
     },
-    { scope: containerRef }
+    { scope: containerRef, dependencies: [items] }
   );
 
   return (
@@ -189,27 +175,28 @@ export default function Faq() {
           {/* COLUMNA IZQUIERDA: Título + Botón */}
           <div className="lg:col-span-5 flex flex-col items-start">
             <h2 className="text-[36px] md:text-[48px] leading-[44px] md:leading-[56px] font-medium text-[#141821] flex flex-wrap gap-x-[10px]">
-              <span className="faq-blur-word invisible inline-block">¿Tienes</span>
-              <span className="faq-blur-word invisible inline-block font-accent italic font-light">
-                preguntas?
-              </span>
+              <AnimatedRichText
+                texto={content.title}
+                claseAnimacion="faq-blur-word"
+                prefijo="faq-t"
+              />
             </h2>
 
             <div className="faq-btn invisible mt-[24px]">
               <Link
-                href="#contacto"
+                href={content.buttonHref}
                 className="inline-flex items-center justify-between gap-3 px-[20px] py-[16px] rounded-[8px] border border-[#D0D5DD] bg-[#EFF8FD] text-[#141821] text-[16px] hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141821] transition-colors"
               >
-                Contáctanos
+                {content.buttonText}
               </Link>
             </div>
           </div>
 
           {/* COLUMNA DERECHA: Lista de preguntas (sin bordes) */}
           <div className="lg:col-span-7 flex flex-col gap-[24px]">
-            {faqData.map((item, index) => (
+            {items.map((item, index) => (
               <FaqItem
-                key={index}
+                key={item.id ?? index}
                 item={item}
                 isOpen={openIndex === index}
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}

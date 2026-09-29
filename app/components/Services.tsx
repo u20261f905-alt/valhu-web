@@ -8,6 +8,10 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
+import AnimatedRichText from './AnimatedRichText';
+import RichText from './RichText';
+import { SERVICES_POR_DEFECTO, type ServicesContent, laImagen, type Imagenes } from '@/lib/home-defaults';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const heroButtonClass =
@@ -37,8 +41,26 @@ function ArrowIcon() {
   );
 }
 
-export default function Services() {
+export default function Services({
+  content = SERVICES_POR_DEFECTO,
+  imagenes,
+}: {
+  content?: ServicesContent;
+  imagenes?: Imagenes;
+}) {
+  const img = {
+    webUno: laImagen(imagenes?.webUno, '/home/web-design/bithon-1.png', 'Bithon'),
+    webDos: laImagen(imagenes?.webDos, '/home/web-design/2-en-1.png', '2 en 1'),
+    webTres: laImagen(imagenes?.webTres, '/home/web-design/indie-uy.png', 'Indie Uy'),
+    webCuatro: laImagen(imagenes?.webCuatro, '/home/web-design/yo-busco.png', 'Yo Busco'),
+    adsEstadisticas: laImagen(imagenes?.adsEstadisticas, '/home/performance-ads/performance-ads-stats.webp', 'Stats Performance Ads'),
+    adsGrafico: laImagen(imagenes?.adsGrafico, '/home/performance-ads/performance-ads-chart.png', 'Chart Performance Ads'),
+    ux: laImagen(imagenes?.ux, '/home/ux-design/diseno-ux-ui.webp', 'Diseño UX ilustración'),
+    branding: laImagen(imagenes?.branding, '/home/branding/branding-design.webp', 'Branding ilustración'),
+  };
+
   const containerRef = useRef<HTMLElement>(null);
+  const { web, ads, ux, branding } = content.cards;
 
   useGSAP(
     () => {
@@ -250,11 +272,8 @@ export default function Services() {
         window.removeEventListener('load', handleLoad);
       };
     },
-    { scope: containerRef }
+    { scope: containerRef, dependencies: [content] }
   );
-
-  const servicesParagraph =
-    'Estructuramos nuestra oferta para acompañarte en cada fase digital de tu negocio. Desde la concepción de tu marca hasta la conquista del mercado.';
 
   return (
     <section
@@ -270,27 +289,21 @@ export default function Services() {
           {/* TÍTULO: sin tamaño hardcodeado, hereda el de globals.css
               (22px/30px en mobile, 48px/56px desde md) */}
           <h2 className="font-medium text-[#141821] mb-[16px]">
-            {'Nuestros Servicios'.split(' ').map((word, index) => (
-              <span
-                key={`title-${index}`}
-                className="services-blur-word invisible inline-block"
-              >
-                {word}
-                {index === 0 && '\u00A0'}
-              </span>
-            ))}
+            <AnimatedRichText
+              texto={content.title}
+              claseAnimacion="services-blur-word"
+              prefijo="srv-t"
+              separador="espacio"
+            />
           </h2>
 
           {/* PÁRRAFO */}
           <p className="text-[14px] md:text-[16px] text-[#525866] max-w-[600px] mx-auto leading-[20px] flex flex-wrap justify-center gap-x-[4px]">
-            {servicesParagraph.split(' ').map((word, index) => (
-              <span
-                key={`paragraph-${index}`}
-                className="services-blur-paragraph-word invisible inline-block"
-              >
-                {word}
-              </span>
-            ))}
+            <AnimatedRichText
+              texto={content.paragraph}
+              claseAnimacion="services-blur-paragraph-word"
+              prefijo="srv-p"
+            />
           </p>
         </div>
 
@@ -301,17 +314,16 @@ export default function Services() {
           <div className="card-web invisible relative overflow-hidden bg-[#E1EDF4] rounded-[16px] pt-[30px] pl-[30px] flex flex-col justify-between">
             <div className="shrink-0 pr-[30px]">
               <h3 className="text-[24px] leading-[28px] font-normal text-[#141821]">
-                Diseño y desarrollo <span className="font-accent italic font-light">Web</span>
+                <RichText texto={web.title} />
               </h3>
 
               <p className="mt-4 text-[14px] md:text-[16px] leading-[20px] text-[#525866] w-full bg-transparent">
-                Diseñamos y desarrollamos sitios web a medida, rápidos y seguros.
-                Enfocados en la experiencia de usuario, la escalabilidad y funcionalidad impecable.
+                <RichText texto={web.description} claseNegrita="font-semibold text-[#141821]" />
               </p>
 
               <div className="mt-4">
-                <Link href="/servicios/diseno-desarrollo-web" className={heroButtonClass}>
-                  Ver proyectos
+                <Link href={web.buttonHref} className={heroButtonClass}>
+                  {web.buttonText}
 
                   <svg
                     width="24"
@@ -348,8 +360,8 @@ export default function Services() {
 
                   <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
                     <Image
-                      src="/home/web-design/bithon-1.png"
-                      alt="Bithon"
+                      src={img.webUno.src}
+                      alt={img.webUno.alt}
                       fill
                       className="object-cover"
                     />
@@ -357,8 +369,8 @@ export default function Services() {
 
                   <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
                     <Image
-                      src="/home/web-design/2-en-1.png"
-                      alt="2 en 1"
+                      src={img.webDos.src}
+                      alt={img.webDos.alt}
                       fill
                       className="object-cover"
                     />
@@ -366,8 +378,8 @@ export default function Services() {
 
                   <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
                     <Image
-                      src="/home/web-design/indie-uy.png"
-                      alt="Indie Uy"
+                      src={img.webTres.src}
+                      alt={img.webTres.alt}
                       fill
                       className="object-cover"
                     />
@@ -375,8 +387,8 @@ export default function Services() {
 
                   <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
                     <Image
-                      src="/home/web-design/yo-busco.png"
-                      alt="Yo Busco"
+                      src={img.webCuatro.src}
+                      alt={img.webCuatro.alt}
                       fill
                       className="object-cover"
                     />
@@ -396,19 +408,15 @@ export default function Services() {
               <div className="pr-[0px]">
 
                 <h3 className="text-[24px] leading-[28px] font-normal text-white mb-[16px] relative z-10">
-                  Performance <span className="font-accent italic font-light">Ads</span>
+                  <RichText texto={ads.title} />
                 </h3>
 
                 <p className="text-[14px] md:text-[16px] font-manrope font-normal text-[#AEC4E6] w-full leading-[20px] mb-[16px] relative z-10 bg-transparent">
-                  Gestionamos campañas publicitarias digitales en{' '}
-                  <strong className="text-white font-normal">
-                    Google Ads y Meta Ads
-                  </strong>{' '}
-                  orientadas exclusivamente a resultados, maximizando tu retorno de inversión (ROI) y captación de clientes.
+                  <RichText texto={ads.description} claseNegrita="text-white font-normal" />
                 </p>
 
-                <Link href="/servicios/meta-ads" className={performanceButtonClass}>
-                  Ver resultados
+                <Link href={ads.buttonHref} className={performanceButtonClass}>
+                  {ads.buttonText}
                   <ArrowIcon />
                 </Link>
 
@@ -418,8 +426,8 @@ export default function Services() {
 
                 <div className="ads-stats invisible w-[260px] h-[190px] relative shrink-0">
                   <Image
-                    src="/home/performance-ads/performance-ads-stats.webp"
-                    alt="Stats Performance Ads"
+                    src={img.adsEstadisticas.src}
+                    alt={img.adsEstadisticas.alt}
                     fill
                     className="object-contain object-bottom"
                   />
@@ -427,8 +435,8 @@ export default function Services() {
 
                 <div className="ads-chart invisible w-[280px] h-[190px] relative shrink-0">
                   <Image
-                    src="/home/performance-ads/performance-ads-chart.png"
-                    alt="Chart Performance Ads"
+                    src={img.adsGrafico.src}
+                    alt={img.adsGrafico.alt}
                     fill
                     className="object-contain object-bottom"
                   />
@@ -446,20 +454,20 @@ export default function Services() {
                 <div className="relative z-10 flex flex-col">
 
                   <h4 className="text-[24px] leading-[28px] font-normal text-white mb-[16px]">
-                    Diseño <span className="font-accent italic font-light">UX</span>
+                    <RichText texto={ux.title} />
                   </h4>
 
                   <p className="text-[14px] md:text-[16px] font-manrope font-normal text-[#9FBFC2] w-full leading-[20px] mb-[16px] bg-transparent">
-                    Investigamos y creamos experiencias digitales para Saas, apps y webs de startups/empresas.
+                    <RichText texto={ux.description} claseNegrita="text-white font-normal" />
                   </p>
 
                   <div>
                     <Link
-                      href="#contacto"
+                      href={ux.buttonHref}
                       style={{ borderColor: '#477087' }}
                       className={secondaryButtonClass + ' border'}
                     >
-                      Ver proyectos
+                      {ux.buttonText}
 
                       <svg
                         width="24"
@@ -483,8 +491,8 @@ export default function Services() {
 
                 <div className="ux-illustration invisible absolute bottom-0 left-1/2 w-[350px] h-[220px] pointer-events-none">
                   <Image
-                    src="/home/ux-design/diseno-ux-ui.webp"
-                    alt="Diseño UX ilustración"
+                    src={img.ux.src}
+                    alt={img.ux.alt}
                     fill
                     sizes="200px"
                     className="object-contain object-bottom"
@@ -499,20 +507,20 @@ export default function Services() {
                 <div className="relative z-10 flex flex-col">
 
                   <h4 className="text-[24px] leading-[28px] font-normal text-white mb-[16px]">
-                    Branding
+                    <RichText texto={branding.title} />
                   </h4>
 
                   <p className="text-[14px] md:text-[16px] font-manrope font-normal text-[#C2B799] w-full leading-[20px] mb-[16px] bg-transparent">
-                    Desarrollamos la identidad visual, el tono de voz y la personalidad de tu marca
+                    <RichText texto={branding.description} claseNegrita="text-white font-normal" />
                   </p>
 
                   <div>
                     <Link
-                      href="#contacto"
+                      href={branding.buttonHref}
                       style={{ borderColor: '#6F5910' }}
                       className={secondaryButtonClass + ' border'}
                     >
-                      Ver proyectos
+                      {branding.buttonText}
 
                       <svg
                         width="24"
@@ -536,8 +544,8 @@ export default function Services() {
 
                 <div className="branding-illustration invisible absolute bottom-0 left-1/2 w-[350px] h-[220px] pointer-events-none">
                   <Image
-                    src="/home/branding/branding-design.webp"
-                    alt="Branding ilustración"
+                    src={img.branding.src}
+                    alt={img.branding.alt}
                     fill
                     sizes="320px"
                     className="object-contain object-bottom"

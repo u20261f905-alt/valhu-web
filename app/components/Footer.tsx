@@ -78,10 +78,11 @@ export default function Footer() {
           <div className="lg:col-span-3 flex flex-col gap-[24px]">
             <Link href="/#servicios" className="hover:text-[#141821] transition-colors">Servicios</Link>
             <Link href="/servicios/diseno-desarrollo-web" className="hover:text-[#141821] transition-colors">Diseño y desarrollo web</Link>
-            <Link href="/servicios/meta-ads" className="hover:text-[#141821] transition-colors">Performance digital</Link>
+            <Link href="/servicios/meta-ads" className="hover:text-[#141821] transition-colors">Meta Ads</Link>
             <Link href="/servicios/diseno-ux-ui" className="hover:text-[#141821] transition-colors">Diseño UX</Link>
             <Link href="/servicios/branding" className="hover:text-[#141821] transition-colors">Branding</Link>
-            <Link href="/#nosotros" className="hover:text-[#141821] transition-colors">Nosotros</Link>
+            <Link href="/nosotros" className="hover:text-[#141821] transition-colors">Nosotros</Link>
+            <Link href="/blog" className="hover:text-[#141821] transition-colors">Blog</Link>
           </div>
 
           {/* COLUMNA 3: Legales */}

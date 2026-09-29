@@ -1,0 +1,33 @@
+portada:
+  src: /hero-sphere.png
+  alt: Esfera de Valhu Group
+webUno:
+  src: /home/web-design/bithon-1.png
+  alt: Bithon
+webDos:
+  src: /home/web-design/2-en-1.png
+  alt: 2 en 1
+webTres:
+  src: /home/web-design/indie-uy.png
+  alt: Indie Uy
+webCuatro:
+  src: /home/web-design/yo-busco.png
+  alt: Yo Busco
+adsEstadisticas:
+  src: /home/performance-ads/performance-ads-stats.webp
+  alt: Stats Performance Ads
+adsGrafico:
+  src: /home/performance-ads/performance-ads-chart.png
+  alt: Chart Performance Ads
+ux:
+  src: /home/ux-design/diseno-ux-ui.webp
+  alt: Diseño UX ilustración
+branding:
+  src: /home/branding/branding-design.webp
+  alt: Branding ilustración
+nosotrosUno:
+  src: /about/img-about-1.webp
+  alt: Equipo de Valhu Group
+nosotrosDos:
+  src: /about/img-about-2.webp
+  alt: Diseño digital

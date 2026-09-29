@@ -245,7 +245,7 @@ export default function StrategySection() {
 
               <div className="ma-strategy-btn invisible">
                 <Link
-                  href="#nosotros"
+                  href="/nosotros"
                   className="inline-flex items-center gap-3 px-[20px] py-[16px] rounded-[8px] border border-[#D0D5DD] bg-[#EFF8FD] text-[#141821] text-[16px] hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141821] transition-colors"
                 >
                   Más sobre Valhu Group

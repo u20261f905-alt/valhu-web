@@ -8,67 +8,23 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
+import AnimatedRichText from './AnimatedRichText';
+import { ABOUT_POR_DEFECTO, type AboutContent, laImagen, type Imagenes } from '@/lib/home-defaults';
+
 gsap.registerPlugin(ScrollTrigger);
 
-/* ---------------------------------------------------------------
-   Los párrafos llevan <strong> intercalados, así que se definen como
-   segmentos (texto + si va en negrita). Cada segmento se trocea en
-   palabras para poder animarlas una por una sin perder el formato.
---------------------------------------------------------------- */
-type Segment = { text: string; bold?: boolean };
-
-const INTRO: Segment[] = [
-  { text: 'En' },
-  { text: 'Valhu Group', bold: true },
-  { text: ', no solo construimos productos digitales; construimos ecosistemas de innovación diseñados para escalar. Somos un' },
-  { text: 'grupo de agencias estratégicas', bold: true },
-  { text: 'unidas por una visión clara:' },
-  { text: 'cerrar la brecha entre la ambición de negocio y la ejecución tecnológica.', bold: true },
-];
-
-const BOTTOM_LEFT: Segment[] = [
-  { text: 'Somos el puente entre la' },
-  { text: 'innovación creativa', bold: true },
-  { text: 'y el' },
-  { text: 'éxito comercial', bold: true },
-  { text: '. Al integrar el diseño con estrategias tecnológicas de alto impacto,' },
-];
-
-const BOTTOM_RIGHT: Segment[] = [
-  { text: 'permitimos que las empresas se enfoquen en su crecimiento mientras nosotros gestionamos la complejidad de su' },
-  { text: 'presencia digital.', bold: true },
-];
-
-/* Convierte los segmentos en <span> por palabra, aplicando la clase
-   de animación que corresponda al bloque. */
-function AnimatedWords({
-  segments,
-  wordClass,
-  keyPrefix,
+export default function About({
+  content = ABOUT_POR_DEFECTO,
+  imagenes,
 }: {
-  segments: Segment[];
-  wordClass: string;
-  keyPrefix: string;
+  content?: AboutContent;
+  imagenes?: Imagenes;
 }) {
-  return (
-    <>
-      {segments.map((segment, si) =>
-        segment.text.split(' ').map((word, wi) => (
-          <span
-            key={`${keyPrefix}-${si}-${wi}`}
-            className={`${wordClass} invisible inline-block ${
-              segment.bold ? 'text-[#141821] font-semibold' : ''
-            }`}
-          >
-            {word}
-          </span>
-        ))
-      )}
-    </>
-  );
-}
+  const img = {
+    uno: laImagen(imagenes?.nosotrosUno, '/about/img-about-1.webp', 'Equipo de Valhu Group'),
+    dos: laImagen(imagenes?.nosotrosDos, '/about/img-about-2.webp', 'Diseño digital'),
+  };
 
-export default function About() {
   const containerRef = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -150,7 +106,7 @@ export default function About() {
 
       return () => window.removeEventListener('load', handleLoad);
     },
-    { scope: containerRef }
+    { scope: containerRef, dependencies: [content] }
   );
 
   return (
@@ -165,28 +121,20 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[20px] items-end mb-[24px]">
           {/* Título */}
           <h2 className="text-[36px] md:text-[48px] leading-[44px] md:leading-[56px] font-medium text-[#141821] flex flex-wrap gap-x-[10px]">
-            {['El', 'motor', 'de', 'tu'].map((word, i) => (
-              <span key={`t-${i}`} className="about-blur-word invisible inline-block">
-                {word}
-              </span>
-            ))}
-            <span className="hidden md:block basis-full h-0" />
-            {['transformación', 'digital'].map((word, i) => (
-              <span
-                key={`ta-${i}`}
-                className="about-blur-word invisible inline-block font-accent italic font-light"
-              >
-                {word}
-              </span>
-            ))}
+            <AnimatedRichText
+              texto={content.title}
+              claseAnimacion="about-blur-word"
+              prefijo="about-t"
+              quiebreAntesDelAcento
+            />
           </h2>
 
           {/* Texto introductorio: 14px en mobile, 16px desde md */}
           <p className="text-left text-[14px] md:text-[16px] leading-[20px] text-[#525866] flex flex-wrap gap-x-[4px]">
-            <AnimatedWords
-              segments={INTRO}
-              wordClass="about-blur-paragraph-word"
-              keyPrefix="intro"
+            <AnimatedRichText
+              texto={content.intro}
+              claseAnimacion="about-blur-paragraph-word"
+              prefijo="about-intro"
             />
           </p>
         </div>
@@ -197,8 +145,8 @@ export default function About() {
           {/* Foto izquierda (img-about-1.webp con bordes de 16px) */}
           <div className="about-img-left invisible relative w-full h-[380px] lg:h-[480px] rounded-[16px] overflow-hidden">
             <Image
-              src="/about/img-about-1.webp"
-              alt="Equipo de Valhu Group"
+              src={img.uno.src}
+              alt={img.uno.alt}
               fill
               className="object-cover rounded-[16px]"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -210,8 +158,8 @@ export default function About() {
             {/* Foto derecha (img-about-2.webp con bordes de 16px) */}
             <div className="about-img-right invisible relative w-full h-[220px] md:h-[260px] rounded-[16px] overflow-hidden">
               <Image
-                src="/about/img-about-2.webp"
-                alt="Diseño digital"
+                src={img.dos.src}
+                alt={img.dos.alt}
                 fill
                 className="object-cover rounded-[16px]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -222,17 +170,17 @@ export default function About() {
             <div className="flex flex-col gap-[20px]">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-[20px] text-left text-[14px] md:text-[16px] leading-[20px] text-[#525866]">
                 <p className="flex flex-wrap gap-x-[4px]">
-                  <AnimatedWords
-                    segments={BOTTOM_LEFT}
-                    wordClass="about-blur-bottom-word"
-                    keyPrefix="bl"
+                  <AnimatedRichText
+                    texto={content.bottomLeft}
+                    claseAnimacion="about-blur-bottom-word"
+                    prefijo="about-bl"
                   />
                 </p>
                 <p className="flex flex-wrap gap-x-[4px]">
-                  <AnimatedWords
-                    segments={BOTTOM_RIGHT}
-                    wordClass="about-blur-bottom-word"
-                    keyPrefix="br"
+                  <AnimatedRichText
+                    texto={content.bottomRight}
+                    claseAnimacion="about-blur-bottom-word"
+                    prefijo="about-br"
                   />
                 </p>
               </div>
@@ -240,10 +188,10 @@ export default function About() {
               {/* Botón con estilo exacto del Hero */}
               <div className="about-btn invisible">
                 <Link
-                  href="#"
+                  href={content.buttonHref}
                   className="inline-flex items-center gap-3 px-[20px] py-[16px] rounded-[8px] border border-[#D0D5DD] bg-[#EFF8FD] text-[#141821] text-[16px] hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141821] transition-colors"
                 >
-                  Más sobre Valhu Group
+                  {content.buttonText}
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.05317 5.80864L16.6169 14.568L16.7007 7.14383L17.6984 7.09145L17.5946 16.2833L8.40276 16.1794L8.47766 15.1832L15.9018 15.267L7.33812 6.50772L8.05317 5.80864Z" fill="#141821"/>
                   </svg>

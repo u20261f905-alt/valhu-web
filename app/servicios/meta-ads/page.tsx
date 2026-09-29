@@ -1,9 +1,17 @@
+import type { Metadata } from 'next';
+
 import Banner from './components/Banner';
 import UseCases from './components/UseCases';
 import StrategySection from './components/StrategySection';
 import Cta from '@/app/components/Cta';
 import Faq from './components/Faq';
 import ScrollTilt from '@/app/components/ScrollTilt';
+import { metadatosDePagina } from '@/lib/metadatos';
+
+/** Los metadatos se escriben en el editor, en SEO → SEO por página. */
+export async function generateMetadata(): Promise<Metadata> {
+  return metadatosDePagina('ads', '/servicios/meta-ads');
+}
 
 export default function MetaAdsPage() {
   return (

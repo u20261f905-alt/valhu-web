@@ -1,0 +1,28 @@
+title: ¿Tienes *preguntas?*
+buttonText: Contáctanos
+buttonHref: "#contacto"
+items:
+  - question: ¿Cuál es la diferencia entre Valhu Design y Valhu Media?
+    answer: >-
+      Valhu Design se enfoca en la estrategia, branding y la experiencia de usuario (UX/UI). Valhu
+      Media se encarga de materializar esa estrategia mediante el desarrollo tecnológico y la
+      ejecución de campañas de marketing para hacer crecer y generar ventas a tu negocio.
+    active: true
+  - question: ¿Puedo contratar a ambas agencias para un mismo proyecto?
+    answer: >-
+      ¡Totalmente! De hecho, es lo que recomendamos. Al integrar el diseño estratégico con la
+      tecnología de alto impacto, aseguramos una transición fluida desde la conceptualización de tu
+      producto hasta su escalabilidad comercial.
+    active: true
+  - question: ¿Cómo miden el éxito de sus servicios de Performance Digital?
+    answer: >-
+      Nuestra gestión se basa en datos. Utilizamos analítica avanzada para monitorear cada campaña
+      (Google Ads, Meta Ads) con el objetivo principal de maximizar tu retorno de inversión (ROI) y
+      aumentar la captación de clientes de manera eficiente.
+    active: true
+  - question: ¿Trabajan con startups desde cero?
+    answer: >-
+      Sí, tenemos experiencia ayudando a startups a definir su MVP (Producto Mínimo Viable), validar
+      conceptos y construir su presencia digital desde la etapa inicial, asegurando que tengan bases
+      sólidas para crecer.
+    active: true

@@ -1,0 +1,30 @@
+title: Nuestros Servicios
+paragraph: >-
+  Estructuramos nuestra oferta para acompañarte en cada fase digital de tu negocio. Desde la
+  concepción de tu marca hasta la conquista del mercado.
+cards:
+  web:
+    title: Diseño y desarrollo *Web*
+    description: >-
+      Diseñamos y desarrollamos sitios web a medida, rápidos y seguros. Enfocados en la experiencia
+      de usuario, la escalabilidad y funcionalidad impecable.
+    buttonText: Ver proyectos
+    buttonHref: /servicios/diseno-desarrollo-web
+  ads:
+    title: Performance *Ads*
+    description: >-
+      Gestionamos campañas publicitarias digitales en **Google Ads y Meta Ads** orientadas
+      exclusivamente a resultados, maximizando tu retorno de inversión (ROI) y captación de
+      clientes.
+    buttonText: Ver resultados
+    buttonHref: /servicios/meta-ads
+  ux:
+    title: Diseño *UX*
+    description: Investigamos y creamos experiencias digitales para Saas, apps y webs de startups/empresas.
+    buttonText: Ver proyectos
+    buttonHref: /servicios/diseno-ux-ui
+  branding:
+    title: Branding
+    description: Desarrollamos la identidad visual, el tono de voz y la personalidad de tu marca
+    buttonText: Ver proyectos
+    buttonHref: /servicios/branding

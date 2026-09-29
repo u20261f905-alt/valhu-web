@@ -8,6 +8,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
+import { CTA_POR_DEFECTO } from '@/lib/home-defaults';
+
 gsap.registerPlugin(ScrollTrigger);
 
 interface CtaProps {
@@ -19,11 +21,11 @@ interface CtaProps {
 }
 
 export default function Cta({
-  titleLine1 = "¿Listo para transformar tu idea en",
-  titleHighlighted = "resultados reales?",
-  description = "Analicemos tu proyecto y descubre como podemos ayudarte a escalar.",
-  buttonText = "Agendar reunión",
-  buttonLink = "#contacto"
+  titleLine1 = CTA_POR_DEFECTO.titleLine1,
+  titleHighlighted = CTA_POR_DEFECTO.titleHighlighted,
+  description = CTA_POR_DEFECTO.description,
+  buttonText = CTA_POR_DEFECTO.buttonText,
+  buttonLink = CTA_POR_DEFECTO.buttonLink,
 }: CtaProps) {
   const containerRef = useRef<HTMLElement>(null);
 

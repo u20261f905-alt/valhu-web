@@ -18,9 +18,14 @@ const DROPDOWN_GAP = 40;
 const DROPDOWN_WIDTH = 300;
 
 export default function Navbar() {
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Posición calculada a partir del botón "Servicios".
   // triggerBottom = borde inferior del botón (donde arranca el puente)
@@ -165,7 +170,7 @@ export default function Navbar() {
       <header
         className={`w-full sticky top-0 z-50 transition-all duration-700 ease-out
           bg-[#EFF8FD]/60 backdrop-blur
-          translate-y-0 opacity-100`}
+          ${mounted ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
       >
         <div className="max-w-[1220px] mx-auto px-4 md:px-8 py-[20px] flex items-center justify-between">
 
@@ -194,7 +199,7 @@ export default function Navbar() {
 
             {/* NOSOTROS */}
             <Link
-              href="/#nosotros"
+              href="/nosotros"
               className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
             >
               Nosotros
@@ -235,6 +240,14 @@ export default function Navbar() {
                 </svg>
               </button>
             </div>
+
+            {/* BLOG */}
+            <Link
+              href="/blog"
+              className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
+            >
+              Blog
+            </Link>
 
             {/* CTA */}
             <Link
@@ -287,7 +300,7 @@ export default function Navbar() {
 
             {/* NOSOTROS */}
             <Link
-              href="/#nosotros"
+              href="/nosotros"
               onClick={() => setIsOpen(false)}
               className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
             >
@@ -336,6 +349,15 @@ export default function Navbar() {
                 </div>
               )}
             </div>
+
+            {/* BLOG */}
+            <Link
+              href="/blog"
+              onClick={() => setIsOpen(false)}
+              className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
+            >
+              Blog
+            </Link>
 
             {/* CTA MOBILE */}
             <Link

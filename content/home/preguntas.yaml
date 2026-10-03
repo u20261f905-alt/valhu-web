@@ -1,6 +1,6 @@
 title: ¿Tienes *preguntas?*
 buttonText: Contáctanos
-buttonHref: "#contacto"
+buttonHref: "/contacto"
 items:
   - question: ¿Cuál es la diferencia entre Valhu Design y Valhu Media?
     answer: >-

@@ -138,7 +138,7 @@ export const ABOUT_POR_DEFECTO: AboutContent = {
 export const FAQ_POR_DEFECTO: FaqContent = {
   title: '¿Tienes *preguntas?*',
   buttonText: 'Contáctanos',
-  buttonHref: '#contacto',
+  buttonHref: '/contacto',
 };
 
 export const CTA_POR_DEFECTO: CtaContent = {
@@ -147,7 +147,7 @@ export const CTA_POR_DEFECTO: CtaContent = {
   description:
     'Analicemos tu proyecto y descubre como podemos ayudarte a escalar.',
   buttonText: 'Agendar reunión',
-  buttonLink: '#contacto',
+  buttonLink: '/contacto',
 };
 
 export const FAQS_POR_DEFECTO: Faq[] = [

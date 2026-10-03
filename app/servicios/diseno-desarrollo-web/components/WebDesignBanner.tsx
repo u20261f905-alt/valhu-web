@@ -116,7 +116,7 @@ export default function WebDesignBanner() {
             {/* Botones */}
             <div className="wd-anim-btn invisible flex flex-col sm:flex-row gap-[20px] w-full sm:w-auto">
               <Link
-                href="#contacto"
+                href="/contacto"
                 className="inline-flex items-center justify-center gap-3 px-[20px] py-[16px] rounded-[8px] bg-[#141821] text-white text-[16px] font-semibold hover:bg-opacity-90 transition-colors"
               >
                 Cotiza tu web

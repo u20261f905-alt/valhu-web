@@ -3,14 +3,14 @@
 import { usePathname } from 'next/navigation';
 
 /** Rutas que se dibujan solas, sin el navbar ni el footer del sitio. */
-const HERRAMIENTAS = ['/keystatic', '/seo'];
+const HERRAMIENTAS = ['/keystatic', '/seo', '/contacto'];
 
 /**
- * Oculta lo que envuelve cuando estamos dentro de una herramienta interna.
+ * Oculta lo que envuelve en las pantallas que se dibujan solas.
  *
- * El editor de contenidos trae su propia interfaz completa: mostrar encima el
- * navbar y el footer del sitio público lo haría confuso y ocuparía espacio de
- * trabajo.
+ * El editor de contenidos trae su propia interfaz completa. Y el formulario
+ * de contacto se deja sin menú a propósito: quien llegó hasta ahí ya decidió
+ * escribirnos, y cada enlace de salida es una oportunidad de distraerse.
  */
 export default function SoloSitioPublico({
   children,

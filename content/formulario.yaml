@@ -1,0 +1,18 @@
+intro: >-
+  Cuéntanos de tu proyecto con el mayor detalle posible. Te respondemos dentro
+  de las siguientes 48 horas para agendar una reunión, entender bien lo que
+  necesitas y recién ahí enviarte una cotización hecha a tu medida.
+nota: ""
+presupuestos:
+  - soles: "S/ 1,700 – S/ 3,400"
+    dolares: "$500 – $999"
+  - soles: "S/ 3,400 – S/ 6,100"
+    dolares: "$1,000 – $1,799"
+  - soles: "S/ 6,100 – S/ 11,900"
+    dolares: "$1,800 – $3,499"
+  - soles: "S/ 11,900 a más"
+    dolares: "$3,500 a más"
+exitoTitulo: Recibimos tu mensaje
+exitoTexto: >-
+  Te respondemos dentro de las siguientes 48 horas al correo que nos dejaste. Si
+  es urgente, escríbenos a info@valhugroup.com.

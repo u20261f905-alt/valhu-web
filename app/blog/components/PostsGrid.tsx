@@ -198,7 +198,7 @@ function EmptyState() {
       </p>
 
       <Link
-        href="/#contacto"
+        href="/contacto"
         className="mt-[24px] inline-flex items-center justify-center gap-3 rounded-[8px] bg-[#141821] px-[20px] py-[16px] text-[16px] font-semibold text-white transition-colors hover:bg-[#2b3240]"
       >
         Agenda una reunión

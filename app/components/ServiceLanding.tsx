@@ -81,7 +81,7 @@ export default function ServiceLanding({ variant, eyebrow, title, accent, descri
           </h1>
           <p className="text-[14px] md:text-[16px] text-[#485157] mb-[24px] max-w-[600px]">{description}</p>
           <div className="flex flex-col gap-[20px] w-full sm:w-auto sm:flex-row">
-            <Link href="#contacto" className="inline-flex items-center justify-center gap-3 px-[20px] py-[16px] rounded-[8px] bg-[#141821] text-white text-[16px] font-semibold transition-colors hover:bg-[#2b3240]">Agenda una reunión</Link>
+            <Link href="/contacto" className="inline-flex items-center justify-center gap-3 px-[20px] py-[16px] rounded-[8px] bg-[#141821] text-white text-[16px] font-semibold transition-colors hover:bg-[#2b3240]">Agenda una reunión</Link>
             <Link href="#proyectos" className="inline-flex items-center justify-center gap-3 px-[20px] py-[16px] rounded-[8px] border border-[#D0D7DD] bg-[#EFF8FD] text-[16px] font-semibold text-[#141821] transition-colors hover:bg-white">
               Ver proyectos
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">

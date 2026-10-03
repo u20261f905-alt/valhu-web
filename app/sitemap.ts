@@ -21,6 +21,7 @@ const PAGINAS: { ruta: string; clave: ClavePagina; prioridad: number }[] = [
   { ruta: '/servicios/branding', clave: 'branding', prioridad: 0.9 },
   { ruta: '/nosotros', clave: 'nosotros', prioridad: 0.7 },
   { ruta: '/blog', clave: 'blog', prioridad: 0.8 },
+  { ruta: '/contacto', clave: 'contacto', prioridad: 0.9 },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

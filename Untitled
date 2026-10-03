@@ -1,3 +1,0 @@
-git add -A
-git commit -m "Elimina lib/seo.ts, reemplazado por lib/metadatos.ts"
-git push

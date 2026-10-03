@@ -301,7 +301,15 @@ export async function getNotasParaSeo(): Promise<NotaParaSeo[]> {
 /*  Ajustes, empresa e imágenes                                       */
 /* ================================================================== */
 
-export type ClavePagina = 'home' | 'blog' | 'nosotros' | 'web' | 'ads' | 'uxui' | 'branding';
+export type ClavePagina =
+  | 'home'
+  | 'blog'
+  | 'nosotros'
+  | 'contacto'
+  | 'web'
+  | 'ads'
+  | 'uxui'
+  | 'branding';
 
 export async function getAjustes() {
   return reader.singletons.ajustes.read();
@@ -320,4 +328,22 @@ export async function getSeoPagina(clave: ClavePagina) {
 /** Las imágenes del home, con su texto alternativo. */
 export async function getImagenes() {
   return reader.singletons.imagenes.read();
+}
+
+/** Textos y rangos de presupuesto del formulario de contacto. */
+export async function getFormulario() {
+  const guardado = await reader.singletons.formulario.read();
+
+  return {
+    intro: guardado?.intro ?? '',
+    nota: guardado?.nota ?? '',
+    presupuestos: (guardado?.presupuestos ?? []).map((p) => ({
+      soles: p.soles,
+      dolares: p.dolares,
+    })),
+    exitoTitulo: guardado?.exitoTitulo || 'Recibimos tu mensaje',
+    exitoTexto:
+      guardado?.exitoTexto ||
+      'Te respondemos dentro de las siguientes 48 horas al correo que nos dejaste.',
+  };
 }

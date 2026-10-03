@@ -251,7 +251,7 @@ export default function Navbar() {
 
             {/* CTA */}
             <Link
-              href="/#contacto"
+              href="/contacto"
               className="bg-[#141821] text-white rounded-[8px] p-[16px] text-[16px] leading-[22px] font-medium hover:bg-opacity-90 transition-all text-center inline-block"
             >
               Agenda una reunión
@@ -361,7 +361,7 @@ export default function Navbar() {
 
             {/* CTA MOBILE */}
             <Link
-              href="/#contacto"
+              href="/contacto"
               onClick={() => setIsOpen(false)}
               className="bg-[#141821] text-white rounded-[8px] p-[16px] text-[16px] leading-[22px] font-medium text-center transition-all hover:bg-opacity-90"
             >

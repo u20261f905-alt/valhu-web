@@ -5,43 +5,43 @@ home:
   noindex: false
 blog:
   title: Blog | Valhu Group
-  description: >-
-    Notas sobre diseño, desarrollo web, performance y branding. Lo que aprendemos construyendo
+  description: Notas sobre diseño, desarrollo web, performance y branding. Lo que aprendemos construyendo
     proyectos digitales para empresas en Perú y la región.
   ogImage: null
   noindex: false
 nosotros:
   title: Nosotros | Valhu Group
-  description: >-
-    Somos un grupo de agencias estratégicas que integra diseño, desarrollo y performance. Conoce
+  description: Somos un grupo de agencias estratégicas que integra diseño, desarrollo y performance. Conoce
     cómo trabajamos y qué nos guía en cada proyecto.
   ogImage: null
   noindex: false
 web:
   title: Diseño y Desarrollo Web en Perú | Páginas web a medida
-  description: >-
-    Diseñamos y desarrollamos sitios web a medida: rápidos, seguros y pensados para convertir.
-    Páginas corporativas, ecommerce y landing pages. Cotiza tu proyecto.
+  description: 'Diseñamos y desarrollamos sitios web a medida: rápidos, seguros y pensados para convertir.
+    Páginas corporativas, ecommerce y landing pages. Cotiza tu proyecto.'
   ogImage: null
   noindex: false
 ads:
   title: Agencia de Meta Ads en Perú | Campañas orientadas a ventas
-  description: >-
-    Gestionamos campañas en Meta Ads y Google Ads enfocadas en conversión y retorno real de
+  description: Gestionamos campañas en Meta Ads y Google Ads enfocadas en conversión y retorno real de
     inversión. Estrategia, creatividades y medición para escalar tus ventas.
   ogImage: null
   noindex: false
 uxui:
   title: Diseño UX/UI para productos digitales | Valhu Group
-  description: >-
-    Investigamos y diseñamos experiencias claras y fáciles de usar para webs, plataformas y
+  description: Investigamos y diseñamos experiencias claras y fáciles de usar para webs, plataformas y
     aplicaciones. Diseño UX/UI para startups y empresas en Perú y la región.
   ogImage: null
   noindex: false
 branding:
   title: Branding e Identidad de Marca en Perú | Valhu Group
-  description: >-
-    Construimos marcas con estrategia: posicionamiento, identidad visual, tono de voz y manual de
-    marca. Para que tu negocio conecte, se diferencie y crezca con claridad.
+  description: 'Construimos marcas con estrategia: posicionamiento, identidad visual, tono de voz y manual
+    de marca. Para que tu negocio conecte, se diferencie y crezca con claridad.'
+  ogImage: null
+  noindex: false
+contacto:
+  title: Contacto | Cuéntanos de tu proyecto
+  description: Cuéntanos qué necesitas y te enviamos una cotización dentro de las siguientes 48 horas.
+    Diseño y desarrollo web, campañas, UX/UI y branding.
   ogImage: null
   noindex: false

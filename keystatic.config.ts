@@ -114,6 +114,7 @@ export default config({
       Blog: ['notas', 'categorias'],
       Home: ['portada', 'servicios', 'nosotros', 'preguntas', 'contacto', 'imagenes'],
       SEO: ['seoPaginas', 'ajustes', 'empresa'],
+      Contacto: ['formulario'],
     },
   },
 
@@ -404,6 +405,7 @@ export default config({
       format: { data: 'yaml' },
       schema: {
         home: seoDePagina('Home'),
+        contacto: seoDePagina('Contacto'),
         blog: seoDePagina('Blog'),
         nosotros: seoDePagina('Nosotros'),
         web: seoDePagina('Servicio · Diseño y desarrollo web'),
@@ -471,6 +473,39 @@ export default config({
             'Instagram, LinkedIn, Facebook… Le confirman a Google que todas son de la misma empresa.',
           itemLabel: (props) => props.value ?? 'Enlace',
         }),
+      },
+    }),
+
+    /* ---------------- FORMULARIO DE CONTACTO ---------------- */
+    formulario: singleton({
+      label: 'Formulario',
+      path: 'content/formulario',
+      format: { data: 'yaml' },
+      schema: {
+        intro: fields.text({
+          label: 'Texto de arriba',
+          description: 'Lo que lee la persona antes de empezar a llenar.',
+          multiline: true,
+        }),
+        nota: fields.text({
+          label: 'Nota destacada',
+          description: 'La línea en cursiva. Déjala vacía si no la quieres.',
+          multiline: true,
+        }),
+        presupuestos: fields.array(
+          fields.object({
+            soles: fields.text({ label: 'En soles', description: 'Ej.: S/ 2,200 – S/ 3,700' }),
+            dolares: fields.text({ label: 'En dólares', description: 'Ej.: $599 – $999' }),
+          }),
+          {
+            label: 'Rangos de presupuesto',
+            description: 'Arrastra para cambiar el orden. Se muestran de menor a mayor.',
+            itemLabel: (props) =>
+              `${props.fields.soles.value || '—'}  ·  ${props.fields.dolares.value || '—'}`,
+          }
+        ),
+        exitoTitulo: fields.text({ label: 'Título al enviar' }),
+        exitoTexto: fields.text({ label: 'Mensaje al enviar', multiline: true }),
       },
     }),
   },

@@ -2,27 +2,33 @@ title: ¿Tienes *preguntas?*
 buttonText: Contáctanos
 buttonHref: "/contacto"
 items:
-  - question: ¿Cuál es la diferencia entre Valhu Design y Valhu Media?
+  - question: ¿Qué tipo de agencia es Valhu Group?
     answer: >-
-      Valhu Design se enfoca en la estrategia, branding y la experiencia de usuario (UX/UI). Valhu
-      Media se encarga de materializar esa estrategia mediante el desarrollo tecnológico y la
-      ejecución de campañas de marketing para hacer crecer y generar ventas a tu negocio.
+      Somos una agencia de innovación. Trabajamos diseño y desarrollo web, performance ads en Google
+      y Meta, diseño UX/UI y branding, cuatro frentes que casi siempre van juntos. Al estar todo en
+      un mismo equipo, la marca, la web y las campañas hablan el mismo idioma.
     active: true
-  - question: ¿Puedo contratar a ambas agencias para un mismo proyecto?
+  - question: ¿Puedo contratar un solo servicio o tienen que ser todos?
     answer: >-
-      ¡Totalmente! De hecho, es lo que recomendamos. Al integrar el diseño estratégico con la
-      tecnología de alto impacto, aseguramos una transición fluida desde la conceptualización de tu
-      producto hasta su escalabilidad comercial.
+      Puedes contratar solo uno. Hay proyectos que necesitan únicamente rediseñar la web, ordenar la
+      marca o levantar campañas, y los tomamos así. Dicho eso, cuando un negocio parte de cero,
+      resolver los cuatro frentes con un mismo equipo suele salir mejor que repartirlos entre
+      proveedores distintos.
     active: true
-  - question: ¿Cómo miden el éxito de sus servicios de Performance Digital?
+  - question: ¿Cómo empieza el trabajo?
     answer: >-
-      Nuestra gestión se basa en datos. Utilizamos analítica avanzada para monitorear cada campaña
-      (Google Ads, Meta Ads) con el objetivo principal de maximizar tu retorno de inversión (ROI) y
-      aumentar la captación de clientes de manera eficiente.
+      Nos escribes por el formulario y te respondemos dentro de las siguientes **48 horas** para
+      agendar una reunión. Ahí entendemos bien qué necesitas, y recién después te enviamos una
+      cotización hecha a tu medida. No cotizamos a ciegas.
     active: true
-  - question: ¿Trabajan con startups desde cero?
+  - question: ¿Trabajan con marcas que recién empiezan?
     answer: >-
-      Sí, tenemos experiencia ayudando a startups a definir su MVP (Producto Mínimo Viable), validar
-      conceptos y construir su presencia digital desde la etapa inicial, asegurando que tengan bases
-      sólidas para crecer.
+      Sí. Buena parte de lo que hacemos es acompañar a negocios y startups a construir su presencia
+      digital desde cero, definiendo la marca, lanzando la primera web y empezando a traer clientes.
+      También trabajamos con empresas que ya están andando y necesitan renovar lo que tienen.
+    active: true
+  - question: ¿Trabajan con clientes fuera de Perú?
+    answer: >-
+      Sí, trabajamos de forma remota. Las reuniones son por videollamada y la coordinación del día a
+      día va por correo o mensajería, con la misma dinámica que usamos con los clientes locales.
     active: true

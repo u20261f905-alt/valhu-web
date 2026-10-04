@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useRef } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 /**
  * Banner/Hero de la página "Nosotros".
@@ -20,61 +20,49 @@ export default function NosotrosBanner() {
       const tl = gsap.timeline();
 
       tl.fromTo(
-        '.ns-anim-pretitle',
+        ".ns-anim-pretitle",
         { autoAlpha: 0, y: 20 },
-        { autoAlpha: 1, y: 0, duration: 0.4, ease: 'power2.out' },
-        0
+        { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" },
+        0,
       )
         .fromTo(
-          ['.ns-blur-word', '.ns-blur-paragraph-word'],
-          { autoAlpha: 0, filter: 'blur(10px)', y: 10 },
+          [".ns-blur-word", ".ns-blur-paragraph-word"],
+          { autoAlpha: 0, filter: "blur(10px)", y: 10 },
           {
             autoAlpha: 1,
-            filter: 'blur(0px)',
+            filter: "blur(0px)",
             y: 0,
             duration: 0.4,
             stagger: 0.015,
-            ease: 'power2.out',
+            ease: "power2.out",
           },
-          0.15
+          0.15,
         )
         .fromTo(
-          '.ns-anim-btn',
+          ".ns-anim-btn",
           { autoAlpha: 0, y: 60 },
-          { autoAlpha: 1, y: 0, duration: 1.8, ease: 'expo.out' },
-          0.6
+          { autoAlpha: 1, y: 0, duration: 1.8, ease: "expo.out" },
+          0.6,
         )
         .fromTo(
           sphereRef.current,
           { autoAlpha: 0, scale: 1.2 },
-          { autoAlpha: 1, scale: 1, duration: 1.6, ease: 'power3.out' },
-          0
-        )
-        // Flotación infinita, igual que la esfera del Home y de las otras internas.
-        .add(() => {
-          gsap.to(sphereRef.current, {
-            y: -18,
-            duration: 1.8,
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut',
-          });
-        });
+          { autoAlpha: 1, scale: 1, duration: 1.6, ease: "power3.out" },
+          0,
+        );
     },
-    { scope: containerRef }
+    { scope: containerRef },
   );
 
   const paragraph =
-    'Somos un grupo de agencias estratégicas que integra diseño, tecnología y performance para que las empresas crezcan sin cargar con la complejidad de su presencia digital.';
+    "Mi nombre es Gerardo Valenzuela y soy el fundador de Valhu Group, una agencia de innovación especializada en diseño y desarrollo web, performance ads, UX/UI y branding. Cuidamos el detalle y el acabado de cada entrega, porque un producto digital solo vale la pena si logra que tu marca destaque donde todas se parecen.";
 
   return (
     <section ref={containerRef} className="w-full bg-[#EFF8FD]">
       <div className="max-w-[1220px] mx-auto px-4 md:px-8 pt-[24px] pb-[48px] md:pt-[40px] md:pb-[48px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[20px] lg:gap-[40px] items-center border-b border-[#E1E7EC] pb-[24px] md:pb-[40px]">
-
           {/* COLUMNA IZQUIERDA */}
           <div className="lg:col-span-7 flex flex-col items-start">
-
             {/* Pretitle */}
             <div className="mb-3">
               <span className="ns-anim-pretitle invisible text-[14px]/[18px] md:text-[16px]/[22px] uppercase underline decoration-[1px] decoration-[#969EB3] [text-underline-offset:2px] text-[#969EB3] font-normal inline-block">
@@ -84,21 +72,24 @@ export default function NosotrosBanner() {
 
             {/* Título */}
             <h1 className="mb-[16px] md:mb-[20px] !text-[36px] !leading-[40px] md:!text-[64px] md:!leading-[72px]">
-              <span className="ns-blur-word invisible inline-block">El</span>{' '}
-              <span className="ns-blur-word invisible inline-block">motor</span>{' '}
-              <span className="ns-blur-word invisible inline-block">de</span>{' '}
-              <span className="ns-blur-word invisible inline-block">tu</span>{' '}
+              <span className="ns-blur-word invisible inline-block">
+                Creamos
+              </span>{" "}
+              <span className="ns-blur-word invisible inline-block">
+                productos
+              </span>{" "}
+              <span className="ns-blur-word invisible inline-block">que</span>{" "}
               <span className="ns-blur-word invisible inline-block font-accent italic font-light">
-                transformación
-              </span>{' '}
+                te
+              </span>{" "}
               <span className="ns-blur-word invisible inline-block font-accent italic font-light">
-                digital
+                diferencian
               </span>
             </h1>
 
             {/* Párrafo */}
-            <p className="text-[14px] md:text-[16px] text-[#485157] mb-[24px] md:mb-6 flex flex-wrap gap-x-[6px] max-w-[600px]">
-              {paragraph.split(' ').map((word, index) => (
+            <p className="text-[14px] md:text-[16px] leading-[20px] text-[#485157] mb-[24px] md:mb-6 flex flex-wrap content-start gap-x-[4px] max-w-[600px]">
+              {paragraph.split(" ").map((word, index) => (
                 <span
                   key={`ns-p-${index}`}
                   className="ns-blur-paragraph-word invisible inline-block"
@@ -118,30 +109,45 @@ export default function NosotrosBanner() {
               </Link>
 
               <Link
-                href="/#servicios"
+                href="/servicios"
                 className="inline-flex items-center justify-center gap-3 px-[20px] py-[16px] rounded-[8px] border border-[#D0D7DD] bg-[#EFF8FD] text-[16px] font-semibold text-[#141821] hover:bg-white transition-colors"
               >
                 Ver servicios
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8.05317 5.80864L16.6169 14.568L16.7007 7.14383L17.6984 7.09145L17.5946 16.2833L8.40276 16.1794L8.47766 15.1832L15.9018 15.267L7.33812 6.50772L8.05317 5.80864Z" fill="currentColor" />
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                  className="-scale-y-100"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.05317 5.80864L16.6169 14.568L16.7007 7.14383L17.6984 7.09145L17.5946 16.2833L8.40276 16.1794L8.47766 15.1832L15.9018 15.267L7.33812 6.50772L8.05317 5.80864Z"
+                    fill="currentColor"
+                  />
                 </svg>
               </Link>
             </div>
           </div>
 
-          {/* COLUMNA DERECHA: esfera decorativa (la misma de las otras internas) */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div
-              ref={sphereRef}
-              className="relative w-full max-w-[440px] aspect-square invisible drop-shadow-[0_60px_60px_rgba(62,82,87,0.10)]"
-            >
-              <Image
-                src="/services/diseno-desarrollo-web/interna-hero-sphere.webp"
-                alt="Render decorativo - Valhu Group"
-                fill
-                priority
-                className="object-contain"
-              />
+          {/* COLUMNA DERECHA: la foto de quien está detrás de la agencia.
+              El contenedor sigue la proporción del archivo (351x479) para
+              que la foto lo llene sin recortes ni franjas vacías. */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-start">
+            {/* El contenedor de fuera lo maneja GSAP (entrada). La inclinación
+                vive en el de dentro para que las dos no se pisen. */}
+            <div ref={sphereRef} className="w-full max-w-[360px] invisible">
+              <div className="relative aspect-[1075/1464] rotate-2 transition-transform duration-300 ease-out hover:rotate-[5deg] drop-shadow-[0_40px_50px_rgba(62,82,87,0.12)]">
+                <Image
+                  src="/about/gerardo-valenzuela.webp"
+                  alt="Gerardo Valenzuela, fundador de Valhu Group"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 360px, calc(100vw - 32px)"
+                  className="object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>

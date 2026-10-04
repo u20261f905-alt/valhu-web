@@ -102,7 +102,7 @@ export default function WebDesignBanner() {
             </h1>
 
             {/* Párrafo */}
-            <p className="text-[14px] md:text-[16px] text-[#485157] mb-[24px] md:mb-6 flex flex-wrap gap-x-[6px] max-w-[600px]">
+            <p className="text-[14px] md:text-[16px] text-[#485157] mb-[24px] md:mb-6 flex flex-wrap content-start gap-x-[6px] max-w-[600px]">
               {paragraph.split(' ').map((word, index) => (
                 <span
                   key={`wd-p-${index}`}
@@ -122,13 +122,26 @@ export default function WebDesignBanner() {
                 Cotiza tu web
               </Link>
 
+              {/* Baja a los proyectos de esta misma página: flecha recta
+                  hacia abajo, que es literalmente lo que hace el botón. */}
               <Link
-                href="#servicios"
+                href="#proyectos"
                 className="inline-flex items-center justify-center gap-3 px-[20px] py-[16px] rounded-[8px] border border-[#D0D7DD] bg-[#EFF8FD] text-[16px] font-semibold text-[#141821] hover:bg-white transition-colors"
               >
                 Ver proyectos
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8.05317 5.80864L16.6169 14.568L16.7007 7.14383L17.6984 7.09145L17.5946 16.2833L8.40276 16.1794L8.47766 15.1832L15.9018 15.267L7.33812 6.50772L8.05317 5.80864Z" fill="currentColor" />
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="12" y1="6" x2="12" y2="18" />
+                  <polyline points="6.8 12.8 12 18 17.2 12.8" />
                 </svg>
               </Link>
             </div>
@@ -142,10 +155,10 @@ export default function WebDesignBanner() {
             >
               {/*
                 Imagen exportada de Figma (nodo 2152:17626), guardada en:
-                public/services/diseno-desarrollo-web/interna-hero-sphere.webp
+                public/services/diseno-desarrollo-web/skyblue-sphere.webp
               */}
               <Image
-                src="/services/diseno-desarrollo-web/interna-hero-sphere.webp"
+                src="/services/diseno-desarrollo-web/skyblue-sphere.webp"
                 alt="Render decorativo - Diseño y Desarrollo Web"
                 fill
                 priority

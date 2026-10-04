@@ -31,6 +31,7 @@ function ArrowIcon() {
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
+      className="-scale-y-100"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -325,19 +326,7 @@ export default function Services({
                 <Link href={web.buttonHref} className={heroButtonClass}>
                   {web.buttonText}
 
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M8.05317 5.80864L16.6169 14.568L16.7007 7.14383L17.6984 7.09145L17.5946 16.2833L8.40276 16.1794L8.47766 15.1832L15.9018 15.267L7.33812 6.50772L8.05317 5.80864Z"
-                      fill="#141821"
-                    />
-                  </svg>
+                  <ArrowIcon />
                 </Link>
               </div>
             </div>
@@ -469,21 +458,7 @@ export default function Services({
                     >
                       {ux.buttonText}
 
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8.05317 5.80864L16.6169 14.568L16.7007 7.14383L17.6984 7.09145L17.5946 16.2833L8.40276 16.1794L8.47766 15.1832L15.9018 15.267L7.33812 6.50772L8.05317 5.80864Z"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                      <ArrowIcon />
                     </Link>
                   </div>
 
@@ -522,21 +497,7 @@ export default function Services({
                     >
                       {branding.buttonText}
 
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8.05317 5.80864L16.6169 14.568L16.7007 7.14383L17.6984 7.09145L17.5946 16.2832L8.40276 16.1794L8.47766 15.1832L15.9018 15.267L7.33812 6.50772L8.05317 5.80864Z"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                      <ArrowIcon />
                     </Link>
                   </div>
 

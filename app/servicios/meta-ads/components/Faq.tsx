@@ -191,7 +191,7 @@ export default function Faq() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-start">
 
           <div className="lg:col-span-5 flex flex-col items-start">
-            <h2 className="text-[36px] md:text-[48px] leading-[44px] md:leading-[56px] font-medium text-[#141821] flex flex-wrap gap-x-[10px]">
+            <h2 className="text-[36px] md:text-[48px] leading-[44px] md:leading-[56px] font-medium text-[#141821] flex flex-wrap content-start gap-x-[10px]">
               <span className="ma-faq-blur-word invisible inline-block">¿Tienes</span>
               <span className="ma-faq-blur-word invisible inline-block font-accent italic font-light">
                 preguntas?

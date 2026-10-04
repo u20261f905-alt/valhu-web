@@ -212,33 +212,47 @@ export default function Navbar() {
               onMouseEnter={openServices}
               onMouseLeave={scheduleClose}
             >
-              <button
-                type="button"
-                aria-haspopup="true"
-                aria-expanded={isServicesOpen}
-                className="flex items-center gap-1.5 text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold focus:outline-none"
-                onClick={() =>
-                  isServicesOpen ? setIsServicesOpen(false) : openServices()
-                }
-              >
-                Servicios
-
-                <svg
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    isServicesOpen ? 'rotate-180' : ''
-                  }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+              {/* El texto lleva a la página de servicios; la flecha solo
+                  abre y cierra la lista. Así quien busca el panorama
+                  completo entra, y quien va a un servicio concreto lo
+                  elige, sin que un gesto pise al otro. */}
+              <div className="flex items-center gap-1.5">
+                <Link
+                  href="/servicios"
+                  className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
+                  onClick={() => setIsServicesOpen(false)}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
+                  Servicios
+                </Link>
+
+                <button
+                  type="button"
+                  aria-haspopup="true"
+                  aria-expanded={isServicesOpen}
+                  aria-label={isServicesOpen ? 'Cerrar lista de servicios' : 'Ver lista de servicios'}
+                  className="flex items-center text-[#141821] focus:outline-none"
+                  onClick={() =>
+                    isServicesOpen ? setIsServicesOpen(false) : openServices()
+                  }
+                >
+                  <svg
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                      isServicesOpen ? 'rotate-180' : ''
+                    }`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             {/* BLOG */}
@@ -310,29 +324,43 @@ export default function Navbar() {
             {/* SERVICIOS MOBILE */}
             <div className="flex flex-col">
 
-              <button
-                type="button"
-                onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                className="flex items-center justify-between text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold w-full text-left"
-              >
-                Servicios
-
-                <svg
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    isMobileServicesOpen ? 'rotate-180' : ''
-                  }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+              {/* Igual que en escritorio: el nombre lleva a la página y la
+                  flecha despliega. En el móvil, además, cada zona táctil
+                  queda bien separada de la otra. */}
+              <div className="flex items-center justify-between">
+                <Link
+                  href="/servicios"
+                  onClick={() => setIsOpen(false)}
+                  className="text-[16px] leading-[22px] text-[#141821] font-normal transition-all hover:font-semibold"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
+                  Servicios
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                  aria-expanded={isMobileServicesOpen}
+                  aria-label={isMobileServicesOpen ? 'Cerrar lista de servicios' : 'Ver lista de servicios'}
+                  className="flex items-center justify-end py-1 pl-6 text-[#141821]"
+                >
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      isMobileServicesOpen ? 'rotate-180' : ''
+                    }`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+              </div>
 
               {isMobileServicesOpen && (
                 <div className="pl-4 pt-2 flex flex-col space-y-2">

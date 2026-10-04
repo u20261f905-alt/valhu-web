@@ -1,5 +1,6 @@
 import { getEmpresa, type Post, type PostListItem } from './contenido';
 import type { Faq } from './home-defaults';
+import { textoPlano } from './rich-text';
 
 /**
  * Datos estructurados (schema.org).
@@ -75,7 +76,8 @@ export function schemaPreguntas(faqs: Faq[]) {
     mainEntity: faqs.map((f) => ({
       '@type': 'Question',
       name: f.question,
-      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      // Google lee esto tal cual, así que van sin las marcas de formato.
+      acceptedAnswer: { '@type': 'Answer', text: textoPlano(f.answer) },
     })),
   };
 }

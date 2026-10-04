@@ -98,7 +98,7 @@ export default function BlogBanner() {
             </h1>
 
             {/* Párrafo */}
-            <p className="text-[14px] md:text-[16px] text-[#485157] mb-[24px] md:mb-6 flex flex-wrap gap-x-[6px] max-w-[600px]">
+            <p className="text-[14px] md:text-[16px] text-[#485157] mb-[24px] md:mb-6 flex flex-wrap content-start gap-x-[6px] max-w-[600px]">
               {paragraph.split(' ').map((word, index) => (
                 <span
                   key={`bl-p-${index}`}
@@ -119,7 +119,7 @@ export default function BlogBanner() {
               </Link>
 
               <Link
-                href="/#servicios"
+                href="/servicios"
                 className="inline-flex items-center justify-center gap-3 px-[20px] py-[16px] rounded-[8px] border border-[#D0D7DD] bg-[#EFF8FD] text-[16px] font-semibold text-[#141821] hover:bg-white transition-colors"
               >
                 Ver servicios
@@ -137,7 +137,7 @@ export default function BlogBanner() {
               className="relative w-full max-w-[440px] aspect-square invisible drop-shadow-[0_60px_60px_rgba(62,82,87,0.10)]"
             >
               <Image
-                src="/services/diseno-desarrollo-web/interna-hero-sphere.webp"
+                src="/services/diseno-desarrollo-web/skyblue-sphere.webp"
                 alt="Render decorativo - Blog de Valhu Group"
                 fill
                 priority

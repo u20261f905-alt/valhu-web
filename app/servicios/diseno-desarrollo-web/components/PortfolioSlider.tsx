@@ -69,10 +69,10 @@ export default function PortfolioSlider() {
   const LOOP_TILES = [...TILES, ...TILES];
 
   return (
-    <section ref={sectionRef} className="relative w-full pt-0 pb-[24px] md:pb-[40px] bg-[#EFF8FD] overflow-hidden">
+    <section ref={sectionRef} className="relative w-full pt-0 pb-[16px] md:pb-[24px] bg-[#EFF8FD] overflow-hidden">
       {/* Degradados en los bordes con el color del fondo, para que el carrusel "desaparezca" a los lados */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-[60px] md:w-[160px] z-10 bg-gradient-to-r from-[#EFF8FD] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-[60px] md:w-[160px] z-10 bg-gradient-to-l from-[#EFF8FD] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-[90px] md:w-[300px] z-10 bg-gradient-to-r from-[#EFF8FD] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-[90px] md:w-[300px] z-10 bg-gradient-to-l from-[#EFF8FD] to-transparent" />
 
       <div
         ref={trackRef}
@@ -81,14 +81,14 @@ export default function PortfolioSlider() {
         {LOOP_TILES.map((tile, i) => (
           <div
             key={`${tile.id}-${i}`}
-            className="relative shrink-0 w-[548px] h-[344px] rounded-[12px] overflow-hidden"
+            className="relative shrink-0 w-[460px] h-[288px] rounded-[12px] overflow-hidden"
           >
             <Image
               src={tile.image}
               alt={tile.alt}
               fill
               className="object-cover"
-              sizes="548px"
+              sizes="460px"
             />
           </div>
         ))}

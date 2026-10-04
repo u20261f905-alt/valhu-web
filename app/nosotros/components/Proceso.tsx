@@ -1,36 +1,36 @@
-'use client';
+"use client";
 
-import { useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ETAPAS = [
   {
-    numero: '01',
-    titulo: 'Diagnóstico',
+    numero: "01",
+    titulo: "Diagnóstico",
     texto:
-      'Entendemos tu negocio, tu audiencia y qué está funcionando hoy. Sin esta etapa, todo lo demás son suposiciones.',
+      "Entendemos tu negocio, tu audiencia y qué está funcionando hoy. Sin esta etapa, todo lo demás son suposiciones.",
   },
   {
-    numero: '02',
-    titulo: 'Estrategia',
+    numero: "02",
+    titulo: "Estrategia",
     texto:
-      'Definimos objetivos, alcance y prioridades. Acordamos qué vamos a medir y cómo se ve el éxito del proyecto.',
+      "Definimos objetivos, alcance y prioridades. Acordamos qué vamos a medir y cómo se ve el éxito del proyecto.",
   },
   {
-    numero: '03',
-    titulo: 'Diseño y desarrollo',
+    numero: "03",
+    titulo: "Diseño y desarrollo",
     texto:
-      'Ejecutamos con revisiones en cada hito, para que no haya sorpresas al final ni cambios que rehagan el trabajo.',
+      "Ejecutamos con revisiones en cada hito, para que no haya sorpresas al final ni cambios que rehagan el trabajo.",
   },
   {
-    numero: '04',
-    titulo: 'Medición y evolución',
+    numero: "04",
+    titulo: "Medición y evolución",
     texto:
-      'Lanzamos, medimos y ajustamos. El proyecto no termina cuando sale al aire: ahí recién empieza a dar datos.',
+      "Lanzamos, medimos y ajustamos. El proyecto no termina cuando sale al aire: ahí recién empieza a dar datos.",
   },
 ];
 
@@ -40,55 +40,57 @@ export default function Proceso() {
   useGSAP(
     () => {
       gsap.fromTo(
-        ['.pr-blur-word', '.pr-blur-paragraph-word'],
-        { autoAlpha: 0, filter: 'blur(10px)', y: 10 },
+        [".pr-blur-word", ".pr-blur-paragraph-word"],
+        { autoAlpha: 0, filter: "blur(10px)", y: 10 },
         {
           autoAlpha: 1,
-          filter: 'blur(0px)',
+          filter: "blur(0px)",
           y: 0,
           duration: 0.4,
           stagger: 0.015,
-          ease: 'power2.out',
+          ease: "power2.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: 'top 75%',
+            start: "top 75%",
             once: true,
           },
-        }
+        },
       );
 
       gsap.fromTo(
-        '.pr-card',
+        ".pr-card",
         { autoAlpha: 0, y: 70 },
         {
           autoAlpha: 1,
           y: 0,
           duration: 1.2,
           stagger: 0.15,
-          ease: 'power3.out',
+          ease: "power3.out",
           scrollTrigger: {
-            trigger: '.pr-grid',
-            start: 'top 85%',
+            trigger: ".pr-grid",
+            start: "top 85%",
             once: true,
             invalidateOnRefresh: true,
           },
-        }
+        },
       );
     },
-    { scope: containerRef }
+    { scope: containerRef },
   );
 
   const bajada =
-    'El mismo método en cada proyecto, sea una web, una campaña o una marca completa.';
+    "El mismo método en cada proyecto, sea una web, una campaña o una marca completa.";
 
   return (
     <section ref={containerRef} className="w-full bg-[#EFF8FD] py-[48px]">
       <div className="mx-auto max-w-[1220px] px-4 md:px-8">
-
         <div className="mx-auto mb-[32px] max-w-[820px] text-center">
           <h2 className="mb-[12px] text-[28px] leading-[34px] md:text-[48px] md:leading-[56px]">
-            {['Cómo'].map((word, i) => (
-              <span key={`pr-t-${i}`} className="pr-blur-word invisible inline-block">
+            {["Cómo"].map((word, i) => (
+              <span
+                key={`pr-t-${i}`}
+                className="pr-blur-word invisible inline-block"
+              >
                 {word}&nbsp;
               </span>
             ))}
@@ -98,7 +100,7 @@ export default function Proceso() {
           </h2>
 
           <p className="mx-auto flex max-w-[640px] flex-wrap justify-center gap-x-[4px] bg-transparent text-[14px] leading-[22px] text-[#525866] md:text-[16px]">
-            {bajada.split(' ').map((word, index) => (
+            {bajada.split(" ").map((word, index) => (
               <span
                 key={`pr-b-${index}`}
                 className="pr-blur-paragraph-word invisible inline-block"
@@ -113,17 +115,18 @@ export default function Proceso() {
           {ETAPAS.map((etapa) => (
             <article
               key={etapa.numero}
-              className="pr-card invisible flex min-h-[240px] flex-col rounded-[16px] bg-white p-[24px] md:p-[28px]"
+              className="pr-card invisible flex flex-col items-start gap-[16px] rounded-[16px] bg-white p-[24px]"
             >
-              <p className="mb-[28px] bg-transparent font-accent text-[28px] leading-[32px] text-[#1B3F7D] md:mb-[36px]">
+              {/* Aquí el número sí dice algo: son pasos y van en orden. */}
+              <p className="bg-transparent font-accent text-[32px] leading-[32px] font-light italic text-[#141821]">
                 {etapa.numero}
               </p>
 
-              <h3 className="mb-[10px] text-[18px] leading-[26px] md:text-[20px] md:leading-[28px]">
+              <h3 className="text-[24px] leading-[28px] font-normal text-[#141821]">
                 {etapa.titulo}
               </h3>
 
-              <p className="bg-transparent text-[14px] leading-[22px] text-[#525866]">
+              <p className="bg-transparent text-[16px] leading-[20px] text-[#485157]">
                 {etapa.texto}
               </p>
             </article>

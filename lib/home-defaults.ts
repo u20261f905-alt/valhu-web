@@ -84,7 +84,7 @@ export const HERO_POR_DEFECTO: HeroContent = {
   paragraph:
     'Somos una agencia motivada por la **disrupción, creatividad y resultados.**',
   buttonText: 'Ver servicios',
-  buttonHref: '#servicios',
+  buttonHref: '/servicios',
 };
 
 export const SERVICES_POR_DEFECTO: ServicesContent = {
@@ -103,7 +103,7 @@ export const SERVICES_POR_DEFECTO: ServicesContent = {
       title: 'Performance *Ads*',
       description:
         'Gestionamos campañas publicitarias digitales en **Google Ads y Meta Ads** orientadas exclusivamente a resultados, maximizando tu retorno de inversión (ROI) y captación de clientes.',
-      buttonText: 'Ver resultados',
+      buttonText: 'Ver servicio',
       buttonHref: '/servicios/meta-ads',
     },
     ux: {
@@ -126,11 +126,11 @@ export const SERVICES_POR_DEFECTO: ServicesContent = {
 export const ABOUT_POR_DEFECTO: AboutContent = {
   title: 'El motor de tu *transformación* *digital*',
   intro:
-    'En **Valhu Group**, no solo construimos productos digitales; construimos ecosistemas de innovación diseñados para escalar. Somos un **grupo de agencias estratégicas** unidas por una visión clara: **cerrar la brecha entre la ambición de negocio y la ejecución tecnológica.**',
+    '**Valhu Group** es una agencia de innovación. Reunimos **diseño y desarrollo web, performance ads, UX/UI y branding** en un mismo equipo, para que tu marca, tu web y tus campañas dejen de contradecirse entre sí y empujen en la misma dirección.',
   bottomLeft:
-    'Somos el puente entre la **innovación creativa** y el **éxito comercial**. Al integrar el diseño con estrategias tecnológicas de alto impacto,',
+    'Trabajamos con una idea fija. **La diferenciación no es un extra** que se agrega al final, es lo primero que definimos,',
   bottomRight:
-    'permitimos que las empresas se enfoquen en su crecimiento mientras nosotros gestionamos la complejidad de su **presencia digital.**',
+    'y desde ahí construimos cada pieza. Cuidamos el acabado porque es lo que separa un proyecto que **funciona** de uno que además **destaca.**',
   buttonText: 'Más sobre Valhu Group',
   buttonHref: '/nosotros',
 };
@@ -153,27 +153,33 @@ export const CTA_POR_DEFECTO: CtaContent = {
 export const FAQS_POR_DEFECTO: Faq[] = [
   {
     id: 'defecto-1',
-    question: '¿Cuál es la diferencia entre Valhu Design y Valhu Media?',
+    question: '¿Qué tipo de agencia es Valhu Group?',
     answer:
-      'Valhu Design se enfoca en la estrategia, branding y la experiencia de usuario (UX/UI). Valhu Media se encarga de materializar esa estrategia mediante el desarrollo tecnológico y la ejecución de campañas de marketing para hacer crecer y generar ventas a tu negocio.',
+      'Somos una agencia de innovación. Trabajamos diseño y desarrollo web, performance ads en Google y Meta, diseño UX/UI y branding, cuatro frentes que casi siempre van juntos. Al estar todo en un mismo equipo, la marca, la web y las campañas hablan el mismo idioma.',
   },
   {
     id: 'defecto-2',
-    question: '¿Puedo contratar a ambas agencias para un mismo proyecto?',
+    question: '¿Puedo contratar un solo servicio o tienen que ser todos?',
     answer:
-      '¡Totalmente! De hecho, es lo que recomendamos. Al integrar el diseño estratégico con la tecnología de alto impacto, aseguramos una transición fluida desde la conceptualización de tu producto hasta su escalabilidad comercial.',
+      'Puedes contratar solo uno. Hay proyectos que necesitan únicamente rediseñar la web, ordenar la marca o levantar campañas, y los tomamos así. Dicho eso, cuando un negocio parte de cero, resolver los cuatro frentes con un mismo equipo suele salir mejor que repartirlos entre proveedores distintos.',
   },
   {
     id: 'defecto-3',
-    question: '¿Cómo miden el éxito de sus servicios de Performance Digital?',
+    question: '¿Cómo empieza el trabajo?',
     answer:
-      'Nuestra gestión se basa en datos. Utilizamos analítica avanzada para monitorear cada campaña (Google Ads, Meta Ads) con el objetivo principal de maximizar tu retorno de inversión (ROI) y aumentar la captación de clientes de manera eficiente.',
+      'Nos escribes por el formulario y te respondemos dentro de las siguientes **48 horas** para agendar una reunión. Ahí entendemos bien qué necesitas, y recién después te enviamos una cotización hecha a tu medida. No cotizamos a ciegas.',
   },
   {
     id: 'defecto-4',
-    question: '¿Trabajan con startups desde cero?',
+    question: '¿Trabajan con marcas que recién empiezan?',
     answer:
-      'Sí, tenemos experiencia ayudando a startups a definir su MVP (Producto Mínimo Viable), validar conceptos y construir su presencia digital desde la etapa inicial, asegurando que tengan bases sólidas para crecer.',
+      'Sí. Buena parte de lo que hacemos es acompañar a negocios y startups a construir su presencia digital desde cero, definiendo la marca, lanzando la primera web y empezando a traer clientes. También trabajamos con empresas que ya están andando y necesitan renovar lo que tienen.',
+  },
+  {
+    id: 'defecto-5',
+    question: '¿Trabajan con clientes fuera de Perú?',
+    answer:
+      'Sí, trabajamos de forma remota. Las reuniones son por videollamada y la coordinación del día a día va por correo o mensajería, con la misma dinámica que usamos con los clientes locales.',
   },
 ];
 

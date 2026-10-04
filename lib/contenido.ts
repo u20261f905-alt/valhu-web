@@ -306,6 +306,7 @@ export type ClavePagina =
   | 'blog'
   | 'nosotros'
   | 'contacto'
+  | 'servicios'
   | 'web'
   | 'ads'
   | 'uxui'

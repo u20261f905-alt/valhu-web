@@ -21,31 +21,31 @@ const PROJECTS: Project[] = [
     tag: 'Portal inmobiliario',
     image: '/services/diseno-desarrollo-web/portal-inmobiliario.webp',
     alt: 'Proyecto: portal inmobiliario',
-    href: '#',
+    href: 'https://yobusco.pe',
   },
   {
     tag: 'Ecommerce',
     image: '/services/diseno-desarrollo-web/ecommerce-macbook.webp',
     alt: 'Proyecto: ecommerce',
-    href: '#',
+    href: 'https://indie.uy',
   },
   {
     tag: 'Ecommerce',
     image: '/services/diseno-desarrollo-web/group-pinta-colors.webp',
     alt: 'Proyecto: Pinta Colors',
-    href: '#',
+    href: 'https://pintacolors.pe',
   },
   {
     tag: 'B2B',
     image: '/services/diseno-desarrollo-web/fitness-extreme.webp',
     alt: 'Proyecto: Fitness Extreme',
-    href: '#',
+    href: 'https://fitnessextremeperu.com',
   },
 ];
 
 function ArrowIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="-scale-y-100" xmlns="http://www.w3.org/2000/svg">
       <path d="M8.05317 5.80864L16.6169 14.568L16.7007 7.14383L17.6984 7.09145L17.5946 16.2833L8.40276 16.1794L8.47766 15.1832L15.9018 15.267L7.33812 6.50772L8.05317 5.80864Z" fill="currentColor" />
     </svg>
   );
@@ -99,11 +99,11 @@ export default function ServicesShowcase() {
   return (
     <section
       ref={containerRef}
-      id="servicios"
+      id="proyectos"
       className="w-full py-[48px] md:py-[80px] bg-[#EFF8FD]"
     >
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
-        <h2 className="font-medium text-[#141821] mb-[40px] md:mb-[56px] flex flex-wrap gap-x-[10px]">
+        <h2 className="mb-[40px] flex flex-wrap content-start gap-x-[10px] text-[28px] leading-[34px] text-[#141821] md:mb-[56px] md:text-[48px] md:leading-[56px]">
           {['Nuestros', 'Servicios'].map((word, i) => (
             <span key={`wd-svc-${i}`} className="wd-services-blur-word invisible inline-block">
               {word}
@@ -131,7 +131,7 @@ export default function ServicesShowcase() {
                 />
               </div>
 
-              <div className="flex items-center justify-between gap-4 px-[24px] py-[20px]">
+              <div className="flex items-center justify-between gap-4 p-[24px]">
                 <div>
                   <h3 className="text-[20px] leading-[24px] font-normal text-[#141821]">
                     Diseño y Desarrollo <span className="font-accent italic font-light">Web</span>
@@ -143,6 +143,8 @@ export default function ServicesShowcase() {
 
                 <Link
                   href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="shrink-0 inline-flex items-center gap-2 px-[16px] py-[14px] rounded-[8px] border border-[#D0D7DD] text-[14px] font-semibold text-[#141821] hover:bg-[#F1F3F5] transition-colors"
                 >
                   Ver proyecto

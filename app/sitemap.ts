@@ -15,6 +15,7 @@ const sitio = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
 const PAGINAS: { ruta: string; clave: ClavePagina; prioridad: number }[] = [
   { ruta: '/', clave: 'home', prioridad: 1 },
+  { ruta: '/servicios', clave: 'servicios', prioridad: 0.9 },
   { ruta: '/servicios/diseno-desarrollo-web', clave: 'web', prioridad: 0.9 },
   { ruta: '/servicios/meta-ads', clave: 'ads', prioridad: 0.9 },
   { ruta: '/servicios/diseno-ux-ui', clave: 'uxui', prioridad: 0.9 },

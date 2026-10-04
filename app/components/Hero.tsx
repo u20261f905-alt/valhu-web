@@ -97,7 +97,7 @@ export default function Hero({
           </h1>
 
           {/* Párrafo: 14px en mobile, 16px desde md */}
-          <p className="text-[14px] md:text-[16px] text-[#525866] mb-[16px] md:mb-6 flex flex-wrap gap-x-[6px]">
+          <p className="text-[14px] md:text-[16px] text-[#525866] mb-[16px] md:mb-6 flex flex-wrap content-start gap-x-[6px]">
             <AnimatedRichText
               texto={content.paragraph}
               claseAnimacion="blur-paragraph-word"
@@ -113,7 +113,7 @@ export default function Hero({
               className="inline-flex items-center gap-3 px-[12px] py-[12px] md:px-[20px] md:py-[16px] rounded-[8px] border border-[#D0D5DD] bg-[#EFF8FD] text-[14px]/[18px] md:text-[16px] text-[#141821] hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141821] transition-colors"
             >
               {content.buttonText}
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="-scale-y-100" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8.05317 5.80864L16.6169 14.568L16.7007 7.14383L17.6984 7.09145L17.5946 16.2833L8.40276 16.1794L8.47766 15.1832L15.9018 15.267L7.33812 6.50772L8.05317 5.80864Z" fill="#141821"/>
               </svg>
             </Link>

@@ -31,6 +31,23 @@
     background-color: #EFF8FD;
   }
 
+  /*
+   * Nada se desborda a los lados.
+   *
+   * Algunas piezas decorativas (las esferas del CTA, los banners que
+   * entran inclinados en 3D) se salen del ancho de la pantalla a
+   * propósito durante su animación. Sin esto, el navegador las toma por
+   * contenido real y deja desplazar la página en horizontal.
+   *
+   * Va "clip" y no "hidden": clip recorta sin crear un contenedor de
+   * scroll, así que no rompe los elementos que se quedan pegados al
+   * hacer scroll.
+   */
+  html,
+  body {
+    overflow-x: clip;
+  }
+
   /* Títulos globales en Figtree REGULAR (font-normal) por defecto */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-figtree);

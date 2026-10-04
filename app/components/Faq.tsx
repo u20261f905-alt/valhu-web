@@ -8,6 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
 import AnimatedRichText from './AnimatedRichText';
+import RichText from './RichText';
 import {
   FAQ_POR_DEFECTO,
   FAQS_POR_DEFECTO,
@@ -85,7 +86,7 @@ function FaqItem({
       <div ref={contentRef} className="h-0 opacity-0 overflow-hidden">
         <div className="px-[24px] pb-[24px] bg-transparent">
           <p className="text-[14px] md:text-[16px] font-normal leading-[20px] text-[#485157]">
-            {item.answer}
+            <RichText texto={item.answer} claseNegrita="font-semibold text-[#141821]" />
           </p>
         </div>
       </div>
@@ -174,7 +175,7 @@ export default function Faq({
 
           {/* COLUMNA IZQUIERDA: Título + Botón */}
           <div className="lg:col-span-5 flex flex-col items-start">
-            <h2 className="text-[36px] md:text-[48px] leading-[44px] md:leading-[56px] font-medium text-[#141821] flex flex-wrap gap-x-[10px]">
+            <h2 className="text-[36px] md:text-[48px] leading-[44px] md:leading-[56px] font-medium text-[#141821] flex flex-wrap content-start gap-x-[10px]">
               <AnimatedRichText
                 texto={content.title}
                 claseAnimacion="faq-blur-word"

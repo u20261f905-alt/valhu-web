@@ -408,6 +408,7 @@ export default config({
         contacto: seoDePagina('Contacto'),
         blog: seoDePagina('Blog'),
         nosotros: seoDePagina('Nosotros'),
+        servicios: seoDePagina('Servicios'),
         web: seoDePagina('Servicio · Diseño y desarrollo web'),
         ads: seoDePagina('Servicio · Meta Ads'),
         uxui: seoDePagina('Servicio · Diseño UX/UI'),

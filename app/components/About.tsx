@@ -120,7 +120,7 @@ export default function About({
         {/* BLOQUE SUPERIOR: Título y Texto introductorio alineado abajo */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[20px] items-end mb-[24px]">
           {/* Título */}
-          <h2 className="text-[36px] md:text-[48px] leading-[44px] md:leading-[56px] font-medium text-[#141821] flex flex-wrap gap-x-[10px]">
+          <h2 className="text-[36px] md:text-[48px] leading-[44px] md:leading-[56px] font-medium text-[#141821] flex flex-wrap content-start gap-x-[10px]">
             <AnimatedRichText
               texto={content.title}
               claseAnimacion="about-blur-word"
@@ -130,7 +130,7 @@ export default function About({
           </h2>
 
           {/* Texto introductorio: 14px en mobile, 16px desde md */}
-          <p className="text-left text-[14px] md:text-[16px] leading-[20px] text-[#525866] flex flex-wrap gap-x-[4px]">
+          <p className="text-left text-[14px] md:text-[16px] leading-[20px] text-[#525866] flex flex-wrap content-start gap-x-[4px]">
             <AnimatedRichText
               texto={content.intro}
               claseAnimacion="about-blur-paragraph-word"
@@ -169,14 +169,14 @@ export default function About({
             {/* Texto en dos columnas + Botón del Hero */}
             <div className="flex flex-col gap-[20px]">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-[20px] text-left text-[14px] md:text-[16px] leading-[20px] text-[#525866]">
-                <p className="flex flex-wrap gap-x-[4px]">
+                <p className="flex flex-wrap content-start gap-x-[4px]">
                   <AnimatedRichText
                     texto={content.bottomLeft}
                     claseAnimacion="about-blur-bottom-word"
                     prefijo="about-bl"
                   />
                 </p>
-                <p className="flex flex-wrap gap-x-[4px]">
+                <p className="flex flex-wrap content-start gap-x-[4px]">
                   <AnimatedRichText
                     texto={content.bottomRight}
                     claseAnimacion="about-blur-bottom-word"

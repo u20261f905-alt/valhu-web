@@ -19,7 +19,7 @@ const FAQS_WEB = [
     id: 'web-1',
     question: '¿Cuánto tiempo toma desarrollar una web?',
     answer:
-      'Una web corporativa de 5 a 7 secciones toma entre 4 y 6 semanas desde la aprobación del diseño. Un ecommerce o un proyecto con funcionalidades a medida puede extenderse a 8 o 10. En la reunión inicial definimos el alcance real y te damos un cronograma por etapas, no una fecha suelta.',
+      'Una landing o una web inicial pueden estar listas en una o dos semanas. En una web con varias páginas, un ecommerce o un proyecto con funcionalidades a medida el tiempo puede extenderse. En la reunión inicial definimos qué necesitas realmente y recién ahí te damos un cronograma por etapas.',
   },
   {
     id: 'web-2',

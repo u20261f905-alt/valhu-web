@@ -1,0 +1,15 @@
+{
+  // Configuración de Cloudflare Workers para publicar el sitio.
+  //
+  // El build de Next genera la carpeta `out/` con todo el sitio ya resuelto
+  // en archivos. Aquí no hay código de servidor: Cloudflare solo sirve esos
+  // archivos desde su red.
+  "name": "valhu-web",
+  "compatibility_date": "2026-10-07",
+  "assets": {
+    "directory": "./out",
+    // Una dirección que no existe muestra la página 404 del sitio, con su
+    // navbar y su diseño, en lugar del error por defecto de Cloudflare.
+    "not_found_handling": "404-page"
+  }
+}

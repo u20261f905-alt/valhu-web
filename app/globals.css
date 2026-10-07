@@ -6,7 +6,12 @@
 /* Tu fuente de acento personalizada desde la carpeta public/fonts */
 @font-face {
   font-family: 'PP Editorial New';
-  src: url('/fonts/PPEditorialNew-Italic.otf') format('opentype');
+  /* WOFF2 primero: lo entienden todos los navegadores actuales, pesa casi la
+     mitad que el .otf y evita los problemas de OpenType en móviles. El .otf
+     queda como respaldo para navegadores antiguos. */
+  src:
+    url('/fonts/PPEditorialNew-Italic.woff2') format('woff2'),
+    url('/fonts/PPEditorialNew-Italic.otf') format('opentype');
   font-weight: 300;
   font-style: italic;
   font-display: swap;

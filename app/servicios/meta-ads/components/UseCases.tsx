@@ -65,7 +65,7 @@ export default function UseCases() {
     <section
       ref={containerRef}
       id="casos-de-uso"
-      className="w-full pt-0 pb-[48px] md:pb-[80px] bg-[#EFF8FD]"
+      className="w-full pt-0 pb-[48px] md:pb-[48px] lg:pb-[80px] bg-[#EFF8FD]"
     >
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[20px]">

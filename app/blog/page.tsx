@@ -29,7 +29,7 @@ export default async function BlogPage() {
 
       {/* Mismo efecto que el CTA del Home: entra inclinado y se endereza. */}
       <ScrollTilt from={16} to={-10} perspective={1100}>
-        <Cta />
+        <Cta esfera="/services/diseno-desarrollo-web/skyblue-sphere.webp" />
       </ScrollTilt>
     </main>
   );

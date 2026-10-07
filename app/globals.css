@@ -145,3 +145,28 @@
     black 100%
   );
 }
+
+/*
+ * Filas de palabras que se desplazan solas.
+ *
+ * Cada fila repite su contenido dos veces y se mueve exactamente la mitad
+ * de su ancho, así que al volver al inicio el fotograma es idéntico y el
+ * salto no se ve. Va en CSS y no en JavaScript porque es decoración pura:
+ * así se mueve sin ocupar el hilo principal.
+ */
+@keyframes valhu-fila-izquierda {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes valhu-fila-derecha {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* Quien pidió menos movimiento no ve ninguno. */
+@media (prefers-reduced-motion: reduce) {
+  .valhu-fila {
+    animation: none !important;
+  }
+}

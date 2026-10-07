@@ -3,19 +3,23 @@ import type { MetadataRoute } from 'next';
 /**
  * Instrucciones para los buscadores.
  *
- * Se abre todo el sitio menos las herramientas internas, y se le señala
- * dónde está el mapa del sitio.
+ * Se abre el sitio público entero y se cierran las herramientas internas,
+ * que no tienen por qué aparecer en Google. El sitemap se declara aquí para
+ * que lo encuentren sin que nadie lo envíe a mano.
  */
 
-const sitio = process.env.NEXT_PUBLIC_SITE_URL;
+const sitio = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: ['/keystatic', '/keystatic/', '/api/', '/seo'],
-    },
-    ...(sitio ? { sitemap: new URL('/sitemap.xml', sitio).toString(), host: sitio } : {}),
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/keystatic', '/seo', '/api/'],
+      },
+    ],
+    sitemap: new URL('/sitemap.xml', sitio).toString(),
+    host: sitio,
   };
 }

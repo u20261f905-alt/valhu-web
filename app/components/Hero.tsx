@@ -71,11 +71,11 @@ export default function Hero({
   }, { scope: containerRef, dependencies: [content] });
 
   return (
-    <section ref={containerRef} className="w-full pt-[24px] pb-[24px] md:pt-[40px] md:pb-[40px]">
-      <div className="max-w-[1220px] mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-[40px] items-center">
+    <section ref={containerRef} className="w-full pt-[24px] pb-[24px] md:pt-[28px] md:pb-[28px] lg:pt-[40px] lg:pb-[40px]">
+      <div className="max-w-[1220px] mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-0 md:gap-[24px] lg:gap-[40px] items-center">
 
         {/* COLUMNA IZQUIERDA */}
-        <div className="lg:col-span-7 flex flex-col items-start">
+        <div className="md:col-span-7 flex flex-col items-start">
 
           {/* VALHU GROUP: 14px/18px en mobile, 16px/22px desde md */}
           <div className="mb-3">
@@ -86,7 +86,7 @@ export default function Hero({
 
           {/* Título H1: 36px/40px en mobile, 64px/72px desde md.
               Se fuerza con "!" porque globals.css define el tamaño de h1 en @layer base. */}
-          <h1 className="mb-[16px] md:mb-[20px] !text-[36px] !leading-[40px] md:!text-[64px] md:!leading-[72px]">
+          <h1 className="mb-[16px] md:mb-[20px] !text-[36px] !leading-[40px] md:!text-[52px] md:!leading-[58px] lg:!text-[64px] lg:!leading-[72px]">
             <AnimatedRichText
               texto={content.title}
               claseAnimacion="blur-word"
@@ -122,10 +122,10 @@ export default function Hero({
         </div>
 
         {/* COLUMNA DERECHA */}
-        <div className="lg:col-span-5 flex justify-center lg:justify-end">
+        <div className="md:col-span-5 flex justify-center md:justify-end">
           <div
             ref={sphereRef}
-            className="relative w-full max-w-[440px] aspect-square invisible"
+            className="relative w-full max-w-[300px] md:max-w-[440px] aspect-square invisible"
           >
             <Image
               src={esfera.src}

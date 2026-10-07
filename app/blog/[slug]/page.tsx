@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import PostHeader from '../components/PostHeader';
 import PostBody from '../components/PostBody';
 import PostCard from '../components/PostCard';
+import CompartirNota from '../components/CompartirNota';
 import Cta from '@/app/components/Cta';
 import ScrollTilt from '@/app/components/ScrollTilt';
 import DatosEstructurados from '@/app/components/DatosEstructurados';
@@ -113,8 +114,14 @@ export default async function PostPage({ params }: PageProps) {
               </div>
             ) : null}
 
+            {/* Compartir */}
+            <CompartirNota
+              url={`${process.env.NEXT_PUBLIC_SITE_URL ?? ''}/blog/${post.slug}`}
+              titulo={post.title}
+            />
+
             {/* Volver */}
-            <div className="mt-[32px]">
+            <div className="mt-[24px]">
               <Link
                 href="/blog"
                 className="inline-flex items-center gap-2 text-[15px] leading-[22px] text-[#525866] transition-colors hover:text-[#141821]"
@@ -145,7 +152,7 @@ export default async function PostPage({ params }: PageProps) {
       ) : null}
 
       <ScrollTilt from={16} to={-10} perspective={1100}>
-        <Cta />
+        <Cta esfera="/services/diseno-desarrollo-web/skyblue-sphere.webp" />
       </ScrollTilt>
     </main>
   );

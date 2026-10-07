@@ -115,6 +115,7 @@ export default config({
       Home: ['portada', 'servicios', 'nosotros', 'preguntas', 'contacto', 'imagenes'],
       SEO: ['seoPaginas', 'ajustes', 'empresa'],
       Contacto: ['formulario'],
+      Legal: ['legales'],
     },
   },
 
@@ -260,6 +261,44 @@ export default config({
           description: 'Menor número, más arriba en el desplegable.',
           defaultValue: 1,
         }),
+      },
+    }),
+
+    /* ---------------- PÁGINAS LEGALES ---------------- */
+    legales: collection({
+      label: 'Páginas legales',
+      slugField: 'title',
+      path: 'content/legales/*',
+      format: { contentField: 'content' },
+      entryLayout: 'content',
+      columns: ['title', 'updatedAt'],
+
+      schema: {
+        title: fields.slug({
+          name: {
+            label: 'Título',
+            description: 'El nombre de la página, tal como aparece en el pie.',
+            validation: { isRequired: true },
+          },
+          slug: {
+            label: 'Dirección (slug)',
+            description: 'La parte final de la URL: /legales/lo-que-escribas-aquí.',
+          },
+        }),
+
+        updatedAt: fields.date({
+          label: 'Última actualización',
+          description: 'La fecha que se muestra al inicio del documento.',
+          validation: { isRequired: true },
+        }),
+
+        resumen: fields.text({
+          label: 'Resumen',
+          multiline: true,
+          description: 'Una o dos líneas. Se usa para Google, no se muestra en la página.',
+        }),
+
+        content: fields.markdoc({ label: 'Contenido' }),
       },
     }),
   },

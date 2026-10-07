@@ -1,6 +1,11 @@
 import type { MetadataRoute } from 'next';
 
-import { getPublishedPosts, getSeoPagina, type ClavePagina } from '@/lib/contenido';
+import {
+  getPaginasLegales,
+  getPublishedPosts,
+  getSeoPagina,
+  type ClavePagina,
+} from '@/lib/contenido';
 
 /**
  * El mapa del sitio que lee Google.
@@ -42,6 +47,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   );
 
+  const legales = (await getPaginasLegales()).map((p) => ({
+    url: new URL(`/legales/${p.slug}`, sitio).toString(),
+    lastModified: ahora,
+    changeFrequency: 'yearly' as const,
+    priority: 0.3,
+  }));
+
   const notas = await getPublishedPosts();
 
   const delBlog = notas.map((nota) => ({
@@ -51,5 +63,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...fijas.filter((p) => p !== null), ...delBlog];
+  return [...fijas.filter((p) => p !== null), ...delBlog, ...legales];
 }

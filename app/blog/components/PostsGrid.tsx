@@ -75,7 +75,7 @@ export default function PostsGrid({ posts }: { posts: PostListItem[] }) {
   );
 
   return (
-    <section ref={containerRef} className="w-full bg-[#EFF8FD] py-[48px]">
+    <section ref={containerRef} className="w-full bg-[#EFF8FD] py-[48px] md:py-[32px] lg:py-[48px]">
       <div className="mx-auto max-w-[1220px] px-4 md:px-8">
 
         {posts.length === 0 ? (
@@ -88,7 +88,10 @@ export default function PostsGrid({ posts }: { posts: PostListItem[] }) {
             {/* RESTO DE NOTAS */}
             {rest.length > 0 ? (
               <>
-                <h2 className="mb-[24px] mt-[48px] text-[24px] leading-[32px] md:text-[28px] md:leading-[36px]">
+                <h2
+                  id="ultimas-publicaciones"
+                  className="mb-[24px] mt-[48px] scroll-mt-[100px] text-[24px] leading-[32px] md:text-[28px] md:leading-[36px]"
+                >
                   Últimas <span className="font-accent italic font-light">publicaciones</span>
                 </h2>
 
@@ -113,10 +116,10 @@ function FeaturedPost({ post }: { post: PostListItem }) {
     <article className="blog-featured invisible">
       <Link
         href={`/blog/${post.slug}`}
-        className="group grid grid-cols-1 overflow-hidden rounded-[16px] bg-[#E1EDF4] transition-colors hover:bg-[#D6E6F0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141821] lg:grid-cols-12"
+        className="group grid grid-cols-1 items-stretch gap-[20px] rounded-[16px] border border-[#E1E7EC] bg-white p-[16px] transition-colors hover:border-[#D0D5DD] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141821] lg:grid-cols-12"
       >
         {/* Portada */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#BBD0E0] lg:col-span-7 lg:aspect-auto lg:min-h-[380px]">
+        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[12px] bg-[#BBD0E0] lg:col-span-7 lg:aspect-auto lg:min-h-[380px]">
           {post.cover_image_url ? (
             <Image
               src={post.cover_image_url}
@@ -132,13 +135,13 @@ function FeaturedPost({ post }: { post: PostListItem }) {
         </div>
 
         {/* Contenido */}
-        <div className="flex flex-col justify-center p-[24px] md:p-[40px] lg:col-span-5">
+        <div className="flex flex-col justify-center py-[8px] lg:col-span-5 lg:pr-[16px]">
           <div className="mb-[16px] flex flex-wrap items-center gap-2">
-            <span className="rounded-[8px] bg-[#1B3F7D] px-[10px] py-[6px] text-[12px] leading-[16px] text-white">
+            <span className="rounded-[8px] bg-[#E8EEF7] px-[10px] py-[6px] text-[12px] leading-[16px] text-[#1B3F7D]">
               Destacada
             </span>
 
-            <span className="rounded-[8px] bg-[#D1E4F2] px-[10px] py-[6px] text-[12px] leading-[16px] text-[#4D687B]">
+            <span className="rounded-[8px] bg-[#F1F6FA] px-[10px] py-[6px] text-[12px] leading-[16px] text-[#6B7A88]">
               {post.category}
             </span>
           </div>
@@ -198,7 +201,7 @@ function EmptyState() {
       </p>
 
       <Link
-        href="/contacto"
+        href="/#contacto"
         className="mt-[24px] inline-flex items-center justify-center gap-3 rounded-[8px] bg-[#141821] px-[20px] py-[16px] text-[16px] font-semibold text-white transition-colors hover:bg-[#2b3240]"
       >
         Agenda una reunión

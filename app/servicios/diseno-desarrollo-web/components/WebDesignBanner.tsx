@@ -75,10 +75,10 @@ export default function WebDesignBanner() {
       className="w-full bg-[#EFF8FD]"
     >
       <div className="max-w-[1220px] mx-auto px-4 md:px-8 pt-[24px] pb-[48px] md:pt-[40px] md:pb-[48px]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-[20px] lg:gap-[40px] items-center border-b border-[#E1E7EC] pb-[24px] md:pb-[40px]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-[20px] md:gap-[24px] lg:gap-[40px] items-center border-b border-[#E1E7EC] pb-[24px] md:pb-[40px]">
 
           {/* COLUMNA IZQUIERDA */}
-          <div className="lg:col-span-7 flex flex-col items-start">
+          <div className="md:col-span-7 flex flex-col items-start">
 
             {/* DISEÑO Y DESARROLLO WEB */}
             <div className="mb-3">
@@ -88,7 +88,7 @@ export default function WebDesignBanner() {
             </div>
 
             {/* Título */}
-            <h1 className="mb-[16px] md:mb-[20px] !text-[36px] !leading-[40px] md:!text-[64px] md:!leading-[72px]">
+            <h1 className="mb-[16px] md:mb-[20px] !text-[36px] !leading-[40px] md:!text-[52px] md:!leading-[58px] lg:!text-[64px] lg:!leading-[72px]">
               <span className="wd-blur-word invisible inline-block">Comienza</span>{' '}
               <span className="wd-blur-word invisible inline-block">hoy</span>{' '}
               <span className="wd-blur-word invisible inline-block">con</span>{' '}
@@ -148,7 +148,7 @@ export default function WebDesignBanner() {
           </div>
 
           {/* COLUMNA DERECHA: imagen decorativa */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+          <div className="md:col-span-5 flex justify-center md:justify-end">
             <div
               ref={sphereRef}
               className="relative w-full max-w-[440px] aspect-square invisible drop-shadow-[0_60px_60px_rgba(62,82,87,0.10)]"

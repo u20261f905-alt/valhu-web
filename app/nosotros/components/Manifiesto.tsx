@@ -113,10 +113,10 @@ export default function Manifiesto() {
   );
 
   return (
-    <section ref={containerRef} className="w-full bg-[#EFF8FD] py-[48px]">
+    <section ref={containerRef} className="w-full bg-[#EFF8FD] py-[48px] md:py-[32px] lg:py-[48px]">
       <div className="mx-auto max-w-[1220px] px-4 md:px-8">
         {/* TÍTULO */}
-        <h2 className="mb-[28px] max-w-[820px] text-[28px] leading-[34px] md:mb-[36px] md:text-[48px] md:leading-[56px]">
+        <h2 className="mb-[28px] max-w-[820px] text-[28px] leading-[34px] md:mb-[36px] md:text-[38px] md:leading-[44px] lg:text-[48px] lg:leading-[56px]">
           {["Nos", "incomoda"].map((word, i) => (
             <span
               key={`mf-t-${i}`}

@@ -130,8 +130,8 @@ export default function Services({
 
       // 3 y 4. DISEÑO UX y BRANDING — ambas suben desde ABAJO, pero en secuencia:
       // el stagger de 0.25s hace que primero entre UX y justo después Branding.
-      // El ScrollTrigger se ancla a la fila completa para que el orden sea
-      // siempre el mismo, sin importar cuál toque primero el borde del viewport.
+      // El ScrollTrigger se ancla a la tarjeta UX (no a la fila) porque en
+      // tablet la fila usa display:contents y deja de tener caja medible.
       gsap.fromTo(
         ['.card-ux', '.card-branding'],
         { autoAlpha: 0, y: 70 },
@@ -142,7 +142,7 @@ export default function Services({
           stagger: 0.25,
           ease: 'power3.out',
           scrollTrigger: {
-            trigger: '.services-bottom-row',
+            trigger: '#ux-design',
             start: 'top 85%',
             once: true,
           },
@@ -230,7 +230,7 @@ export default function Services({
           duration: 0.7,
           ease: 'power2.out',
           scrollTrigger: {
-            trigger: '.services-bottom-row',
+            trigger: '#ux-design',
             start: 'top 42%',
             once: true,
             invalidateOnRefresh: true,
@@ -248,7 +248,7 @@ export default function Services({
           duration: 0.7,
           ease: 'power2.out',
           scrollTrigger: {
-            trigger: '.services-bottom-row',
+            trigger: '#ux-design',
             start: 'top 42%',
             once: true,
             invalidateOnRefresh: true,
@@ -280,7 +280,7 @@ export default function Services({
     <section
       ref={containerRef}
       id="servicios"
-      className="w-full py-[24px] md:py-[40px] bg-[#EFF8FD]"
+      className="w-full py-[24px] md:py-[28px] lg:py-[40px] bg-[#EFF8FD]"
     >
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
 
@@ -309,11 +309,11 @@ export default function Services({
         </div>
 
         {/* GRID BENTO CON GAP DE 20px */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[20px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px]">
 
           {/* TARJETA 1 — Diseño y desarrollo web */}
-          <div className="card-web invisible relative overflow-hidden bg-[#E1EDF4] rounded-[16px] pt-[30px] pl-[30px] flex flex-col justify-between">
-            <div className="shrink-0 pr-[30px]">
+          <div className="card-web invisible relative overflow-hidden bg-[#E1EDF4] rounded-[16px] p-[30px] md:min-h-[280px] lg:pb-0 lg:pr-0 flex flex-col justify-start lg:justify-between">
+            <div className="shrink-0 lg:pr-[30px]">
               <h3 className="text-[24px] leading-[28px] font-normal text-[#141821]">
                 <RichText texto={web.title} />
               </h3>
@@ -331,7 +331,7 @@ export default function Services({
               </div>
             </div>
 
-            <div className="card-web-showcase invisible mt-[40px] mb-[30px] w-full bg-[#BBD0E0] rounded-l-[16px] p-[16px] lg:p-[30px] lg:pb-[40px] overflow-hidden relative flex">
+            <div className="card-web-showcase invisible mt-[40px] mb-[30px] mr-[30px] w-auto rounded-[16px] bg-[#BBD0E0] p-[16px] lg:mr-0 lg:w-full lg:rounded-l-[16px] lg:rounded-r-none lg:p-[30px] lg:pb-[40px] overflow-hidden relative hidden lg:flex">
               <div className="w-full flex flex-col items-start">
 
                 <div className="flex flex-wrap justify-start gap-2 lg:gap-3 mb-[24px]">
@@ -345,9 +345,9 @@ export default function Services({
                   ))}
                 </div>
 
-                <div className="grid grid-cols-[repeat(2,280px)] gap-[22px] justify-start">
+                <div className="grid w-auto grid-cols-[repeat(2,230px)] gap-[14px] justify-start lg:grid-cols-[repeat(2,280px)] lg:gap-[22px]">
 
-                  <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
+                  <div className="relative h-[168px] w-[230px] overflow-hidden rounded-[16px] lg:h-[205px] lg:w-[280px]">
                     <Image
                       src={img.webUno.src}
                       alt={img.webUno.alt}
@@ -356,7 +356,7 @@ export default function Services({
                     />
                   </div>
 
-                  <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
+                  <div className="relative h-[168px] w-[230px] overflow-hidden rounded-[16px] lg:h-[205px] lg:w-[280px]">
                     <Image
                       src={img.webDos.src}
                       alt={img.webDos.alt}
@@ -365,7 +365,7 @@ export default function Services({
                     />
                   </div>
 
-                  <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
+                  <div className="relative h-[168px] w-[230px] overflow-hidden rounded-[16px] lg:h-[205px] lg:w-[280px]">
                     <Image
                       src={img.webTres.src}
                       alt={img.webTres.alt}
@@ -374,7 +374,7 @@ export default function Services({
                     />
                   </div>
 
-                  <div className="w-[280px] h-[205px] rounded-[16px] overflow-hidden relative">
+                  <div className="relative h-[168px] w-[230px] overflow-hidden rounded-[16px] lg:h-[205px] lg:w-[280px]">
                     <Image
                       src={img.webCuatro.src}
                       alt={img.webCuatro.alt}
@@ -389,10 +389,10 @@ export default function Services({
           </div>
 
           {/* COLUMNA DERECHA */}
-          <div className="flex flex-col gap-[20px] h-full">
+          <div className="flex flex-col gap-[20px] h-full md:contents lg:flex">
 
             {/* TARJETA 2 — Performance Ads */}
-            <div className="card-ads invisible bg-[#1B3F7D] rounded-[16px] pt-[30px] px-[30px] text-white relative overflow-hidden h-[calc(50%-10px)] flex flex-col justify-between shrink-0">
+            <div className="card-ads invisible bg-[#1B3F7D] rounded-[16px] pt-[30px] pb-[30px] px-[30px] text-white relative overflow-hidden md:min-h-[280px] lg:min-h-0 lg:pb-0 lg:h-[calc(50%-10px)] flex flex-col justify-between shrink-0">
 
               <div className="pr-[0px]">
 
@@ -411,9 +411,9 @@ export default function Services({
 
               </div>
 
-              <div className="absolute bottom-0 inset-x-0 flex items-end justify-center gap-[0px] pointer-events-none">
+              <div className="absolute bottom-0 inset-x-0 hidden lg:flex items-end justify-center gap-[0px] pointer-events-none">
 
-                <div className="ads-stats invisible w-[260px] h-[190px] relative shrink-0">
+                <div className="ads-stats invisible relative h-[275px] w-[370px] shrink-0 lg:h-[190px] lg:w-[260px]">
                   <Image
                     src={img.adsEstadisticas.src}
                     alt={img.adsEstadisticas.alt}
@@ -422,7 +422,7 @@ export default function Services({
                   />
                 </div>
 
-                <div className="ads-chart invisible w-[280px] h-[190px] relative shrink-0">
+                <div className="ads-chart invisible relative h-[275px] w-[390px] shrink-0 lg:h-[190px] lg:w-[280px]">
                   <Image
                     src={img.adsGrafico.src}
                     alt={img.adsGrafico.alt}
@@ -435,10 +435,10 @@ export default function Services({
             </div>
 
             {/* TARJETAS 3 y 4 */}
-            <div className="services-bottom-row grid grid-cols-1 sm:grid-cols-2 gap-[20px] h-[calc(50%-10px)]">
+            <div className="services-bottom-row grid grid-cols-1 sm:grid-cols-2 gap-[20px] md:contents lg:grid lg:h-[calc(50%-10px)]">
 
               {/* Diseño UX */}
-              <div id="ux-design" className="card-ux invisible bg-[#1A3840] rounded-[16px] pt-[24px] px-[24px] pb-[24px] text-white flex flex-col justify-between relative overflow-hidden h-full">
+              <div id="ux-design" className="card-ux invisible bg-[#1A3840] rounded-[16px] pt-[24px] px-[24px] pb-[24px] text-white flex flex-col justify-between relative overflow-hidden h-full md:min-h-[280px]">
 
                 <div className="relative z-10 flex flex-col">
 
@@ -464,12 +464,12 @@ export default function Services({
 
                 </div>
 
-                <div className="ux-illustration invisible absolute bottom-0 left-1/2 w-[350px] h-[220px] pointer-events-none">
+                <div className="ux-illustration invisible absolute bottom-0 left-1/2 hidden h-[330px] w-[520px] pointer-events-none lg:block lg:h-[220px] lg:w-[350px]">
                   <Image
                     src={img.ux.src}
                     alt={img.ux.alt}
                     fill
-                    sizes="200px"
+                    sizes="(max-width: 1023px) 520px, 350px"
                     className="object-contain object-bottom"
                   />
                 </div>
@@ -477,7 +477,7 @@ export default function Services({
               </div>
 
               {/* Branding */}
-              <div id="branding" className="card-branding invisible bg-[#423517] rounded-[16px] pt-[24px] px-[24px] pb-[24px] text-white flex flex-col justify-between relative overflow-hidden h-full">
+              <div id="branding" className="card-branding invisible bg-[#423517] rounded-[16px] pt-[24px] px-[24px] pb-[24px] text-white flex flex-col justify-between relative overflow-hidden h-full md:min-h-[280px]">
 
                 <div className="relative z-10 flex flex-col">
 
@@ -503,12 +503,12 @@ export default function Services({
 
                 </div>
 
-                <div className="branding-illustration invisible absolute bottom-0 left-1/2 w-[350px] h-[220px] pointer-events-none">
+                <div className="branding-illustration invisible absolute bottom-0 left-1/2 hidden h-[330px] w-[520px] pointer-events-none lg:block lg:h-[220px] lg:w-[350px]">
                   <Image
                     src={img.branding.src}
                     alt={img.branding.alt}
                     fill
-                    sizes="320px"
+                    sizes="(max-width: 1023px) 520px, 350px"
                     className="object-contain object-bottom"
                   />
                 </div>

@@ -60,9 +60,9 @@ export default function NosotrosBanner() {
   return (
     <section ref={containerRef} className="w-full bg-[#EFF8FD]">
       <div className="max-w-[1220px] mx-auto px-4 md:px-8 pt-[24px] pb-[48px] md:pt-[40px] md:pb-[48px]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-[20px] lg:gap-[40px] items-center border-b border-[#E1E7EC] pb-[24px] md:pb-[40px]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-[20px] md:gap-[24px] lg:gap-[40px] items-center border-b border-[#E1E7EC] pb-[24px] md:pb-[40px]">
           {/* COLUMNA IZQUIERDA */}
-          <div className="lg:col-span-7 flex flex-col items-start">
+          <div className="md:col-span-7 flex flex-col items-start">
             {/* Pretitle */}
             <div className="mb-3">
               <span className="ns-anim-pretitle invisible text-[14px]/[18px] md:text-[16px]/[22px] uppercase underline decoration-[1px] decoration-[#969EB3] [text-underline-offset:2px] text-[#969EB3] font-normal inline-block">
@@ -71,7 +71,7 @@ export default function NosotrosBanner() {
             </div>
 
             {/* Título */}
-            <h1 className="mb-[16px] md:mb-[20px] !text-[36px] !leading-[40px] md:!text-[64px] md:!leading-[72px]">
+            <h1 className="mb-[16px] md:mb-[20px] !text-[36px] !leading-[40px] md:!text-[52px] md:!leading-[58px] lg:!text-[64px] lg:!leading-[72px]">
               <span className="ns-blur-word invisible inline-block">
                 Creamos
               </span>{" "}
@@ -134,7 +134,7 @@ export default function NosotrosBanner() {
           {/* COLUMNA DERECHA: la foto de quien está detrás de la agencia.
               El contenedor sigue la proporción del archivo (351x479) para
               que la foto lo llene sin recortes ni franjas vacías. */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-start">
+          <div className="md:col-span-5 flex justify-center md:justify-start">
             {/* El contenedor de fuera lo maneja GSAP (entrada). La inclinación
                 vive en el de dentro para que las dos no se pisen. */}
             <div ref={sphereRef} className="w-full max-w-[360px] invisible">

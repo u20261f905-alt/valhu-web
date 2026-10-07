@@ -106,6 +106,18 @@ export default function ServiceMotion({ children }: { children: ReactNode }) {
                       }),
                 },
               );
+
+              // La esfera del encabezado sigue flotando después de entrar.
+              if (heroMedia) {
+                gsap.to(card, {
+                  y: -18,
+                  duration: 1.8,
+                  delay: 2.4,
+                  repeat: -1,
+                  yoyo: true,
+                  ease: "sine.inOut",
+                });
+              }
             });
 
           section.querySelectorAll("a").forEach((button) => {

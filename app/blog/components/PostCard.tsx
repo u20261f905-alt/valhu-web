@@ -22,10 +22,10 @@ export default function PostCard({
     <article className={`blog-card h-full ${animated ? 'invisible' : ''}`}>
       <Link
         href={`/blog/${post.slug}`}
-        className="group flex h-full flex-col overflow-hidden rounded-[16px] bg-[#E1EDF4] transition-colors hover:bg-[#D6E6F0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141821]"
+        className="group flex h-full flex-col rounded-[16px] border border-[#E1E7EC] bg-white p-[16px] transition-colors hover:border-[#D0D5DD] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141821]"
       >
         {/* Portada */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#BBD0E0]">
+        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[12px] bg-[#BBD0E0]">
           {post.cover_image_url ? (
             <Image
               src={post.cover_image_url}
@@ -40,9 +40,9 @@ export default function PostCard({
         </div>
 
         {/* Contenido */}
-        <div className="flex flex-1 flex-col p-[24px]">
+        <div className="flex flex-1 flex-col pt-[20px]">
           <div className="mb-[16px] flex flex-wrap items-center gap-2">
-            <span className="rounded-[8px] bg-[#D1E4F2] px-[10px] py-[6px] text-[12px] leading-[16px] text-[#4D687B]">
+            <span className="rounded-[8px] bg-[#F1F6FA] px-[10px] py-[6px] text-[12px] leading-[16px] text-[#6B7A88]">
               {post.category}
             </span>
 

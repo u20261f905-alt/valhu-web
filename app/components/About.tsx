@@ -113,14 +113,14 @@ export default function About({
     <section
       ref={containerRef}
       id="nosotros"
-      className="w-full py-[80px] bg-[#EFF8FD]"
+      className="w-full py-[48px] md:py-[48px] lg:py-[80px] bg-[#EFF8FD]"
     >
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
 
         {/* BLOQUE SUPERIOR: Título y Texto introductorio alineado abajo */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[20px] items-end mb-[24px]">
           {/* Título */}
-          <h2 className="text-[36px] md:text-[48px] leading-[44px] md:leading-[56px] font-medium text-[#141821] flex flex-wrap content-start gap-x-[10px]">
+          <h2 className="text-[36px] md:text-[38px] md:leading-[44px] leading-[44px] lg:text-[48px] lg:leading-[56px] font-medium text-[#141821] flex flex-wrap content-start gap-x-[10px]">
             <AnimatedRichText
               texto={content.title}
               claseAnimacion="about-blur-word"
@@ -156,7 +156,7 @@ export default function About({
           {/* Columna derecha */}
           <div className="flex flex-col gap-[20px]">
             {/* Foto derecha (img-about-2.webp con bordes de 16px) */}
-            <div className="about-img-right invisible relative w-full h-[220px] md:h-[260px] rounded-[16px] overflow-hidden">
+            <div className="about-img-right invisible relative hidden lg:block w-full h-[220px] md:h-[260px] rounded-[16px] overflow-hidden">
               <Image
                 src={img.dos.src}
                 alt={img.dos.alt}

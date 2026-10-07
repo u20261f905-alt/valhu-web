@@ -43,6 +43,20 @@ const INTERESES = [
   "Otros",
 ];
 
+const PERFORMANCE = "Performance Ads (Google y Meta)";
+
+/**
+ * Cuando el único servicio marcado es Performance Ads, el presupuesto no es
+ * el de un proyecto cerrado sino la inversión mensual en pauta, así que la
+ * pregunta y los rangos cambian.
+ */
+const PRESUPUESTOS_PAUTA = [
+  { soles: "S/ 1,000 - S/ 3,400", dolares: "$300 - $999" },
+  { soles: "S/ 3,400 - S/ 6,800", dolares: "$1,000 - $1,999" },
+  { soles: "S/ 6,800 - S/ 17,000", dolares: "$2,000 - $4,999" },
+  { soles: "S/ 17,000 a más", dolares: "$5,000 a más" },
+];
+
 const PASOS = ["Tus datos", "Perfil", "Proyecto", "Empresa", "Presupuesto"];
 const TOTAL_PASOS = PASOS.length;
 
@@ -105,6 +119,9 @@ export default function FormularioContacto({
       intereses: d.intereses.includes(valor)
         ? d.intereses.filter((i) => i !== valor)
         : [...d.intereses, valor],
+      // Los rangos del paso 5 dependen de lo que se marque aquí, así que
+      // limpiamos la elección previa para no enviar un rango que ya no existe.
+      presupuesto: "",
     }));
 
   const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(datos.correo.trim());
@@ -121,6 +138,15 @@ export default function FormularioContacto({
       datos.descripcion.trim().length > 10) ||
     (paso === 4 && datos.empresa.trim().length > 10) ||
     (paso === 5 && datos.presupuesto !== "");
+
+  // Solo pauta: ni web, ni branding, ni UX. Entonces preguntamos por la
+  // inversión mensual en medios en lugar del presupuesto del proyecto.
+  const soloPauta =
+    datos.intereses.length === 1 && datos.intereses[0] === PERFORMANCE;
+
+  const opcionesPresupuesto = soloPauta
+    ? PRESUPUESTOS_PAUTA
+    : textos.presupuestos;
 
   /**
    * Lo que se manda al correo. Cuando eligieron "Otros", vale más lo que
@@ -165,7 +191,8 @@ export default function FormularioContacto({
           "Sobre el proyecto": datos.descripcion,
           "Sobre la empresa": datos.empresa,
           "Web o app": datos.enlace || "—",
-          Presupuesto: datos.presupuesto,
+          [soloPauta ? "Inversión mensual en pauta" : "Presupuesto"]:
+            datos.presupuesto,
         }),
       });
 
@@ -432,10 +459,14 @@ export default function FormularioContacto({
 
         {paso === 5 ? (
           <>
-            <Pregunta>¿Cuál es tu presupuesto para este proyecto?</Pregunta>
+            <Pregunta>
+              {soloPauta
+                ? "¿Cuánto planeas invertir al mes en pauta digital?"
+                : "¿Cuál es tu presupuesto para este proyecto?"}
+            </Pregunta>
 
             <div className="flex flex-col gap-[10px]">
-              {textos.presupuestos.map((p) => {
+              {opcionesPresupuesto.map((p) => {
                 const valor = `${p.soles} · ${p.dolares}`;
                 const activo = datos.presupuesto === valor;
 

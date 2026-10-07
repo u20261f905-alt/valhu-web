@@ -96,7 +96,7 @@ export const SERVICES_POR_DEFECTO: ServicesContent = {
       title: 'Diseño y desarrollo *Web*',
       description:
         'Diseñamos y desarrollamos sitios web a medida, rápidos y seguros. Enfocados en la experiencia de usuario, la escalabilidad y funcionalidad impecable.',
-      buttonText: 'Ver proyectos',
+      buttonText: 'Ver servicio',
       buttonHref: '/servicios/diseno-desarrollo-web',
     },
     ads: {
@@ -110,14 +110,14 @@ export const SERVICES_POR_DEFECTO: ServicesContent = {
       title: 'Diseño *UX*',
       description:
         'Investigamos y creamos experiencias digitales para Saas, apps y webs de startups/empresas.',
-      buttonText: 'Ver proyectos',
+      buttonText: 'Ver servicio',
       buttonHref: '/servicios/diseno-ux-ui',
     },
     branding: {
       title: 'Branding',
       description:
         'Desarrollamos la identidad visual, el tono de voz y la personalidad de tu marca',
-      buttonText: 'Ver proyectos',
+      buttonText: 'Ver servicio',
       buttonHref: '/servicios/branding',
     },
   },

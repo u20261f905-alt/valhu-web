@@ -348,3 +348,41 @@ export async function getFormulario() {
       'Te respondemos dentro de las siguientes 48 horas al correo que nos dejaste.',
   };
 }
+
+/* ================================================================== */
+/*  Páginas legales                                                   */
+/* ================================================================== */
+
+export type PaginaLegal = {
+  slug: string;
+  title: string;
+  resumen: string | null;
+  updatedAt: string | null;
+  content: Node;
+};
+
+export async function getPaginasLegales(): Promise<
+  { slug: string; title: string }[]
+> {
+  const todas = await reader.collections.legales.all();
+  return todas
+    .map((p) => ({ slug: p.slug, title: p.entry.title }))
+    .sort((a, b) => a.title.localeCompare(b.title, 'es'));
+}
+
+export async function getPaginaLegal(slug: string): Promise<PaginaLegal | null> {
+  const pagina = await reader.collections.legales.read(slug);
+  if (!pagina) return null;
+
+  const contenido = pagina.content;
+  const resuelto =
+    typeof contenido === 'function' ? await contenido() : contenido;
+
+  return {
+    slug,
+    title: pagina.title,
+    resumen: oNulo(pagina.resumen),
+    updatedAt: oNulo(pagina.updatedAt),
+    content: resuelto.node,
+  };
+}

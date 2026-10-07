@@ -82,10 +82,10 @@ export default function Proceso() {
     "El mismo método en cada proyecto, sea una web, una campaña o una marca completa.";
 
   return (
-    <section ref={containerRef} className="w-full bg-[#EFF8FD] py-[48px]">
+    <section ref={containerRef} className="w-full bg-[#EFF8FD] py-[48px] md:py-[32px] lg:py-[48px]">
       <div className="mx-auto max-w-[1220px] px-4 md:px-8">
         <div className="mx-auto mb-[32px] max-w-[820px] text-center">
-          <h2 className="mb-[12px] text-[28px] leading-[34px] md:text-[48px] md:leading-[56px]">
+          <h2 className="mb-[12px] text-[28px] leading-[34px] md:text-[38px] md:leading-[44px] lg:text-[48px] lg:leading-[56px]">
             {["Cómo"].map((word, i) => (
               <span
                 key={`pr-t-${i}`}

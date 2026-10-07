@@ -169,13 +169,13 @@ export default function Faq({
   );
 
   return (
-    <section ref={containerRef} id="faq" className="w-full py-[48px] bg-[#EFF8FD]">
+    <section ref={containerRef} id="faq" className="w-full py-[48px] md:py-[32px] lg:py-[48px] bg-[#EFF8FD]">
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-start">
 
           {/* COLUMNA IZQUIERDA: Título + Botón */}
           <div className="lg:col-span-5 flex flex-col items-start">
-            <h2 className="text-[36px] md:text-[48px] leading-[44px] md:leading-[56px] font-medium text-[#141821] flex flex-wrap content-start gap-x-[10px]">
+            <h2 className="text-[36px] md:text-[38px] md:leading-[44px] leading-[44px] lg:text-[48px] lg:leading-[56px] font-medium text-[#141821] flex flex-wrap content-start gap-x-[10px]">
               <AnimatedRichText
                 texto={content.title}
                 claseAnimacion="faq-blur-word"

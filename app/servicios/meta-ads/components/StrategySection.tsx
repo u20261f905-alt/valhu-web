@@ -92,7 +92,7 @@ export default function StrategySection() {
   return (
     <section
       ref={containerRef}
-      className="w-full pt-0 pb-[48px] md:pb-[48px] lg:pb-[80px] bg-[#EFF8FD]"
+      className="w-full pt-[40px] md:pt-[48px] lg:pt-[64px] pb-0 bg-[#EFF8FD]"
     >
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
         {/* TÍTULO PRINCIPAL DE LA SECCIÓN */}

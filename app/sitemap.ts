@@ -16,6 +16,12 @@ import {
  * pidiendo que no indexe.
  */
 
+/**
+ * El sitio se publica como archivos estáticos: este archivo se escribe una
+ * vez, durante el build, en lugar de calcularse en cada visita.
+ */
+export const dynamic = 'force-static';
+
 const sitio = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
 const PAGINAS: { ruta: string; clave: ClavePagina; prioridad: number }[] = [

@@ -113,7 +113,7 @@ export default function About({
     <section
       ref={containerRef}
       id="nosotros"
-      className="w-full py-[48px] md:py-[48px] lg:py-[80px] bg-[#EFF8FD]"
+      className="w-full pt-[40px] md:pt-[48px] lg:pt-[64px] pb-0 bg-[#EFF8FD]"
     >
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
 

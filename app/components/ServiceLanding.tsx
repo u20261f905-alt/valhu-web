@@ -116,7 +116,7 @@ const brandMethod = [
 function BrandingContent() {
   return (
     <>
-      <section className="pt-0 pb-[48px] md:pb-[48px] lg:pb-[80px]">
+      <section className="pt-[24px] md:pt-[32px] lg:pt-[48px] pb-0">
         <div className="mx-auto max-w-[1220px] px-4 md:px-8">
           <Title center>
             Marcas estratégicas, coherentes y{" "}
@@ -141,7 +141,7 @@ function BrandingContent() {
         </div>
       </section>
 
-      <section className="pt-0 pb-[48px] md:pb-[48px] lg:pb-[80px]">
+      <section className="pt-[40px] md:pt-[48px] lg:pt-[64px] pb-0">
         <div className="mx-auto max-w-[1220px] px-4 md:px-8">
           <Title center>
             Una identidad visual sólida, coherente y{" "}
@@ -196,7 +196,7 @@ function BrandingContent() {
         </div>
       </section>
 
-      <section className="pt-0 pb-[48px] md:pb-[48px] lg:pb-[80px]">
+      <section className="pt-[40px] md:pt-[48px] lg:pt-[64px] pb-0">
         <div className="mx-auto max-w-[1220px] px-4 md:px-8">
           <Title center>
             Nuestra{" "}
@@ -221,7 +221,7 @@ function BrandingContent() {
         </div>
       </section>
 
-      <section id="proyectos" className="pt-0 pb-[48px] md:pb-[48px] lg:pb-[80px]">
+      <section id="proyectos" className="pt-[40px] md:pt-[48px] lg:pt-[64px] pb-0">
         <div className="mx-auto max-w-[1220px] px-4 md:px-8">
           <Title center>
             Nuestros{" "}
@@ -254,7 +254,7 @@ function BrandingContent() {
         </div>
       </section>
 
-      <section className="pt-0 pb-[48px] md:pb-[48px] lg:pb-[80px]">
+      <section className="pt-[40px] md:pt-[48px] lg:pt-[64px] pb-0">
         <div className="mx-auto max-w-[1220px] px-4 md:px-8">
           <div className="grid grid-cols-1 items-stretch gap-[20px] lg:grid-cols-[45fr_55fr]">
             <div className="flex flex-col items-center justify-center rounded-[16px] bg-white p-[32px] text-center md:p-[40px]">
@@ -411,7 +411,7 @@ const POR_QUE = [
 function UxContent() {
   return (
     <>
-      <section className="pt-0 pb-[48px] md:pb-[48px] lg:pb-[80px]">
+      <section className="pt-[24px] md:pt-[32px] lg:pt-[48px] pb-0">
         <div className="mx-auto max-w-[1220px] px-4 md:px-8">
           <Title center>
             ¿Para quiénes es este{" "}
@@ -431,7 +431,7 @@ function UxContent() {
         </div>
       </section>
 
-      <section id="proyectos" className="pt-0 pb-[24px] md:pb-[32px]">
+      <section id="proyectos" className="pt-[40px] md:pt-[48px] lg:pt-[64px] pb-0">
         <div className="mx-auto max-w-[1220px] px-4 md:px-8">
           <Title center>
             Nuestros{" "}
@@ -442,11 +442,9 @@ function UxContent() {
 
       {/* El carrusel va fuera del contenedor: necesita todo el ancho de la
           pantalla para que los degradados de los lados tengan sentido. */}
-      <div className="pb-[48px] md:pb-[48px] lg:pb-[80px]">
-        <CarruselImagenes piezas={PROYECTOS_UX} />
-      </div>
+      <CarruselImagenes piezas={PROYECTOS_UX} pegadoArriba />
 
-      <section className="pt-0 pb-[48px] md:pb-[48px] lg:pb-[80px]">
+      <section className="pt-[40px] md:pt-[48px] lg:pt-[64px] pb-0">
         <div className="mx-auto max-w-[1220px] px-4 md:px-8">
           <Title center>
             ¿Por qué diseñar tu producto con{" "}
@@ -487,7 +485,7 @@ export default function ServiceLanding({
     <main className="bg-[#EFF8FD]">
       <ServiceMotion key={variant}>
         <section className="w-full">
-          <div className="mx-auto max-w-[1220px] px-4 pt-[24px] pb-[48px] md:px-8 md:pt-[40px] md:pb-[48px]">
+          <div className="mx-auto max-w-[1220px] px-4 pt-[24px] pb-0 md:px-8 md:pt-[40px]">
             <div className="grid grid-cols-1 items-center gap-10 border-b border-[#E1E7EC] pb-[24px] md:grid-cols-12 md:gap-6 md:pb-[40px] lg:gap-10">
               <div className="md:col-span-7 flex flex-col items-start">
                 <p className="mb-3 text-[14px]/[18px] md:text-[16px]/[22px] uppercase underline decoration-[1px] decoration-[#969EB3] [text-underline-offset:2px] text-[#969EB3] font-normal inline-block">

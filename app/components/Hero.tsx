@@ -71,7 +71,7 @@ export default function Hero({
   }, { scope: containerRef, dependencies: [content] });
 
   return (
-    <section ref={containerRef} className="w-full pt-[24px] pb-[24px] md:pt-[28px] md:pb-[28px] lg:pt-[40px] lg:pb-[40px]">
+    <section ref={containerRef} className="w-full pt-[24px] pb-0 md:pt-[28px] lg:pt-[40px]">
       <div className="max-w-[1220px] mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-0 md:gap-[24px] lg:gap-[40px] items-center">
 
         {/* COLUMNA IZQUIERDA */}

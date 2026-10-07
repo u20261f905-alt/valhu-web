@@ -78,7 +78,7 @@ export default function PostHeader({
     <section ref={containerRef} className="w-full bg-[#EFF8FD]">
       {/* Mismo ancho de columna que el cuerpo de la nota (760px), para que
           migas, título, autoría y portada queden alineados con el texto. */}
-      <div className="mx-auto max-w-[1220px] px-4 pt-[24px] pb-[48px] md:px-8 md:pt-[40px] md:pb-[48px]">
+      <div className="mx-auto max-w-[1220px] px-4 pt-[24px] pb-0 md:px-8 md:pt-[40px]">
         <div className="mx-auto max-w-[760px]">
 
         {/* Migas + categoría */}

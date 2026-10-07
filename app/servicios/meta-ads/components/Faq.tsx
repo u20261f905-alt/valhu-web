@@ -186,7 +186,7 @@ export default function Faq() {
   );
 
   return (
-    <section ref={containerRef} id="faq" className="w-full pt-0 pb-[48px] bg-[#EFF8FD]">
+    <section ref={containerRef} id="faq" className="w-full pt-[40px] md:pt-[48px] lg:pt-[64px] pb-0 bg-[#EFF8FD]">
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-start">
 

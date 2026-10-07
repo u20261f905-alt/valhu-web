@@ -119,7 +119,7 @@ export default function Cta({
     <section
       ref={containerRef}
       id="contacto"
-      className="w-full bg-[#EFF8FD] pb-[48px] md:pb-[32px] lg:pb-[48px]"
+      className="w-full bg-[#EFF8FD] pt-[40px] md:pt-[48px] lg:pt-[64px] pb-[40px] md:pb-[48px] lg:pb-[64px]"
     >
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
         <div className="relative w-full min-h-[375px] bg-[#141821] rounded-[16px] overflow-hidden flex flex-col items-center justify-center text-center px-4 py-[40px] lg:h-[375px] lg:py-0">

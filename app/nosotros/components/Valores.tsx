@@ -168,7 +168,7 @@ export default function Valores() {
   );
 
   return (
-    <section ref={containerRef} className="w-full bg-[#EFF8FD] py-[48px] md:py-[32px] lg:py-[48px]">
+    <section ref={containerRef} className="w-full bg-[#EFF8FD] pt-[40px] md:pt-[48px] lg:pt-[64px] pb-0">
       <div className="mx-auto max-w-[1220px] px-4 md:px-8">
         <div className="mx-auto mb-[32px] max-w-[820px] text-center">
           <h2 className="text-[28px] leading-[34px] md:text-[38px] md:leading-[44px] lg:text-[48px] lg:leading-[56px]">

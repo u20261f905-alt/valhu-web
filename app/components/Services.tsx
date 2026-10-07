@@ -280,7 +280,7 @@ export default function Services({
     <section
       ref={containerRef}
       id="servicios"
-      className="w-full py-[24px] md:py-[28px] lg:py-[40px] bg-[#EFF8FD]"
+      className="w-full pt-[24px] md:pt-[32px] lg:pt-[48px] pb-0 bg-[#EFF8FD]"
     >
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
 

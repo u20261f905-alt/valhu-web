@@ -100,7 +100,7 @@ export default function ServicesShowcase() {
     <section
       ref={containerRef}
       id="proyectos"
-      className="w-full py-[48px] md:py-[48px] lg:py-[80px] bg-[#EFF8FD]"
+      className="w-full pt-[40px] md:pt-[48px] lg:pt-[64px] pb-0 bg-[#EFF8FD]"
     >
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
         <h2 className="mb-[40px] flex flex-wrap content-start gap-x-[10px] text-[28px] leading-[34px] text-[#141821] md:mb-[56px] md:text-[38px] md:leading-[44px] lg:text-[48px] lg:leading-[56px]">

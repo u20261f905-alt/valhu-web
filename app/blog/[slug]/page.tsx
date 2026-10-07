@@ -16,8 +16,12 @@ import { schemaMigas, schemaNota } from '@/lib/schema';
  * La nota se genera durante el build a partir de su archivo en content/notas.
  */
 
-/** Permite servir notas creadas después del último build. */
-export const dynamicParams = true;
+/**
+ * Solo existen las notas que había al compilar. El sitio se publica como
+ * archivos estáticos, así que no hay servidor que pueda inventar una ruta
+ * nueva: cualquier dirección que no corresponda a una nota cae en el 404.
+ */
+export const dynamicParams = false;
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -89,7 +93,7 @@ export default async function PostPage({ params }: PageProps) {
 
       {/* CUERPO DE LA NOTA */}
       <article className="w-full bg-[#EFF8FD]">
-        <div className="mx-auto max-w-[1220px] px-4 pb-[48px] md:px-8">
+        <div className="mx-auto max-w-[1220px] px-4 pt-[24px] md:pt-[32px] lg:pt-[48px] pb-0 md:px-8">
           <div className="mx-auto max-w-[760px]">
 
             {post.excerpt ? (
@@ -136,7 +140,7 @@ export default async function PostPage({ params }: PageProps) {
 
       {/* NOTAS RELACIONADAS */}
       {related.length > 0 ? (
-        <section className="w-full bg-[#EFF8FD] py-[48px]">
+        <section className="w-full bg-[#EFF8FD] pt-[40px] md:pt-[48px] lg:pt-[64px] pb-0">
           <div className="mx-auto max-w-[1220px] px-4 md:px-8">
             <h2 className="mb-[24px] text-[24px] leading-[32px] md:text-[28px] md:leading-[36px]">
               Sigue <span className="font-accent italic font-light">leyendo</span>

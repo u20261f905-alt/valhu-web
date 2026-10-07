@@ -8,6 +8,12 @@ import type { MetadataRoute } from 'next';
  * que lo encuentren sin que nadie lo envíe a mano.
  */
 
+/**
+ * El sitio se publica como archivos estáticos: este archivo se escribe una
+ * vez, durante el build, en lugar de calcularse en cada visita.
+ */
+export const dynamic = 'force-static';
+
 const sitio = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
 export default function robots(): MetadataRoute.Robots {

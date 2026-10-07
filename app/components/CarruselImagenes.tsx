@@ -25,12 +25,15 @@ export default function CarruselImagenes({
   duracion = 32,
   ancho = 460,
   alto = 288,
+  pegadoArriba = false,
 }: {
   piezas: Pieza[];
   /** Segundos que tarda en recorrer el set completo. Más alto, más lento. */
   duracion?: number;
   ancho?: number;
   alto?: number;
+  /** True cuando va justo debajo de un título que ya puso la separación. */
+  pegadoArriba?: boolean;
 }) {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -72,7 +75,7 @@ export default function CarruselImagenes({
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-[#EFF8FD] pt-0 pb-[16px] md:pb-[24px]"
+      className={`relative w-full overflow-hidden bg-[#EFF8FD] pb-0 ${pegadoArriba ? "pt-[20px]" : "pt-[24px] md:pt-[32px] lg:pt-[48px]"}`}
     >
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[90px] bg-gradient-to-r from-[#EFF8FD] to-transparent md:w-[300px]" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[90px] bg-gradient-to-l from-[#EFF8FD] to-transparent md:w-[300px]" />

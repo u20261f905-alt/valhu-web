@@ -74,7 +74,7 @@ export default function WebDesignBanner() {
       id="inicio"
       className="w-full bg-[#EFF8FD]"
     >
-      <div className="max-w-[1220px] mx-auto px-4 md:px-8 pt-[24px] pb-[48px] md:pt-[40px] md:pb-[48px]">
+      <div className="max-w-[1220px] mx-auto px-4 md:px-8 pt-[24px] pb-0 md:pt-[40px] md:pb-0">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-[20px] md:gap-[24px] lg:gap-[40px] items-center border-b border-[#E1E7EC] pb-[24px] md:pb-[40px]">
 
           {/* COLUMNA IZQUIERDA */}

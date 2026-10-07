@@ -95,16 +95,59 @@ Las imágenes se exportan al doble del tamaño en que se muestran, en WebP.
 
 ---
 
-## Build y despliegue
+## Build
 
 ```bash
 npm run build
-npm start
 ```
 
-`npm run build` compila **todas** las rutas, también las que nunca abres en
-desarrollo. Córrelo antes de cada despliegue.
+Compila **todas** las rutas, también las que nunca abres en desarrollo.
+Córrelo antes de cada despliegue.
 
-Antes de publicar: define las variables de entorno en el hosting, cambia la
-Website URL en el panel de Web3Forms al dominio real, y completa los *Datos de
-la empresa* y el *SEO por página* en el editor.
+## Despliegue (Cloudflare Pages)
+
+El sitio se publica como archivos estáticos. El build de producción se activa
+con la variable `BUILD_ESTATICO=true`, que genera la carpeta `out/` y deja
+fuera el editor de contenidos y la herramienta de SEO (los archivos
+`*.dev.tsx` y `*.dev.ts`), que solo tienen sentido en local.
+
+En el panel de Cloudflare Pages, conectando este repositorio:
+
+| Ajuste | Valor |
+|---|---|
+| Framework preset | Next.js (Static HTML Export) |
+| Build command | `npm run build` |
+| Output directory | `out` |
+
+Y en las variables de entorno del proyecto:
+
+```
+BUILD_ESTATICO=true
+NEXT_PUBLIC_SITE_URL=https://valhugroup.com
+NEXT_PUBLIC_WEB3FORMS_KEY=tu-clave-de-web3forms
+NODE_VERSION=20
+```
+
+Para probar ese mismo build en tu computadora (PowerShell):
+
+```powershell
+$env:BUILD_ESTATICO="true"; npm run build
+```
+
+Cada push a la rama principal reconstruye y publica el sitio.
+
+## Cómo publicar un cambio de contenido
+
+1. `npm run dev` y edita en `http://localhost:3000/keystatic`.
+2. Al guardar, Keystatic escribe los archivos dentro de `content/`.
+3. `git add .`, `git commit -m "..."` y `git push`.
+4. Cloudflare reconstruye solo.
+
+El editor no existe en la web publicada: se edita en local y se publica con un
+push.
+
+## Antes de publicar por primera vez
+
+Define las variables de entorno en Cloudflare, cambia la Website URL en el
+panel de Web3Forms al dominio real, y completa los *Datos de la empresa* y el
+*SEO por página* en el editor.

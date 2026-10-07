@@ -75,7 +75,7 @@ export default function PostsGrid({ posts }: { posts: PostListItem[] }) {
   );
 
   return (
-    <section ref={containerRef} className="w-full bg-[#EFF8FD] py-[48px] md:py-[32px] lg:py-[48px]">
+    <section ref={containerRef} className="w-full bg-[#EFF8FD] pt-[24px] md:pt-[32px] lg:pt-[48px] pb-[40px] md:pb-[48px] lg:pb-[64px]">
       <div className="mx-auto max-w-[1220px] px-4 md:px-8">
 
         {posts.length === 0 ? (

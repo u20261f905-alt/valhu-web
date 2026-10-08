@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 import SoloSitioPublico from "./components/SoloSitioPublico";
+import ConsentimientoCookies from "./components/ConsentimientoCookies";
 import DatosEstructurados from "./components/DatosEstructurados";
 
 import { getAjustes } from "@/lib/contenido";
@@ -72,6 +73,10 @@ export default async function RootLayout({
          <div className="blur-layer blur-layer-3" />
          <div className="blur-layer blur-layer-4" />
         </div>
+
+        {/* La medición (Tag Manager, Analytics, Clarity) solo se carga
+            después de que la persona acepta. */}
+        <ConsentimientoCookies />
        </SoloSitioPublico>
       </body>
     </html>

@@ -92,7 +92,6 @@ export default function Hero({
               claseAnimacion="blur-word"
               prefijo="hero-t"
               separador="espacio"
-              claseAcento="font-accent"
             />
           </h1>
 

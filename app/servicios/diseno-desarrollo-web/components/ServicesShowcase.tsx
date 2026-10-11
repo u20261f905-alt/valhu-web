@@ -10,6 +10,7 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
+  nombre: string;
   tag: string;
   image: string;
   alt: string;
@@ -18,27 +19,31 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
+    nombre: 'Yo Busco',
     tag: 'Portal inmobiliario',
     image: '/services/diseno-desarrollo-web/portal-inmobiliario.webp',
-    alt: 'Proyecto: portal inmobiliario',
+    alt: 'Yo Busco, portal inmobiliario desarrollado por Valhu Group',
     href: 'https://yobusco.pe',
   },
   {
+    nombre: 'Indie',
     tag: 'Ecommerce',
     image: '/services/diseno-desarrollo-web/ecommerce-macbook.webp',
-    alt: 'Proyecto: ecommerce',
+    alt: 'Indie, tienda online desarrollada por Valhu Group',
     href: 'https://indie.uy',
   },
   {
+    nombre: 'Pinta Colors',
     tag: 'Ecommerce',
     image: '/services/diseno-desarrollo-web/group-pinta-colors.webp',
-    alt: 'Proyecto: Pinta Colors',
+    alt: 'Pinta Colors, ecommerce desarrollado por Valhu Group',
     href: 'https://pintacolors.pe',
   },
   {
+    nombre: 'Fitness Extreme',
     tag: 'B2B',
     image: '/services/diseno-desarrollo-web/fitness-extreme.webp',
-    alt: 'Proyecto: Fitness Extreme',
+    alt: 'Fitness Extreme, web B2B desarrollada por Valhu Group',
     href: 'https://fitnessextremeperu.com',
   },
 ];
@@ -104,7 +109,7 @@ export default function ServicesShowcase() {
     >
       <div className="max-w-[1220px] mx-auto px-4 md:px-8">
         <h2 className="mb-[40px] flex flex-wrap content-start gap-x-[10px] text-[28px] leading-[34px] text-[#141821] md:mb-[56px] md:text-[38px] md:leading-[44px] lg:text-[48px] lg:leading-[56px]">
-          {['Nuestros', 'Servicios'].map((word, i) => (
+          {['Proyectos', 'de', 'diseño', 'y', 'desarrollo', 'web'].map((word, i) => (
             <span key={`wd-svc-${i}`} className="wd-services-blur-word invisible inline-block">
               {word}
             </span>
@@ -118,10 +123,6 @@ export default function ServicesShowcase() {
               className="wd-project-card invisible bg-white rounded-[16px] overflow-hidden flex flex-col"
             >
               <div className="relative w-full aspect-[600/380] bg-[#E1EDF4]">
-                {/*
-                  TODO: reemplazar por la imagen final exportada de Figma
-                  (mockup "${project.tag}"), guardada en la ruta de arriba.
-                */}
                 <Image
                   src={project.image}
                   alt={project.alt}
@@ -134,7 +135,7 @@ export default function ServicesShowcase() {
               <div className="flex items-center justify-between gap-4 p-[24px]">
                 <div>
                   <h3 className="text-[20px] leading-[24px] font-normal text-[#141821]">
-                    Diseño y Desarrollo <span className="font-accent italic font-light">Web</span>
+                    {project.nombre}
                   </h3>
                   <span className="inline-block mt-2 px-[12px] py-[6px] rounded-[8px] bg-[#F1F3F5] text-[13px] text-[#4D687B]">
                     {project.tag}

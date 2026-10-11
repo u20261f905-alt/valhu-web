@@ -4,8 +4,11 @@ description: >-
   Agencia de tecnología, marketing e innovación. Diseño y desarrollo web, diseño UX/UI, branding y
   campañas de performance.
 logo: /logo.svg
-email: ""
-phone: ""
+email: info@valhugroup.com
+phone: "+51961741061"
 city: Lima
 country: Perú
-socials: []
+socials:
+  - https://www.instagram.com/valhu.media/
+  - https://www.facebook.com/people/Valhumedia/61590436420522/
+  - https://www.tiktok.com/@valhu.media.2026

@@ -145,7 +145,7 @@ export default function Cta({
 
           {/* Contenido */}
           <div className="relative z-10 flex flex-col items-center gap-[24px]">
-            <h2 className="bg-transparent text-white font-normal text-[32px] md:text-[38px] leading-[40px] md:leading-[44px] lg:text-[48px] lg:leading-[56px] max-w-[700px] flex flex-wrap justify-center gap-x-[10px]">
+            <h2 className="bg-transparent text-white font-normal text-[32px] md:text-[38px] leading-[40px] md:leading-[44px] lg:text-[48px] lg:leading-[56px] max-w-[700px] lg:max-w-[880px] flex flex-wrap justify-center gap-x-[10px]">
               {titleLine1.split(" ").map((word, i) => (
                 <span
                   key={`ct-${i}`}

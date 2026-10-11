@@ -66,7 +66,7 @@ export default function WebDesignBanner() {
   );
 
   const paragraph =
-    'Creamos páginas web profesionales en Lima con diseño a medida, carga rápida y enfocada en experiencia de usuario. Solicita tu cotización gratis.';
+    'Diseñamos y desarrollamos páginas web profesionales, con diseño propio, carga rápida y un panel que tu equipo administra sin depender de nadie. Desde Lima, Perú, para empresas en cualquier lugar.';
 
   return (
     <section
@@ -83,21 +83,24 @@ export default function WebDesignBanner() {
             {/* DISEÑO Y DESARROLLO WEB */}
             <div className="mb-3">
               <span className="wd-anim-pretitle invisible text-[14px]/[18px] md:text-[16px]/[22px] uppercase underline decoration-[1px] decoration-[#969EB3] [text-underline-offset:2px] text-[#969EB3] font-normal inline-block">
-                DISEÑO Y DESARROLLO WEB
+                SERVICIOS
               </span>
             </div>
 
             {/* Título */}
             <h1 className="mb-[16px] md:mb-[20px] !text-[36px] !leading-[40px] md:!text-[52px] md:!leading-[58px] lg:!text-[64px] lg:!leading-[72px]">
-              <span className="wd-blur-word invisible inline-block">Comienza</span>{' '}
-              <span className="wd-blur-word invisible inline-block">hoy</span>{' '}
-              <span className="wd-blur-word invisible inline-block">con</span>{' '}
-              <span className="wd-blur-word invisible inline-block">una</span>{' '}
+              <span className="wd-blur-word invisible inline-block">Diseño</span>{' '}
+              <span className="wd-blur-word invisible inline-block">y</span>{' '}
+              <span className="wd-blur-word invisible inline-block">desarrollo</span>{' '}
+              <span className="wd-blur-word invisible inline-block">de</span>{' '}
+              <span className="wd-blur-word invisible inline-block">páginas</span>{' '}
+              <span className="wd-blur-word invisible inline-block">web</span>{' '}
+              <span className="wd-blur-word invisible inline-block">que</span>{' '}
               <span className="wd-blur-word invisible inline-block font-accent italic font-light">
-                web
+                cumplen
               </span>{' '}
               <span className="wd-blur-word invisible inline-block font-accent italic font-light">
-                extraordinaria
+                objetivos
               </span>
             </h1>
 

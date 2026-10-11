@@ -120,3 +120,79 @@ export function schemaMigas(post: PostListItem) {
     ],
   };
 }
+
+/* ------------------------------------------------------------------ */
+/*  Una página de servicio                                             */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Declara que la página describe un servicio: cuál es, quién lo presta y
+ * en qué zona. Sin esto Google tiene que deducirlo del texto.
+ */
+export async function schemaServicio({
+  nombre,
+  descripcion,
+  ruta,
+  tipo,
+}: {
+  nombre: string;
+  descripcion: string;
+  ruta: string;
+  /** Categoría de schema.org, p. ej. 'WebDesign' o 'Branding'. */
+  tipo?: string;
+}) {
+  const e = await getEmpresa();
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: nombre,
+    description: descripcion,
+    ...(tipo ? { serviceType: tipo } : {}),
+    url: absoluta(ruta),
+    provider: {
+      '@type': 'Organization',
+      name: e?.name || 'Valhu Group',
+      ...(sitio ? { url: sitio } : {}),
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: e?.country || 'Perú',
+    },
+    ...(e?.email || e?.phone
+      ? {
+          availableChannel: {
+            '@type': 'ServiceChannel',
+            serviceUrl: absoluta('/contacto'),
+          },
+        }
+      : {}),
+  };
+}
+
+/* ------------------------------------------------------------------ */
+/*  Migas de cualquier página                                          */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Ruta de navegación genérica. Se le pasan los escalones en orden; el
+ * último va sin enlace porque es la página actual.
+ *
+ *   schemaRuta([{ nombre: 'Inicio', ruta: '/' },
+ *               { nombre: 'Servicios', ruta: '/servicios' },
+ *               { nombre: 'Diseño y desarrollo web' }])
+ */
+export function schemaRuta(pasos: { nombre: string; ruta?: string }[]) {
+  if (pasos.length === 0) return null;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: pasos.map((paso, indice) => ({
+      '@type': 'ListItem',
+      position: indice + 1,
+      name: paso.nombre,
+      ...(paso.ruta ? { item: absoluta(paso.ruta) } : {}),
+    })),
+  };
+}

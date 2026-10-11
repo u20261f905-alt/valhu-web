@@ -18,7 +18,6 @@ export default function AnimatedRichText({
   prefijo,
   claseNegrita = 'font-semibold text-[#141821]',
   claseAcento = 'font-accent italic font-light',
-  separador = 'flex',
   quiebreAntesDelAcento = false,
 }: {
   /** El texto con sus marcas: *acento* y **negrita** */
@@ -30,8 +29,9 @@ export default function AnimatedRichText({
   claseNegrita?: string;
   claseAcento?: string;
   /**
-   * 'flex'    → el contenedor separa las palabras con gap (no se agregan espacios)
-   * 'espacio' → se agrega un espacio real entre palabras (contenedores en línea)
+   * Obsoleto: ahora siempre se escribe un espacio real entre palabras, en
+   * flex y fuera de flex. Se mantiene el prop para no tocar las llamadas
+   * existentes.
    */
   separador?: 'flex' | 'espacio';
   /**
@@ -73,7 +73,12 @@ export default function AnimatedRichText({
       piezas.push(
         <Fragment key={`${prefijo}-${indiceTrozo}-${indicePalabra}`}>
           <span className={clases}>{palabra}</span>
-          {separador === 'espacio' ? ' ' : null}
+          {/* Espacio real entre palabras. Hace falta aunque el contenedor
+              sea flex y las separe visualmente con gap: sin él, el texto
+              que leen Google y los lectores de pantalla queda pegado
+              ("NuestrosServicios"). En un contenedor flex un nodo de texto
+              con solo espacios no se renderiza, así que no altera nada. */}
+          {' '}
         </Fragment>
       );
     });

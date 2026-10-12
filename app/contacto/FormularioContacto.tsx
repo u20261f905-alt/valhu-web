@@ -251,7 +251,8 @@ export default function FormularioContacto({
     <>
       {encabezado}
 
-      <div className="rounded-[16px] border border-[#E1E7EC] bg-white p-[24px] md:p-[32px]">
+      {/* ct-fade: lo anima <EntradaFormulario> al cargar la página. */}
+      <div className="ct-fade invisible rounded-[16px] border border-[#E1E7EC] bg-white p-[24px] md:p-[32px]">
         {/* Progreso: un punto por paso, unidos por la línea del recorrido. */}
         <div className="mb-[24px] flex justify-center">
           <ol className="inline-flex items-center">

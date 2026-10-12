@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -147,12 +147,13 @@ export default function Cta({
           <div className="relative z-10 flex flex-col items-center gap-[24px]">
             <h2 className="bg-transparent text-white font-normal text-[32px] md:text-[38px] leading-[40px] md:leading-[44px] lg:text-[48px] lg:leading-[56px] max-w-[700px] lg:max-w-[880px] flex flex-wrap justify-center gap-x-[10px]">
               {titleLine1.split(" ").map((word, i) => (
-                <span
-                  key={`ct-${i}`}
-                  className="cta-blur-word invisible inline-block"
-                >
-                  {word}
-                </span>
+                <Fragment key={`ct-${i}`}>
+                  <span className="cta-blur-word invisible inline-block">{word}</span>
+                  {/* Espacio real: sin él el título se lee pegado para
+                      Google y los lectores de pantalla. En un contenedor
+                      flex no se renderiza, así que no altera el diseño. */}
+                  {" "}
+                </Fragment>
               ))}
 
               {/* Salto de línea en desktop: dentro de un flex, un <br> no
@@ -160,24 +161,24 @@ export default function Cta({
               <span className="hidden md:block basis-full h-0" />
 
               {titleHighlighted.split(" ").map((word, i) => (
-                <span
-                  key={`cth-${i}`}
-                  className="cta-blur-word invisible inline-block bg-transparent font-accent italic text-white"
-                  style={{ fontWeight: 300 }}
-                >
-                  {word}
-                </span>
+                <Fragment key={`cth-${i}`}>
+                  <span
+                    className="cta-blur-word invisible inline-block bg-transparent font-accent italic text-white"
+                    style={{ fontWeight: 300 }}
+                  >
+                    {word}
+                  </span>
+                  {" "}
+                </Fragment>
               ))}
             </h2>
 
             <p className="bg-transparent text-[#D0D5DD] text-[14px] md:text-[16px] leading-[20px] max-w-[600px] font-normal flex flex-wrap justify-center gap-x-[4px]">
               {description.split(" ").map((word, i) => (
-                <span
-                  key={`cp-${i}`}
-                  className="cta-blur-paragraph-word invisible inline-block"
-                >
-                  {word}
-                </span>
+                <Fragment key={`cp-${i}`}>
+                  <span className="cta-blur-paragraph-word invisible inline-block">{word}</span>
+                  {" "}
+                </Fragment>
               ))}
             </p>
 

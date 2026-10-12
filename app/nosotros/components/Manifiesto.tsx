@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -43,14 +43,19 @@ function AnimatedWords({
     <>
       {segments.map((segment, si) =>
         segment.text.split(" ").map((word, wi) => (
-          <span
-            key={`${keyPrefix}-${si}-${wi}`}
-            className={`${wordClass} invisible inline-block ${
-              segment.bold ? "text-[#141821] font-semibold" : ""
-            }`}
-          >
-            {word}
-          </span>
+          <Fragment key={`${keyPrefix}-${si}-${wi}`}>
+            <span
+              className={`${wordClass} invisible inline-block ${
+                segment.bold ? "text-[#141821] font-semibold" : ""
+              }`}
+            >
+              {word}
+            </span>
+            {/* Espacio real entre palabras: en un contenedor flex no se
+                renderiza, pero sin él el texto se lee pegado para Google
+                y los lectores de pantalla. */}
+            {" "}
+          </Fragment>
         )),
       )}
     </>

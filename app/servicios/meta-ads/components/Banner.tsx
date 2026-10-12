@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
@@ -108,12 +108,13 @@ export default function MetaAdsBanner() {
             {/* Párrafo */}
             <p className="text-[14px] md:text-[16px] text-[#485157] mb-[24px] md:mb-6 flex flex-wrap content-start gap-x-[6px] max-w-[600px]">
               {paragraph.split(" ").map((word, index) => (
-                <span
-                  key={`ma-p-${index}`}
-                  className="ma-blur-paragraph-word invisible inline-block"
-                >
-                  {word}
-                </span>
+                <Fragment key={`ma-p-${index}`}>
+                  <span className="ma-blur-paragraph-word invisible inline-block">{word}</span>
+                  {/* Espacio real entre palabras: en un contenedor flex no se
+                      renderiza, pero sin él el texto se lee pegado para Google
+                      y los lectores de pantalla. */}
+                  {" "}
+                </Fragment>
               ))}
             </p>
 

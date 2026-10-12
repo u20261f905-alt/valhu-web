@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import AnimatedRichText from "@/app/components/AnimatedRichText";
 import { getFormulario } from "@/lib/contenido";
 import { metadatosDePagina } from "@/lib/metadatos";
+import EntradaFormulario from "./EntradaFormulario";
 import FormularioContacto from "./FormularioContacto";
 
 /**
@@ -12,6 +14,10 @@ import FormularioContacto from "./FormularioContacto";
  * Se dibuja sin el menú del sitio: quien llegó hasta aquí ya decidió
  * escribirnos, y cada enlace de salida es una oportunidad de distraerse.
  * Queda solo el logo y una salida clara hacia el inicio.
+ *
+ * La entrada se anima al cargar —título palabra por palabra, el resto con
+ * un fundido escalonado— para que el salto desde la página anterior no se
+ * sienta seco. Lo gobierna <EntradaFormulario>.
  */
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -63,40 +69,46 @@ export default async function ContactoPage() {
 
       {/* El formulario queda centrado en la pantalla, sea cual sea su alto */}
       <main className="flex flex-1 items-center justify-center px-4 py-[32px] md:px-8">
-        <div className="w-full max-w-[620px]">
-          <FormularioContacto
-            textos={textos}
-            encabezado={
-              <>
-                <div className="mb-[26px] text-center">
-                  <h1 className="mb-[12px] !text-[28px] !leading-[34px] md:!text-[34px] md:!leading-[41px]">
-                    Cuéntanos de tu proyecto
-                  </h1>
+        <EntradaFormulario>
+          <div className="w-full max-w-[620px]">
+            <FormularioContacto
+              textos={textos}
+              encabezado={
+                <>
+                  <div className="mb-[26px] text-center">
+                    <h1 className="mb-[12px] flex flex-wrap justify-center gap-x-[10px] !text-[28px] !leading-[34px] md:!text-[34px] md:!leading-[41px]">
+                      <AnimatedRichText
+                        texto="Cuéntanos de tu proyecto"
+                        claseAnimacion="ct-word"
+                        prefijo="ct-titulo"
+                      />
+                    </h1>
 
-                  <p className="mx-auto max-w-[520px] bg-transparent text-[15px] leading-[23px] text-[#525866]">
-                    {textos.intro}
-                  </p>
-
-                  {textos.nota ? (
-                    <p className="mx-auto mt-[10px] max-w-[460px] bg-transparent font-accent text-[15px] italic leading-[22px] text-[#1B3F7D]">
-                      {textos.nota}
+                    <p className="ct-fade invisible mx-auto max-w-[520px] bg-transparent text-[15px] leading-[23px] text-[#525866]">
+                      {textos.intro}
                     </p>
-                  ) : null}
-                </div>
-              </>
-            }
-          />
 
-          <p className="mt-[18px] bg-transparent text-center text-[13px] leading-[20px] text-[#77828C]">
-            ¿Prefieres escribirnos directo?{" "}
-            <a
-              href="mailto:info@valhugroup.com"
-              className="text-[#1B3F7D] underline underline-offset-[3px]"
-            >
-              info@valhugroup.com
-            </a>
-          </p>
-        </div>
+                    {textos.nota ? (
+                      <p className="ct-fade invisible mx-auto mt-[10px] max-w-[460px] bg-transparent font-accent text-[15px] italic leading-[22px] text-[#1B3F7D]">
+                        {textos.nota}
+                      </p>
+                    ) : null}
+                  </div>
+                </>
+              }
+            />
+
+            <p className="ct-fade invisible mt-[18px] bg-transparent text-center text-[13px] leading-[20px] text-[#77828C]">
+              ¿Prefieres escribirnos directo?{" "}
+              <a
+                href="mailto:info@valhugroup.com"
+                className="text-[#1B3F7D] underline underline-offset-[3px]"
+              >
+                info@valhugroup.com
+              </a>
+            </p>
+          </div>
+        </EntradaFormulario>
       </main>
     </div>
   );

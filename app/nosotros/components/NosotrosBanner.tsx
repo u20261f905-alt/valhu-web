@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
@@ -90,12 +90,13 @@ export default function NosotrosBanner() {
             {/* Párrafo */}
             <p className="text-[14px] md:text-[16px] leading-[20px] text-[#485157] mb-[24px] md:mb-6 flex flex-wrap content-start gap-x-[4px] max-w-[600px]">
               {paragraph.split(" ").map((word, index) => (
-                <span
-                  key={`ns-p-${index}`}
-                  className="ns-blur-paragraph-word invisible inline-block"
-                >
-                  {word}
-                </span>
+                <Fragment key={`ns-p-${index}`}>
+                  <span className="ns-blur-paragraph-word invisible inline-block">{word}</span>
+                  {/* Espacio real entre palabras: en un contenedor flex no se
+                      renderiza, pero sin él el texto se lee pegado para Google
+                      y los lectores de pantalla. */}
+                  {" "}
+                </Fragment>
               ))}
             </p>
 

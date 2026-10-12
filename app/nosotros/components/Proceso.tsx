@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -101,12 +101,13 @@ export default function Proceso() {
 
           <p className="mx-auto flex max-w-[640px] flex-wrap justify-center gap-x-[4px] bg-transparent text-[14px] leading-[22px] text-[#525866] md:text-[16px]">
             {bajada.split(" ").map((word, index) => (
-              <span
-                key={`pr-b-${index}`}
-                className="pr-blur-paragraph-word invisible inline-block"
-              >
-                {word}
-              </span>
+              <Fragment key={`pr-b-${index}`}>
+                <span className="pr-blur-paragraph-word invisible inline-block">{word}</span>
+                {/* Espacio real entre palabras: en un contenedor flex no se
+                    renderiza, pero sin él el texto se lee pegado para Google
+                    y los lectores de pantalla. */}
+                {" "}
+              </Fragment>
             ))}
           </p>
         </div>
